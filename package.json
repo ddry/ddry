@@ -20,7 +20,7 @@
   "files": [
     "LICENSE",
     "README.md",
-    "index.js",
+    "index.coffee",
     "lib/"
   ],
   "author": "Vassiliy Pimkin <vassiliy.pimkin@gmail.com>",

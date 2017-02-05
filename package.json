@@ -15,7 +15,7 @@
     "mocha",
     "tape",
     "selenium",
-    "webdriver",
+    "webdriver"
   ],
   "files": [
     "LICENSE",

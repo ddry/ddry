@@ -1,6 +1,6 @@
 {
   "name": "ddry",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Data-driven DRY wrapper for Node JS testing. Supports Mocha, Tape and Selenium Webdriver",
   "main": "index.js",
   "scripts": {

@@ -1,8 +1,13 @@
-.PHONY: co mo mocha tape test
+.PHONY: co coveralls mo mocha ta tape test
 
 co:
 	coffee -co . source/ddry &&\
 	coffee -co spec source/spec
+
+coveralls:
+	istanbul cover spec/ddry.js --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+
+mo: co mocha
 
 mocha:
 	./node_modules/.bin/mocha \
@@ -10,11 +15,9 @@ mocha:
 		spec/ddry.js \
 		--check-leaks
 
+ta: co tape
+
 tape:
 	tape spec/ddry.js | node_modules/.bin/tap-spec
-
-mo: co mocha
-
-ta: co tape
 
 test: mocha tape

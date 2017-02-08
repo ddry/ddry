@@ -30,8 +30,7 @@
   },
   "homepage": "https://github.com/ddry/ddry#readme",
   "devDependencies": {
-    "coffee-script": "^1.12.3",
-    "ddry-mocha-tape": "0.0.3",
+    "ddry-mocha-tape": "0.0.4",
     "tap-spec": "^4.1.1"
   }
 }

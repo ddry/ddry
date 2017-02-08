@@ -1,9 +1,8 @@
 'use strict'
 
-DataDriven = require 'ddry'
-spec = new DataDriven()
+spec = require('ddry/modular')()
 
-spec.modular
+spec.apply
   title: 'DDRY modular spec'
   code: 'lib'
   spec: 'spec/lib'

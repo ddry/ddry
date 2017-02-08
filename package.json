@@ -3,7 +3,7 @@
   "version": "0.0.4",
   "description": "Data-driven DRY wrapper for Node JS testing. Supports Mocha, Tape and Selenium Webdriver",
   "scripts": {
-    "test": "make test"
+    "test": "make test && istanbul cover spec/ddry.js --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "repository": {
     "type": "git",
@@ -30,7 +30,9 @@
   },
   "homepage": "https://github.com/ddry/ddry#readme",
   "devDependencies": {
+    "coveralls": "^2.11.16",
     "ddry-mocha-tape": "0.0.4",
+    "mocha-lcov-reporter": "^1.2.0",
     "tap-spec": "^4.1.1"
   }
 }

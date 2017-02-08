@@ -9,15 +9,17 @@ module.exports =
     testEngine.muteOutput()
 
   addCustomMatchers: (dd, params) ->
-    return unless typeof params.matchers is 'object'
-    for name, matcher of params.matchers
-      dd.matchers[name] = matcher
+    params.matchers = [ params.matchers ] if typeof params.matchers is 'string'
+    return unless Array.isArray params.matchers
+    customMatchers = helpers.requireMatchers params.matchers
+    return unless customMatchers
+    dd.matchers = helpers.mergeHashes dd.matchers, customMatchers
 
   processModular: (dd) ->
     testEngine.modular dd
 
   parseModular: (dd, params) ->
-    codeModules = readFolderFiles(params.title, params.code)
+    codeModules = @.initCodeModules params
     codeModules = helpers.addOutsideModules codeModules, params
     specModules = helpers.getFilteredList codeModules, params
     specModulePaths = helpers.parseSharedSpecs codeModules, params
@@ -32,6 +34,10 @@ module.exports =
       moduleParams.use = helpers.getSetOption 'use', params, moduleName
       modules.push [ dd, moduleParams, specModulePaths[moduleName] ]
     modules
+
+  initCodeModules: (params) ->
+    return {} unless params.code?
+    readFolderFiles(params.title, params.code)
 
   loadModuleSpecFolder: (dd, params, specs) ->
     methodList = readFolderFiles params.title, specs, true

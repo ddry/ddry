@@ -1,5 +1,7 @@
 'use strict'
 
+requireSafe = require './require_safe'
+
 module.exports =
   addOutsideModules: (codeModules, params) ->
     return codeModules unless typeof params.outside is 'object'
@@ -30,6 +32,11 @@ module.exports =
     return false unless Array.isArray params[option]
     params[option].indexOf(name) isnt -1
 
+  mergeHashes: (lo, hi) ->
+    for key, value of hi
+      lo[key] = value
+    lo
+
   parseSharedSpecs: (filesHash, params) ->
     moduleNames = Object.keys(filesHash)
     specPaths = {}
@@ -40,4 +47,14 @@ module.exports =
       for module in sharingModules
         if typeof specPaths[module] is 'string'
           specPaths[module] = "#{params.spec}/#{sharedSpecFolder}"
-    specPaths    
+    specPaths
+
+  requireMatchers: (pathsArray) ->
+    matchers = {}
+    for matcherPath in pathsArray
+      matcher = requireSafe
+        title: matcherPath
+        path: matcherPath
+      if matcher
+        @.mergeHashes matchers, matcher
+    matchers

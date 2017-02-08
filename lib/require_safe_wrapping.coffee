@@ -30,10 +30,13 @@ module.exports =
     module
 
   requireModule: (path) ->
-    moduleFileName = "#{@.prefix}#{path}"
+    local = @.tryRequire "#{@.prefix}#{path}"
+    return local if typeof local isnt 'string'
+    packaged = @.tryRequire path
+
+  tryRequire: (path) ->
     try
-      module = require moduleFileName
+      module = require path
       return module
     catch e
-      return moduleFileName
-
+      return path

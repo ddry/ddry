@@ -43,6 +43,7 @@ module.exports =
   processInstance: (dd, params, code) ->
     dd.modules[dd.path] = @.construct code, params.initial
     dd.generators[dd.path] = {}
+    dd.that = dd.modules[dd.path]
 
   processModule: (dd, params, code) ->
     dd.modules[dd.path] = code

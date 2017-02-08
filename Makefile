@@ -20,4 +20,4 @@ mo: co mocha
 
 ta: co tape
 
-test: co mocha tape
+test: mocha tape

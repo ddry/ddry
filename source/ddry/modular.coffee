@@ -3,7 +3,7 @@
 DataDriven = require './index'
 dd = new DataDriven()
 
-module.exports = (config) ->
+module.exports = (config = {}) ->
   config: config
   dd: dd
 

@@ -8,6 +8,9 @@
   dd = new DataDriven();
 
   module.exports = function(config) {
+    if (config == null) {
+      config = {};
+    }
     return {
       config: config,
       dd: dd,

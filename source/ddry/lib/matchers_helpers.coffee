@@ -16,5 +16,7 @@ module.exports =
 
   report: (value) ->
     return objectReport value if typeof value is 'object'
-    return "#{value}".replace(/ /g, '') if typeof value is 'function'
+    if typeof value is 'function'
+      definition = "#{value}".replace(/ /g, '')
+      return definition.replace(/__cov_[^\+]*\+\+;/g, '')
     "#{value}"

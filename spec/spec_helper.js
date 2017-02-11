@@ -14,6 +14,9 @@
         path = '';
       }
       dd = new DataDriven(path);
+      dd.module({
+        prefix: '../'
+      });
       dd.muteOutput();
       return dd;
     },

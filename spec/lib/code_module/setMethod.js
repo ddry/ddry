@@ -36,8 +36,8 @@
         ],
         e: false
       }, {
-        it: "returns false for non-existent method specs file",
-        i: [ddry, 'not.defined.method', 'method/specs/file/path'],
+        it: "returns false for non-existent specs file of valid method",
+        i: [ddry, 'ordinal', 'method/specs/file/path'],
         e: false
       }, {
         matcher: 'expectFunction',

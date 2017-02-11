@@ -24,11 +24,7 @@
         e: false
       }, {
         it: "loads valid module",
-        i: [
-          ddry, validModule, function() {
-            return 1;
-          }
-        ],
+        i: [ddry, validModule, helper.f],
         e: validModule
       }
     ]);

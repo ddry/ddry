@@ -34,6 +34,9 @@ module.exports =
     return local if typeof local isnt 'string'
     packaged = @.tryRequire path
 
+  setPrefix: (prefix) ->
+    @.prefix = prefix
+
   tryRequire: (path) ->
     try
       module = require path

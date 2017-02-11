@@ -14,9 +14,10 @@
       modular: 'modular'
     },
     moduleTitles: {
-      code_module: 'Code module processing core'
+      code_module: 'Code module processing core',
+      code_module_errors: 'Code module processing error handling'
     },
-    only: ['code_module']
+    only: ['code_module', 'code_module_errors']
   });
 
 }).call(this);

@@ -9,8 +9,7 @@
 
   validModule = {
     title: 'numbering',
-    path: 'spec/examples/code/lib/numbering',
-    prefix: '../'
+    path: 'spec/examples/code/lib/numbering'
   };
 
   module.exports = function(dd, that) {

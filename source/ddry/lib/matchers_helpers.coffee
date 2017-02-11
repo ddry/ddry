@@ -14,9 +14,6 @@ module.exports =
     else
       assert.deepEqual @.report(i), @.report(e)
 
-  report: (value) ->
-    return objectReport value if typeof value is 'object'
-    if typeof value is 'function'
-      definition = "#{value}".replace(/ /g, '')
-      return definition.replace(/__cov_[^\+]*\+\+;/g, '')
-    "#{value}"
+  format: (value) ->
+    return objectReport.create value if typeof value is 'object'
+    objectReport.format value

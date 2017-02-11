@@ -1,6 +1,7 @@
 'use strict'
 
-buildReport = (object, baseKey = [], report = []) ->
+module.exports = (object) ->
+  create: (object, baseKey = [], report = []) ->
   for key, value of object
     if typeof value is 'object'
       baseKey.push key
@@ -9,9 +10,12 @@ buildReport = (object, baseKey = [], report = []) ->
       finalValue = {}
       finalKey = baseKey.slice 0
       finalKey.push key
-      finalValue[ finalKey.join '.' ] = "#{value}".replace(/ /g, '')
+      finalValue[ finalKey.join '.' ] = @.format value
       report.push finalValue
   report
 
-module.exports = (object) ->
-  buildReport object
+  format: (value) ->
+    if typeof value is 'function'
+      definition = "#{value}".replace(/ /g, '')
+      return definition.replace(/__cov_[^\+]*\+\+;/g, '')
+    "#{value}"

@@ -11,4 +11,8 @@ spec.apply
     modular: 'modular'
   moduleTitles:
     code_module: 'Code module processing core'
-  only: [ 'code_module' ]
+    code_module_errors: 'Code module processing error handling'
+  only: [
+    'code_module'
+    'code_module_errors'
+  ]

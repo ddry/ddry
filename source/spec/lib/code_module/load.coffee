@@ -5,7 +5,6 @@ ddry = helper.dd()
 validModule = 
   title: 'numbering'
   path: 'spec/examples/code/lib/numbering'
-  prefix: '../'
 
 module.exports = (dd, that) ->
   dd.drive [

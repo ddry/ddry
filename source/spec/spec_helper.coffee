@@ -11,5 +11,7 @@ module.exports =
     dd.muteOutput()
     dd
 
+  f: -> 1
+
   requireSafe: (params) ->
     requireSafe params

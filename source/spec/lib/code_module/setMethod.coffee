@@ -10,15 +10,15 @@ module.exports = (dd, that) ->
   ddryWithoutModuleContext = helper.dd()
   dd.drive
     it: "returns false out of module context"
-    i: [ ddryWithoutModuleContext, 'ordinal', -> 1 ]
+    i: [ ddryWithoutModuleContext, 'ordinal', helper.f ]
     e: false
 
   ddry = helper.dd()
-  ddry.module validModule, -> 1
+  ddry.module validModule, helper.f
 
   dd.drive [
     it: "returns false for non-existent method name"
-    i: [ ddry, 'not.defined.method', -> 1 ]
+    i: [ ddry, 'not.defined.method', helper.f ]
     e: false
   ,
     it: "returns false for non-existent specs file of valid method"
@@ -27,6 +27,6 @@ module.exports = (dd, that) ->
   ,
     matcher: 'expectFunction'
     it: "applies given specs to method with given name"
-    i: [ ddry, 'ordinal', -> 1 ]
-    e: -> 1
+    i: [ ddry, 'ordinal', helper.f ]
+    e: helper.f
   ]

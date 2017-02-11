@@ -1,5 +1,7 @@
 'use strict'
 
+helper = require '../../../spec_helper'
+
 module.exports = (dd, that) ->
   dd.drive [
     it: "returns false for driver"
@@ -11,9 +13,7 @@ module.exports = (dd, that) ->
     e: false
   ,
     it: "returns false for function module"
-    i: [ 'title'
-      -> 1
-      'name', false ]
+    i: [ 'title', helper.f, 'name', false ]
     e: false
   ,
     it: "returns name of invalid module"

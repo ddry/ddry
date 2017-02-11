@@ -17,6 +17,6 @@ module.exports = (dd, that) ->
     e: false
   ,
     it: "loads valid module"
-    i: [ ddry, validModule, -> 1 ]
+    i: [ ddry, validModule, helper.f ]
     e: validModule
   ]

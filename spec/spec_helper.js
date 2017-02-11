@@ -20,6 +20,9 @@
       dd.muteOutput();
       return dd;
     },
+    f: function() {
+      return 1;
+    },
     requireSafe: function(params) {
       return requireSafe(params);
     }

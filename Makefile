@@ -20,4 +20,4 @@ ta: co tape
 tape:
 	tape spec/ddry.js | node_modules/.bin/tap-spec
 
-test: mocha tape
+test: co mocha tape

@@ -13,6 +13,9 @@
       index: 'index',
       modular: 'modular'
     },
+    moduleTitles: {
+      code_module: 'Code module processing core'
+    },
     only: ['code_module']
   });
 

@@ -11,3 +11,6 @@ module.exports =
         helpers.compare actual, value, tapeContext, tapeMessage
     else
       helpers.compare i, e, tapeContext, tapeMessage
+
+  expectFunction: (code, i, e, tapeContext, tapeMessage) ->
+    helpers.compare i, e, tapeContext, tapeMessage

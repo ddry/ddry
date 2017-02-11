@@ -1,11 +1,23 @@
 'use strict'
 
-instance = require '../../helpers/dd_test_instance'
-ddry = instance 'path'
+helper = require '../../spec_helper'
+ddry = helper.dd()
+validModule = 
+  title: 'numbering'
+  path: 'spec/examples/code/lib/numbering'
+  prefix: '../'
 
 module.exports = (dd, that) ->
   dd.drive [
-    it: "Returns 'false' for non-existent path"
+    it: "returns 'false' for non-existent path"
     i: [ ddry, 'title', 'spec' ]
     e: false
+  ,
+    it: "delegates processing of specified module spec folder"
+    i: [ ddry, validModule, 'spec/file/path' ]
+    e: false
+  ,
+    it: "loads valid module"
+    i: [ ddry, validModule, -> 1 ]
+    e: validModule
   ]

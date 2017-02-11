@@ -14,6 +14,6 @@ module.exports =
     else
       assert.deepEqual @.report(i), @.report(e)
 
-  format: (value) ->
+  report: (value) ->
     return objectReport.create value if typeof value is 'object'
     objectReport.format value

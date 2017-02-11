@@ -1,6 +1,14 @@
 'use strict'
 
-spec = require('ddry/modular')()
+ddry = (edge = false) ->
+  return require('ddry/modular')() unless edge
+  DataDriven = require '../edge'
+  dd = new DataDriven()
+  dd.module
+    prefix: '../../'
+  require('../edge/modular')()  
+
+spec = ddry()
 
 spec.apply
   title: 'DDRY modular spec'

@@ -11,7 +11,6 @@ Instance = helper.requireSafe 'spec/examples/code/lib/instance'
 
 module.exports = (dd) ->
   dd.drive
-    matcher: 'expectFunction'
     it: 'returns stored constructor instance'
     i: [ ddry,
       initial: [ 'title', 'message' ]

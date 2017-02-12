@@ -17,7 +17,6 @@
 
   module.exports = function(dd) {
     return dd.drive({
-      matcher: 'expectFunction',
       it: 'returns stored constructor instance',
       i: [
         ddry, {

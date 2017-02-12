@@ -17,7 +17,6 @@
 
   module.exports = function(dd) {
     return dd.drive({
-      matcher: 'expectFunction',
       it: 'returns stored function singleton',
       i: [ddry, null, singleton],
       e: singleton

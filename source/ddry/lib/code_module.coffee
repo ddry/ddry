@@ -27,7 +27,7 @@ module.exports =
     params
 
   processModuleType: (dd, params, code) ->
-    moduleType = types.get dd, params, code
+    moduleType = types.get params, code
     types["process#{moduleType}"] dd, params, code
 
   setMethod: (dd, name, specs) ->

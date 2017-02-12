@@ -33,10 +33,11 @@
     moduleTitles: {
       code_module: 'Code module processing core',
       code_module_errors: 'Code module processing error handling',
+      code_module_types: 'Code module types processing',
       require_safe: 'Safe require wrapper',
       spec_helper: 'Spec helper spec'
     },
-    only: ['code_module', 'code_module_errors', 'require_safe', 'spec_helper']
+    only: ['code_module', 'code_module_errors', 'code_module_types', 'require_safe', 'spec_helper']
   });
 
 }).call(this);

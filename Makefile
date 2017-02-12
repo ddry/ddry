@@ -1,7 +1,7 @@
 .PHONY: co coveralls mo mocha ta tape test
 
 co:
-	coffee -co . source/ddry &&\
+	coffee -co . source/ddry
 	coffee -co spec source/spec
 
 coveralls:

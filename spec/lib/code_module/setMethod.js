@@ -30,7 +30,6 @@
         i: [ddry, 'ordinal', 'method/specs/file/path'],
         e: false
       }, {
-        matcher: 'expectFunction',
         it: "applies given specs to method with given name",
         i: [ddry, 'ordinal', helper.f],
         e: helper.f

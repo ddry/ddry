@@ -9,7 +9,7 @@ module.exports =
     F.prototype = constructor.prototype;
     new F()
 
-  get: (dd, params, code) ->
+  get: (params, code) ->
     return 'Driver' if params.use
     return 'Instance' if @.instanceValid params, code
     return 'Function' if typeof code is 'function'
@@ -51,7 +51,7 @@ module.exports =
     dd.that = dd.modules[dd.path]
 
   setMethodName: (dd, name) ->
-    return if typeof dd.methodName is 'boolean'
+    return false if typeof dd.methodName is 'boolean'
     dd.methodName = name
     dd.that = @.getThat dd, name
     dd.generators[dd.path][name] ?= new MethodContext dd.that, name, dd.matchers, dd.use

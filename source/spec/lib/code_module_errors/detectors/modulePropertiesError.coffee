@@ -2,7 +2,7 @@
 
 helper = require '../../../spec_helper'
 
-module.exports = (dd, that) ->
+module.exports = (dd) ->
   dd.drive [
     it: "returns false for driver"
     i: [ 'title', {}, 'name', true ]

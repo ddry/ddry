@@ -22,4 +22,4 @@ module.exports = (dd) ->
   dd.drive
     it: 'sets context for module method'
     i: [ ddryWithModule, 'ordinal' ]
-    e: new MethodContext  ddryWithModule.that, 'ordinal', ddryWithModule.matchers, ddryWithModule.use
+    e: new MethodContext ddryWithModule.that, 'ordinal', ddryWithModule.matchers, ddryWithModule.use

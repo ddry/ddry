@@ -8,7 +8,7 @@ validModule =
   path: 'spec/examples/code/lib/numbering'
 target = helper.requireSafe validModule
 
-module.exports = (dd, that) ->
+module.exports = (dd) ->
   dd.drive
     it: "processes the target code module"
     i: [ ddry, validModule, target ]

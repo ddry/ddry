@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (dd, that) ->
+module.exports = (dd) ->
   dd.drive
     it: "returns 'noModuleContext' error message for method name"
     i: [ 'methodName' ]

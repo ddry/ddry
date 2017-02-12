@@ -5,7 +5,7 @@
 
   helper = require('../../../spec_helper');
 
-  module.exports = function(dd, that) {
+  module.exports = function(dd) {
     return dd.drive([
       {
         it: "returns false for driver",

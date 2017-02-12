@@ -6,7 +6,7 @@ validModule =
   title: 'numbering'
   path: 'spec/examples/code/lib/numbering'
 
-module.exports = (dd, that) ->
+module.exports = (dd) ->
   ddryWithoutModuleContext = helper.dd()
   dd.drive
     it: "returns false out of module context"

@@ -12,7 +12,7 @@
     path: 'spec/examples/code/lib/numbering'
   };
 
-  module.exports = function(dd, that) {
+  module.exports = function(dd) {
     return dd.drive([
       {
         it: "returns 'false' for non-existent path",

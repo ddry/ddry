@@ -14,7 +14,7 @@
 
   target = helper.requireSafe(validModule);
 
-  module.exports = function(dd, that) {
+  module.exports = function(dd) {
     return dd.drive({
       it: "processes the target code module",
       i: [ddry, validModule, target],

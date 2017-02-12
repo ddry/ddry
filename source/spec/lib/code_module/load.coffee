@@ -6,7 +6,7 @@ validModule =
   title: 'numbering'
   path: 'spec/examples/code/lib/numbering'
 
-module.exports = (dd, that) ->
+module.exports = (dd) ->
   dd.drive [
     it: "returns 'false' for non-existent path"
     i: [ ddry, 'title', 'spec' ]

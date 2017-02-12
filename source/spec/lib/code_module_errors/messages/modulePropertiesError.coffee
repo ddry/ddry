@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (dd, that) ->
+module.exports = (dd) ->
   dd.drive
     it: "returns 'modulePropertiesError' message for given params"
     i: [ 'title', 'name', [ 'x', 'x', 'path' ], 'key' ]

@@ -10,7 +10,7 @@
     path: 'spec/examples/code/lib/numbering'
   };
 
-  module.exports = function(dd, that) {
+  module.exports = function(dd) {
     var ddry, ddryWithoutModuleContext;
     ddryWithoutModuleContext = helper.dd();
     dd.drive({

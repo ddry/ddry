@@ -1,8 +1,8 @@
 'use strict'
 
 DataDriven = require '../index'
-requireSafe = require '../lib/require_safe'
-MethodContext = require '../lib/method_context'
+requireSafe = require "../lib/require_safe"
+methodContext = require "../lib/method_context"
 
 module.exports =
   dd: (path = '') ->
@@ -19,4 +19,4 @@ module.exports =
       prefix: '../'
     requireSafe params
 
-  methodContext: MethodContext
+  methodContext: methodContext

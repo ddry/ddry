@@ -1,4 +1,12 @@
-.PHONY: c- coveralls mo mocha ta tape test
+.PHONY: all ddry edge npmv c- coveralls m- mo mocha s- t- ta tape test
+
+all: ddry edge npmv
+
+ddry: s-de s-dn
+
+edge: s-ed s-en
+
+npmv: s-nd s-ne
 
 c- c-%:
 	coffee -c$*o . source/ddry & \
@@ -8,6 +16,12 @@ c- c-%:
 coveralls:
 	istanbul cover ./node_modules/mocha/bin/_mocha spec/ddry.js --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
 
+m- m-%:
+	./node_modules/.bin/mocha \
+		--no-exit \
+		spec/modes/$*.js \
+		--check-leaks
+
 mo: c- mocha
 
 mocha:
@@ -15,6 +29,12 @@ mocha:
 		--no-exit \
 		spec/ddry.js \
 		--check-leaks
+
+s- s-%:
+	make m-$* t-$*
+
+t- t-%:
+	tape spec/modes/$*.js | node_modules/.bin/tap-spec
 
 ta: c- tape
 

@@ -3,7 +3,7 @@
   'use strict';
   var config;
 
-  config = require('./config');
+  config = require('../config');
 
   config('ddry', 'npmv');
 

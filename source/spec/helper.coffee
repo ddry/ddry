@@ -12,7 +12,7 @@ SpecHelper.prototype.mergeHashes = (lo, hi) ->
   for key, value of hi
     lo[key] = value
   lo
-
+    
 SpecHelper.prototype.ddry = (path = '') ->
   DataDriven = @.dataDriven
   ddry = new DataDriven path

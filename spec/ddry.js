@@ -5,7 +5,7 @@
 
   mode = require('./mode');
 
-  spec = mode.run('edge', 'ddry', {
+  spec = mode.run('ddry', 'npmv', {
     moduleTitles: {
       code_module: 'Code module processing core',
       code_module_errors: 'Code module processing error handling',

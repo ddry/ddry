@@ -43,6 +43,7 @@
     },
     readFolderFiles: function(title, dir, recursive) {
       var e, files, i, j, methodList, names, ref;
+      dir = this.getDir(dir);
       try {
         files = this.getFiles(dir, recursive);
       } catch (error) {
@@ -95,6 +96,12 @@
         }
       }
       return filelist;
+    },
+    getDir: function(dir) {
+      if (fs.existsSync(dir)) {
+        return dir;
+      }
+      return "node_modules/" + dir;
     }
   };
 

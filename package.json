@@ -31,7 +31,7 @@
   "homepage": "https://github.com/ddry/ddry#readme",
   "devDependencies": {
     "coveralls": "^2.11.16",
-    "ddry-mocha-tape": "0.0.7",
+    "ddry-mocha-tape": "0.0.8",
     "mocha-lcov-reporter": "^1.2.0",
     "tap-spec": "^4.1.1"
   }

@@ -23,6 +23,7 @@ module.exports =
         messages: [ "No method spec files found in '#{path}'." ]
 
   readFolderFiles: (title, dir, recursive) ->
+    dir = @.getDir dir
     try
       files = @.getFiles dir, recursive
     catch e
@@ -52,7 +53,7 @@ module.exports =
       filename.replace "#{dir}/", ''
 
   walkSync: (dir, filelist) ->
-    files = fs.readdirSync(dir)
+    files = fs.readdirSync dir
     filelist = filelist || []
     for file in files
       if fs.statSync(path.join(dir, file)).isDirectory()
@@ -60,3 +61,7 @@ module.exports =
       else
         filelist.push path.join(dir, file)
     filelist
+
+  getDir: (dir) ->
+    return dir if fs.existsSync dir
+    "node_modules/#{dir}"

@@ -2,6 +2,7 @@
 
 co:
 	coffee -co . source/ddry
+	coffee -co edge source/ddry
 	coffee -co spec source/spec
 
 coveralls:

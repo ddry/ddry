@@ -24,7 +24,7 @@ module.exports =
     Array.isArray(params.initial) and typeof code is 'function'
 
   parseTitle: (title, path) ->
-    return title if typeof title is 'object'
+    return title if title and typeof title is 'object'
     _ =
       title: title
       path: path

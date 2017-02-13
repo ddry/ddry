@@ -5,7 +5,6 @@ helper = require '../../spec_helper'
 module.exports = (dd) ->
   ddryWithModule = helper.dd()
   ddryWithModule.modular
-    spec: 'spec/examples/spec/module_and_driver'
     outside:
       module: 'spec/examples/code/lib/numbering'
 
@@ -16,7 +15,6 @@ module.exports = (dd) ->
 
   ddryWithDriver = helper.dd()
   ddryWithDriver.modular
-    spec: 'spec/examples/spec/module_and_driver'
     outside:
       driver: 'spec/examples/code/lib/instance'
     use: [ 'driver' ]

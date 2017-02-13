@@ -4,7 +4,7 @@ requireSafe = require './require_safe'
 
 module.exports =
   addOutsideModules: (codeModules, params) ->
-    return codeModules unless typeof params.outside is 'object'
+    return codeModules unless params.outside and typeof params.outside is 'object'
     for name, path of params.outside
       codeModules[name] ?= path
     codeModules
@@ -17,7 +17,7 @@ module.exports =
 
   getFilteredList: (filesHash, params) ->
     list = Object.keys filesHash
-    return list unless typeof params is 'object'
+    return list unless params and typeof params is 'object'
     return params.only if params.only
     return list unless params.except
     list = list.filter (name) ->

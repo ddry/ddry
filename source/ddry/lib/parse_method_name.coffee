@@ -2,6 +2,7 @@
 
 module.exports = (that, name) ->
   return that if typeof that is 'function'
+  return false unless that and typeof that is 'object'
   xPath = name.split '.'
   return that[name] if xPath.length is 1
   methodName = xPath.pop()

@@ -1,16 +1,8 @@
 'use strict'
 
-ddry = (edge = false) ->
-  return require('ddry/modular')() unless edge
-  DataDriven = require '../edge'
-  dd = new DataDriven()
-  dd.module
-    prefix: '../../'
-  require('../edge/modular')()  
+helper = require './spec_helper'
 
-spec = ddry()
-
-spec.apply
+spec = helper.run true,
   title: 'DDRY modular spec'
   code: 'lib'
   spec: 'spec/lib'
@@ -28,6 +20,7 @@ spec.apply
     'code_module'
     'code_module_errors'
     'code_module_types'
+    'error_report'
     'require_safe'
     'spec_helper'
   ]

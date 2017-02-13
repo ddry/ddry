@@ -6,6 +6,10 @@ module.exports =
   default: (code, i, e, tapeContext, tapeMessage) ->
     helpers.compare i, e, tapeContext, tapeMessage
 
+  anyOrder: (code, i, e, tapeContext, tapeMessage) ->
+    actual = helpers.compareUnordered i, e
+    helpers.compare actual, helpers.cleanArray, tapeContext, tapeMessage
+
   property: (code, i, e, tapeContext, tapeMessage) ->
     for key, value of expected
       actual = helpers.getThatProperty code, key

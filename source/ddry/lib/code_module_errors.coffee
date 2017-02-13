@@ -7,7 +7,7 @@ module.exports =
   detectors:
     noModuleContext: (title, that, name, use) ->
       return false if use
-      objectLike = typeof that is 'object'
+      objectLike = that and typeof that is 'object'
       functionLike = typeof that is 'function'
       return [ name ] unless objectLike or functionLike
       false

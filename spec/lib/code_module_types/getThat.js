@@ -9,7 +9,6 @@
     var Driver, ddryWithDriver, ddryWithModule;
     ddryWithModule = helper.dd();
     ddryWithModule.modular({
-      spec: 'spec/examples/spec/module_and_driver',
       outside: {
         module: 'spec/examples/code/lib/numbering'
       }
@@ -21,7 +20,6 @@
     });
     ddryWithDriver = helper.dd();
     ddryWithDriver.modular({
-      spec: 'spec/examples/spec/module_and_driver',
       outside: {
         driver: 'spec/examples/code/lib/instance'
       },

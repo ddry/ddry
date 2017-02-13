@@ -11,11 +11,16 @@ module.exports =
     false
 
   detectErrors: (errorHash, paramsArray) ->
-    ordered = !!errorHash.order
-    names = if ordered
-    then errorHash.order
-    else Object.keys errorHash.detectors
+    ordered = @.isOrdered errorHash
+    names = @.getNames errorHash, ordered
     @.process errorHash, paramsArray, names, ordered
+
+  isOrdered: (errorHash) ->
+    Array.isArray errorHash.order
+
+  getNames: (errorHash, ordered) ->
+    return errorHash.order if ordered
+    Object.keys errorHash.detectors
 
   process: (errorHash, paramsArray, names, ordered) ->
     errorReport = []

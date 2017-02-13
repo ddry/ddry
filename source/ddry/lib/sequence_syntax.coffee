@@ -15,7 +15,7 @@ module.exports =
     specParams
 
   validate: (spec) ->
-    return false unless typeof spec is 'object'
+    return false unless spec and typeof spec is 'object'
     keys = Object.keys spec
     return false if keys.indexOf('i') is -1
     return false if keys.indexOf('e') is -1

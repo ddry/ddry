@@ -59,7 +59,7 @@ module.exports =
     true
 
   itIsSequence: (spec, specParams) ->
-    return false unless typeof spec.data is 'object'
+    return false unless spec.data and typeof spec.data is 'object'
     true
 
   addSharedKeys: (specParams, specSetParams) ->

@@ -11,7 +11,7 @@
         it: 'sets require relative prefix',
         i: [
           {
-            prefix: '../'
+            prefix: dd.helper.prefix
           }
         ],
         e: false

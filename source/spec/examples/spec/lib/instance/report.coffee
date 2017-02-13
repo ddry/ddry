@@ -6,8 +6,9 @@ module.exports = (dd, that) ->
     i: []
     e: 'title: title, message: message'
   ,
+    matcher: 'property'
     it: 'checks module property'
     i: []
-    e: -> title:
-      'title'
+    e: 
+      title: 'title'
   ]

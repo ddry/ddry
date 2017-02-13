@@ -3,10 +3,11 @@
   'use strict';
   var SpecHelper;
 
-  SpecHelper = function(prefix) {
-    this.dataDriven = require(prefix + "index");
-    this.methodContext = require(prefix + "lib/method_context");
-    this.requireSafeProxy = require(prefix + "lib/require_safe");
+  SpecHelper = function(helperPrefix, requirePrefix) {
+    this.prefix = requirePrefix;
+    this.dataDriven = require(helperPrefix + "index");
+    this.methodContext = require(helperPrefix + "lib/method_context");
+    this.requireSafeProxy = require(helperPrefix + "lib/require_safe");
     this.ddry();
     return true;
   };
@@ -28,7 +29,7 @@
     DataDriven = this.dataDriven;
     ddry = new DataDriven(path);
     ddry.module({
-      prefix: '../'
+      prefix: this.prefix
     });
     ddry.muteOutput();
     return ddry;
@@ -40,7 +41,7 @@
 
   SpecHelper.prototype.requireSafe = function(params) {
     this.requireSafeProxy({
-      prefix: '../'
+      prefix: this.prefix
     });
     return this.requireSafeProxy(params);
   };

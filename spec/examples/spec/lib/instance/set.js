@@ -4,6 +4,7 @@
   module.exports = function(dd, that) {
     return dd.drive([
       {
+        matcher: 'property',
         it: 'Sets instance property',
         i: [
           'prop01', {
@@ -15,15 +16,13 @@
             }
           }
         ],
-        e: function() {
-          return {
-            "prop01.one": function() {
-              return 1;
-            },
-            "prop01.two": function() {
-              return 2;
-            }
-          };
+        e: {
+          "prop01.one": function() {
+            return 1;
+          },
+          "prop01.two": function() {
+            return 2;
+          }
         }
       }
     ]);

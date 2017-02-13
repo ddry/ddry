@@ -14,6 +14,11 @@
     return {
       config: config,
       dd: dd,
+      setPrefix: function(prefix) {
+        return this.dd.module({
+          prefix: prefix
+        });
+      },
       apply: function(constraints) {
         var jobConfig;
         if (constraints == null) {

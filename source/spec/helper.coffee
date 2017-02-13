@@ -1,9 +1,10 @@
 'use strict'
 
-SpecHelper = (prefix) ->
-  @.dataDriven = require "#{prefix}index"
-  @.methodContext = require "#{prefix}lib/method_context"
-  @.requireSafeProxy = require "#{prefix}lib/require_safe"
+SpecHelper = (helperPrefix, requirePrefix) ->
+  @.prefix = requirePrefix
+  @.dataDriven = require "#{helperPrefix}index"
+  @.methodContext = require "#{helperPrefix}lib/method_context"
+  @.requireSafeProxy = require "#{helperPrefix}lib/require_safe"
   @.ddry()
   true
 
@@ -16,7 +17,7 @@ SpecHelper.prototype.ddry = (path = '') ->
   DataDriven = @.dataDriven
   ddry = new DataDriven path
   ddry.module
-    prefix: '../'
+    prefix: @.prefix
   ddry.muteOutput()
   ddry
 
@@ -24,7 +25,7 @@ SpecHelper.prototype.f = -> 1
 
 SpecHelper.prototype.requireSafe = (params) ->
   @.requireSafeProxy
-    prefix: '../'
+    prefix: @.prefix
   @.requireSafeProxy params
 
 module.exports = SpecHelper

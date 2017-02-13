@@ -2,20 +2,52 @@
 (function() {
   'use strict';
   module.exports = {
-    run: function(edge, params) {
-      if (edge) {
-        return this.edge(params);
+    prefixes: {
+      harness: {
+        ddry: '..',
+        edge: '../edge',
+        npmv: 'ddry'
+      },
+      relative: {
+        ddry: '../',
+        edge: '../../',
+        npmv: '../../../'
+      },
+      root: {
+        ddry: '',
+        edge: 'edge/',
+        npmv: 'ddry/'
       }
-      return this.ddry(params);
     },
-    edge: function(params) {
-      var Edge, dd;
-      Edge = require('../edge');
-      dd = new Edge();
-      dd.module({
-        prefix: '../../'
-      });
-      return dd.modular(params);
+    run: function(harness, subject, params) {
+      var spec;
+      spec = require(this.prefixes.harness[harness] + "/modular");
+      spec = spec(params);
+      spec.setPrefix(this.prefixes.relative[harness]);
+      return spec.apply(this.context(harness, subject));
+    },
+    context: function(harness, subject) {
+      var helper, helperPrefix, relative;
+      helperPrefix = this.prefixes.harness[subject] + "/";
+      relative = "" + this.prefixes.relative[subject];
+      helper = [helperPrefix, relative];
+      return {
+        title: 'DDRY modular spec',
+        code: this.prefixes.root[subject] + "lib",
+        spec: 'spec/lib',
+        helper: {
+          path: 'spec/helper',
+          initial: helper
+        },
+        outside: {
+          index: this.prefixes.root[subject] + "index",
+          modular: this.prefixes.root[subject] + "modular",
+          spec_helper: 'spec/helper'
+        },
+        initial: {
+          spec_helper: helper
+        }
+      };
     }
   };
 

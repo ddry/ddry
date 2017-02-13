@@ -7,6 +7,10 @@ module.exports = (config = {}) ->
   config: config
   dd: dd
 
+  setPrefix: (prefix) ->
+    @.dd.module
+      prefix: prefix
+
   apply: (constraints = {}) ->
     jobConfig = @.compose constraints
     @.dd.modular jobConfig

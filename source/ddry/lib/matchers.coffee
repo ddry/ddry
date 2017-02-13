@@ -11,6 +11,6 @@ module.exports =
     helpers.compare actual, helpers.cleanArray, tapeContext, tapeMessage
 
   property: (code, i, e, tapeContext, tapeMessage) ->
-    for key, value of expected
+    for key, value of e
       actual = helpers.getThatProperty code, key
       helpers.compare actual, value, tapeContext, tapeMessage

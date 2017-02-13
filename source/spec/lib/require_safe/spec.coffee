@@ -5,7 +5,7 @@ numbering = require '../../examples/code/lib/numbering'
 module.exports = (dd) ->
   dd.drive [
     it: 'sets require relative prefix'
-    i: [ { prefix: '../' } ]
+    i: [ { prefix: dd.helper.prefix } ]
     e: false
   ,
     it: 'returns false for non-existent filename'

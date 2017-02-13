@@ -8,12 +8,11 @@
         i: [],
         e: 'title: title, message: message'
       }, {
+        matcher: 'property',
         it: 'checks module property',
         i: [],
-        e: function() {
-          return {
-            title: 'title'
-          };
+        e: {
+          title: 'title'
         }
       }
     ]);

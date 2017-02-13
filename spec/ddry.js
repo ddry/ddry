@@ -5,22 +5,7 @@
 
   mode = require('./mode');
 
-  spec = mode.run(true, {
-    title: 'DDRY modular spec',
-    code: 'lib',
-    spec: 'spec/lib',
-    helper: {
-      path: 'spec/helper',
-      initial: ['../']
-    },
-    outside: {
-      index: 'index',
-      modular: 'modular',
-      spec_helper: 'spec/helper'
-    },
-    initial: {
-      spec_helper: ['../']
-    },
+  spec = mode.run('edge', 'ddry', {
     moduleTitles: {
       code_module: 'Code module processing core',
       code_module_errors: 'Code module processing error handling',

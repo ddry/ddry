@@ -1,6 +1,7 @@
 'use strict'
 
 requireSafe = require './require_safe'
+construct = require './construct'
 
 module.exports =
   addOutsideModules: (codeModules, params) ->
@@ -8,6 +9,14 @@ module.exports =
     for name, path of params.outside
       codeModules[name] ?= path
     codeModules
+
+  attachDDHelper: (helper) ->
+    return false unless helper and typeof helper is 'object'
+    return false unless typeof helper.path is 'string'
+    return false unless Array.isArray helper.initial
+    Helper = requireSafe helper.path
+    return false unless typeof Helper is 'function'
+    construct Helper, helper.initial
 
   filterHash: (hash, keys) ->
     filtered = {}

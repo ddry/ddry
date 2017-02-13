@@ -20,6 +20,7 @@ DataDriven.prototype.muteOutput = ->
 
 DataDriven.prototype.modular = (params) ->
   parsing.addCustomMatchers @, params
+  parsing.attachHelper @, params
   modules = parsing.parseModular @, params
   for module in modules
     params = [ @ ].concat codeModule.load.apply(codeModule, module)

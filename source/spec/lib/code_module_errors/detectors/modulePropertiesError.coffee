@@ -1,7 +1,5 @@
 'use strict'
 
-helper = require '../../../spec_helper'
-
 module.exports = (dd) ->
   dd.drive [
     it: "returns false for driver"
@@ -9,7 +7,7 @@ module.exports = (dd) ->
     e: false
   ,
     it: "returns false for function module"
-    i: [ 'title', helper.f, 'name', false ]
+    i: [ 'title', dd.helper.f, 'name', false ]
     e: false
   ,
     it: "returns trodden part of failing path"
@@ -18,7 +16,7 @@ module.exports = (dd) ->
         deep:
           deep:
             inside:
-              method: helper.f
+              method: dd.helper.f
     , 'deep.deep.deep.inside.failure', false ]
     e: [ 'title'
       'deep.deep.deep.inside.failure'

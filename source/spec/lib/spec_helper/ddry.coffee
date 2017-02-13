@@ -1,12 +1,8 @@
 'use strict'
  
-DataDriven = require '../../../index'
-
-ddry = new DataDriven()
-ddry.module
-  prefix: '../'
-
 module.exports = (dd) ->
+  ddry = dd.helper.ddry()
+
   dd.drive
     it: 'returns configured test DataDriven instance'
     i: []

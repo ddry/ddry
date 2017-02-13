@@ -1,12 +1,12 @@
 'use strict'
 
-helper = require '../../spec_helper'
-ddry = helper.dd()
 validModule = 
   title: 'numbering'
   path: 'spec/examples/code/lib/numbering'
 
 module.exports = (dd) ->
+  ddry = dd.helper.ddry()
+
   dd.drive [
     it: "returns 'false' for non-existent path"
     i: [ ddry, 'title', 'spec' ]
@@ -17,6 +17,6 @@ module.exports = (dd) ->
     e: false
   ,
     it: "loads valid module"
-    i: [ ddry, validModule, helper.f ]
+    i: [ ddry, validModule, dd.helper.f ]
     e: validModule
   ]

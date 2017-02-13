@@ -27,6 +27,9 @@
       }
       return dd.matchers = helpers.mergeHashes(dd.matchers, customMatchers);
     },
+    attachHelper: function(dd, params) {
+      return dd.helper = helpers.attachDDHelper(params.helper);
+    },
     processModular: function(dd) {
       return testEngine.modular(dd);
     },

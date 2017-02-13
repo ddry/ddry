@@ -15,6 +15,9 @@ module.exports =
     return unless customMatchers
     dd.matchers = helpers.mergeHashes dd.matchers, customMatchers
 
+  attachHelper: (dd, params) ->
+    dd.helper = helpers.attachDDHelper params.helper
+
   processModular: (dd) ->
     testEngine.modular dd
 

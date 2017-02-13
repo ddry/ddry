@@ -1,10 +1,8 @@
 'use strict'
 
-helper = require '../../spec_helper'
-
-instance = helper.requireSafe 'spec/examples/code/lib/instance'
-
 module.exports = (dd) ->
+  instance = dd.helper.requireSafe 'spec/examples/code/lib/instance'
+
   dd.drive [
     it: "recognizes driver by 'use' parameter"
     i: [ use: true ]

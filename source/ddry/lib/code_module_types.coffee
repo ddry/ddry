@@ -1,14 +1,9 @@
 'use strict'
 
+construct = require './construct'
 MethodContext = require './method_context'
 
 module.exports =
-  construct: (constructor, args) ->
-    F = ->
-      constructor.apply(this, args);
-    F.prototype = constructor.prototype;
-    new F()
-
   get: (params, code) ->
     return 'Driver' if params.use
     return 'Instance' if @.instanceValid params, code
@@ -18,7 +13,7 @@ module.exports =
   getThat: (dd, name) ->
     return dd.modules[dd.path] unless dd.use
     code = dd.driverFactories[dd.path]
-    dd.drivers[dd.path][name] = @.construct code, []
+    dd.drivers[dd.path][name] = construct code, []
 
   instanceValid: (params, code) ->
     Array.isArray(params.initial) and typeof code is 'function'
@@ -41,7 +36,7 @@ module.exports =
     dd.that = dd.modules[dd.path]
 
   processInstance: (dd, params, code) ->
-    dd.modules[dd.path] = @.construct code, params.initial
+    dd.modules[dd.path] = construct code, params.initial
     dd.generators[dd.path] = {}
     dd.that = dd.modules[dd.path]
 

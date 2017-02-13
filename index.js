@@ -28,6 +28,7 @@
   DataDriven.prototype.modular = function(params) {
     var i, len, module, modules;
     parsing.addCustomMatchers(this, params);
+    parsing.attachHelper(this, params);
     modules = parsing.parseModular(this, params);
     for (i = 0, len = modules.length; i < len; i++) {
       module = modules[i];

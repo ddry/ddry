@@ -1,12 +1,10 @@
 'use strict'
 
-helper = require '../../spec_helper'
-errorHash = helper.requireSafe 'lib/code_module_errors'
-
 module.exports = (dd) ->
+  errorHash = dd.helper.requireSafe 'lib/code_module_errors'
   dd.drive [
     it: "returns false if no errors found"
-    i: [ errorHash, [ 'title', helper.f, 'name', true ] ]
+    i: [ errorHash, [ 'title', dd.helper.f, 'name', true ] ]
     e: false
   ,
     it: "delegates found errors output to test engine and returns true"

@@ -1,9 +1,7 @@
 'use strict'
 
-helper = require '../../spec_helper'
-
 module.exports = (dd) ->
-  ddryWithModule = helper.dd()
+  ddryWithModule = dd.helper.ddry()
   ddryWithModule.modular
     outside:
       module: 'spec/examples/code/lib/numbering'
@@ -11,15 +9,15 @@ module.exports = (dd) ->
   dd.drive
     it: 'returns stored module singleton'
     i: [ ddryWithModule, 'set' ]
-    e: helper.requireSafe 'spec/examples/code/lib/numbering'
+    e: dd.helper.requireSafe 'spec/examples/code/lib/numbering'
 
-  ddryWithDriver = helper.dd()
+  ddryWithDriver = dd.helper.ddry()
   ddryWithDriver.modular
     outside:
       driver: 'spec/examples/code/lib/instance'
     use: [ 'driver' ]
 
-  Driver = helper.requireSafe 'spec/examples/code/lib/instance'
+  Driver = dd.helper.requireSafe 'spec/examples/code/lib/instance'
 
   dd.drive
     it: 'returns driver instance'

@@ -1,10 +1,9 @@
 'use strict'
 
-helper = require '../../spec_helper'
-MethodContext = helper.methodContext
-
 module.exports = (dd) ->
-  ddryWithFunction = helper.dd()
+  MethodContext = dd.helper.methodContext
+
+  ddryWithFunction = dd.helper.ddry()
   ddryWithFunction.modular
     outside:
       module: 'spec/examples/code/lib/function_export'
@@ -14,7 +13,7 @@ module.exports = (dd) ->
     i: [ ddryWithFunction, 'name' ]
     e: false
 
-  ddryWithModule = helper.dd()
+  ddryWithModule = dd.helper.ddry()
   ddryWithModule.modular
     outside:
       module: 'spec/examples/code/lib/numbering'

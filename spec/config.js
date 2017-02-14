@@ -14,10 +14,13 @@
         code_module_types: 'Code module types processing',
         construct: 'Instance constructor',
         error_report: 'Error reporter',
+        matchers: 'Default matchers set',
+        matchers_helpers: 'Default matchers helpers',
+        parse_method_name: 'Method name parsing module',
         require_safe: 'Safe require wrapper',
         spec_helper: 'Spec helper spec'
       },
-      only: ['code_module', 'code_module_errors', 'code_module_types', 'construct', 'error_report', 'require_safe', 'spec_helper', 'matchers', 'matchers_helpers']
+      only: ['code_module', 'code_module_errors', 'code_module_types', 'construct', 'error_report', 'matchers', 'matchers_helpers', 'parse_method_name', 'require_safe', 'spec_helper']
     });
   };
 

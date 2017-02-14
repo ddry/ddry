@@ -14,5 +14,5 @@ module.exports = (that, name) ->
       troddenPath.push key
     else
       return [ troddenPath, key ]
-  return cursor[methodName] if cursor[methodName]
+  return cursor[methodName] if typeof cursor[methodName] is 'function'
   [ xPath, methodName ]

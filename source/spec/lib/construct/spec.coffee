@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = (dd) ->
-  Instance = dd.helper.requireSafe 'spec/examples/code/lib/instance'
+  Instance = dd.helper.examples.instance
 
   dd.drive
     it: 'creates instance with constructor and initial values'

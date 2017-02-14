@@ -4,7 +4,12 @@ SpecHelper = (helperPrefix, requirePrefix) ->
   @.prefix = requirePrefix
   @.dataDriven = require "#{helperPrefix}index"
   @.methodContext = require "#{helperPrefix}lib/method_context"
-  @.requireSafeProxy = require "#{helperPrefix}lib/require_safe"
+  @.requireSafe = require "#{helperPrefix}lib/require_safe"
+  @.requireSafe
+    prefix: @.prefix
+  @.examples = {}
+  for name in [ 'function_export', 'instance', 'numbering', 'properties' ]
+    @.examples[name] = @.requireSafe "spec/examples/code/lib/#{name}"
   @.ddry()
   true
 
@@ -15,11 +20,6 @@ SpecHelper.prototype.ddry = (path = '') ->
     prefix: @.prefix
   ddry.muteOutput()
   ddry
-
-SpecHelper.prototype.requireSafe = (params) ->
-  @.requireSafeProxy
-    prefix: @.prefix
-  @.requireSafeProxy params
 
 SpecHelper.prototype.tapeStub = require 'assert'
 

@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = (dd) ->
-  code = dd.helper.requireSafe 'spec/examples/code/lib/properties'
+  code = dd.helper.examples.properties
   code.few = 2
   code.many = 4
 

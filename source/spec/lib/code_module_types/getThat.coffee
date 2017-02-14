@@ -9,7 +9,7 @@ module.exports = (dd) ->
   dd.drive
     it: 'returns stored module singleton'
     i: [ ddryWithModule, 'set' ]
-    e: dd.helper.requireSafe 'spec/examples/code/lib/numbering'
+    e: dd.helper.examples.numbering
 
   ddryWithDriver = dd.helper.ddry()
   ddryWithDriver.modular
@@ -17,7 +17,7 @@ module.exports = (dd) ->
       driver: 'spec/examples/code/lib/instance'
     use: [ 'driver' ]
 
-  Driver = dd.helper.requireSafe 'spec/examples/code/lib/instance'
+  Driver = dd.helper.examples.instance
 
   dd.drive
     it: 'returns driver instance'

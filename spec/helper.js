@@ -4,10 +4,20 @@
   var SpecHelper;
 
   SpecHelper = function(helperPrefix, requirePrefix) {
+    var i, len, name, ref;
     this.prefix = requirePrefix;
     this.dataDriven = require(helperPrefix + "index");
     this.methodContext = require(helperPrefix + "lib/method_context");
-    this.requireSafeProxy = require(helperPrefix + "lib/require_safe");
+    this.requireSafe = require(helperPrefix + "lib/require_safe");
+    this.requireSafe({
+      prefix: this.prefix
+    });
+    this.examples = {};
+    ref = ['function_export', 'instance', 'numbering', 'properties'];
+    for (i = 0, len = ref.length; i < len; i++) {
+      name = ref[i];
+      this.examples[name] = this.requireSafe("spec/examples/code/lib/" + name);
+    }
     this.ddry();
     return true;
   };
@@ -24,13 +34,6 @@
     });
     ddry.muteOutput();
     return ddry;
-  };
-
-  SpecHelper.prototype.requireSafe = function(params) {
-    this.requireSafeProxy({
-      prefix: this.prefix
-    });
-    return this.requireSafeProxy(params);
   };
 
   SpecHelper.prototype.tapeStub = require('assert');

@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = (dd) ->
-  instance = dd.helper.requireSafe 'spec/examples/code/lib/instance'
+  instance = dd.helper.examples.instance
 
   dd.drive [
     it: 'returns false for non-function export'

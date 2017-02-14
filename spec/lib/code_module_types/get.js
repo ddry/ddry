@@ -3,7 +3,7 @@
   'use strict';
   module.exports = function(dd) {
     var instance;
-    instance = dd.helper.requireSafe('spec/examples/code/lib/instance');
+    instance = dd.helper.examples.instance;
     return dd.drive([
       {
         it: "recognizes driver by 'use' parameter",

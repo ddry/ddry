@@ -3,7 +3,7 @@
   'use strict';
   module.exports = function(dd) {
     var Instance;
-    Instance = dd.helper.requireSafe('spec/examples/code/lib/instance');
+    Instance = dd.helper.examples.instance;
     return dd.drive({
       it: 'creates instance with constructor and initial values',
       i: [Instance, ['title', 'message']],

@@ -10,7 +10,6 @@ npmv: s-nd s-ne
 
 c- c-%:
 	coffee -c$*o . source/ddry & \
-	coffee -c$*o edge source/ddry & \
 	coffee -c$*o spec source/spec
 
 coveralls:

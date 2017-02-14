@@ -2,11 +2,9 @@
 
 SpecHelper = (helperPrefix, requirePrefix) ->
   @.prefix = requirePrefix
-
   @.dataDriven = require "#{helperPrefix}index"
   @.methodContext = require "#{helperPrefix}lib/method_context"
   @.requireSafeProxy = require "#{helperPrefix}lib/require_safe"
-
   @.ddry()
   true
 
@@ -29,6 +27,7 @@ SpecHelper.prototype.mergeHashes = (lo, hi) ->
   for key, value of hi
     lo[key] = value
   lo
+
 SpecHelper.prototype.f = -> 1
 
 SpecHelper.prototype.ff = -> 2

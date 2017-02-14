@@ -8,7 +8,6 @@
     this.dataDriven = require(helperPrefix + "index");
     this.methodContext = require(helperPrefix + "lib/method_context");
     this.requireSafeProxy = require(helperPrefix + "lib/require_safe");
-    this.initTapeContext();
     this.ddry();
     return true;
   };
@@ -34,11 +33,7 @@
     return this.requireSafeProxy(params);
   };
 
-  SpecHelper.prototype.tape = require('tape');
-
-  SpecHelper.prototype.initTapeContext = function() {
-    return true;
-  };
+  SpecHelper.prototype.tapeStub = require('assert');
 
   SpecHelper.prototype.mergeHashes = function(lo, hi) {
     var key, value;

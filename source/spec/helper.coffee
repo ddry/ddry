@@ -7,7 +7,6 @@ SpecHelper = (helperPrefix, requirePrefix) ->
   @.methodContext = require "#{helperPrefix}lib/method_context"
   @.requireSafeProxy = require "#{helperPrefix}lib/require_safe"
 
-  @.initTapeContext()
   @.ddry()
   true
 
@@ -24,13 +23,7 @@ SpecHelper.prototype.requireSafe = (params) ->
     prefix: @.prefix
   @.requireSafeProxy params
 
-SpecHelper.prototype.tape = require 'tape'
-
-SpecHelper.prototype.initTapeContext = ->
-  # if typeof describe is 'function'
-  #   tape.createStream( objectMode: true ).on 'data', (row) ->
-  #     false
-  true
+SpecHelper.prototype.tapeStub = require 'assert'
 
 SpecHelper.prototype.mergeHashes = (lo, hi) ->
   for key, value of hi

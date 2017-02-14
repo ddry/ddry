@@ -18,7 +18,6 @@ specContext = (harness, subject) ->
   helperPrefix = "#{prefixes.harness[subject]}/"
   relative = "#{prefixes.relative[subject]}"
   helper = [ helperPrefix, relative ]
-  title: 'DDRY modular spec'
   code: "#{prefixes.root[subject]}lib"
   spec: 'spec/lib'
   helper:

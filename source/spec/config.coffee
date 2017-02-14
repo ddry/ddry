@@ -4,6 +4,7 @@ run = require './run'
 
 module.exports = (harness, subject) ->
   run harness, subject,
+    title: 'ddry-by-edge'
     moduleTitles:
       code_module: 'Code module processing core'
       code_module_errors: 'Code module processing error handling'
@@ -21,4 +22,5 @@ module.exports = (harness, subject) ->
       'require_safe'
       'spec_helper'
       'matchers'
+      'matchers_helpers'
     ]

@@ -19,11 +19,14 @@ DataDriven.prototype.muteOutput = ->
   parsing.muteOutput()
 
 DataDriven.prototype.modular = (params) ->
+  @.modularTitle = params.title or 'Modular spec'
   parsing.addCustomMatchers @, params
   parsing.attachHelper @, params
   modules = parsing.parseModular @, params
+  that = @
+  parsing.setContext 'modular', @.modularTitle, ->
   for module in modules
-    params = [ @ ].concat codeModule.load.apply(codeModule, module)
+    params = [ that ].concat codeModule.load.apply(codeModule, module)
     parsing.describeModule.apply codeModule, params
   parsing.processModular @
 
@@ -34,6 +37,9 @@ DataDriven.prototype.module = (title, specs) ->
 DataDriven.prototype.method = (name, specs) ->
   specs = codeModule.setMethod @, name, specs
   parsing.describeMethod @, name, specs
+
+DataDriven.prototype.context = (title, specs) ->
+  parsing.setContext 'context', title, specs
 
 DataDriven.prototype.drive = (spec) ->
   generator = @.generators[@.path]

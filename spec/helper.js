@@ -8,17 +8,9 @@
     this.dataDriven = require(helperPrefix + "index");
     this.methodContext = require(helperPrefix + "lib/method_context");
     this.requireSafeProxy = require(helperPrefix + "lib/require_safe");
+    this.initTapeContext();
     this.ddry();
     return true;
-  };
-
-  SpecHelper.prototype.mergeHashes = function(lo, hi) {
-    var key, value;
-    for (key in hi) {
-      value = hi[key];
-      lo[key] = value;
-    }
-    return lo;
   };
 
   SpecHelper.prototype.ddry = function(path) {
@@ -35,15 +27,45 @@
     return ddry;
   };
 
-  SpecHelper.prototype.f = function() {
-    return 1;
-  };
-
   SpecHelper.prototype.requireSafe = function(params) {
     this.requireSafeProxy({
       prefix: this.prefix
     });
     return this.requireSafeProxy(params);
+  };
+
+  SpecHelper.prototype.initTapeContext = function() {
+    var tape;
+    tape = require('tape');
+    if (typeof describe === 'function') {
+      tape.createStream({
+        objectMode: true
+      }).on('data', function(row) {
+        return false;
+      });
+    }
+    tape.test(' ', function(t) {
+      this.t = t;
+      return t.end();
+    });
+    return true;
+  };
+
+  SpecHelper.prototype.mergeHashes = function(lo, hi) {
+    var key, value;
+    for (key in hi) {
+      value = hi[key];
+      lo[key] = value;
+    }
+    return lo;
+  };
+
+  SpecHelper.prototype.f = function() {
+    return 1;
+  };
+
+  SpecHelper.prototype.ff = function() {
+    return 2;
   };
 
   module.exports = SpecHelper;

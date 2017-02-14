@@ -55,3 +55,6 @@ module.exports =
   describeMethod: (dd, name, specs) ->
     if specs
       testEngine.describeMethod dd, name, specs
+
+  setContext: (type, title, specs) ->
+    testEngine.sendOutput type, [ title, specs ]

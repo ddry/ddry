@@ -27,7 +27,6 @@
     relative = "" + prefixes.relative[subject];
     helper = [helperPrefix, relative];
     return {
-      title: 'DDRY modular spec',
       code: prefixes.root[subject] + "lib",
       spec: 'spec/lib',
       helper: {

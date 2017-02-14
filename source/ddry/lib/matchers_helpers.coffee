@@ -2,7 +2,7 @@
 
 assert = require 'assert'
 parseMethodName = require './parse_method_name'
-objectReport = require './object_report'
+report = require './object_report'
 
 module.exports =
   cleanArray:
@@ -14,9 +14,10 @@ module.exports =
 
   compare: (i, e, tapeContext, tapeMessage) ->
     if tapeContext
-      tapeContext.deepEqual @.report(i), @.report(e), tapeMessage
+      tapeContext.deepEqual report(i), report(e), tapeMessage
     else
-      assert.deepEqual @.report(i), @.report(e)
+      assert.deepEqual report(i), report(e)
+    true
 
   compareUnordered: (i, e) ->
     result =
@@ -27,7 +28,3 @@ module.exports =
     for element in e
       result.extra.push element if i.indexOf(element) is -1
     result
-
-  report: (value) ->
-    return objectReport.create value if value and typeof value is 'object'
-    objectReport.format value

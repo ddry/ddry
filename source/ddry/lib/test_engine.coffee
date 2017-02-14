@@ -1,6 +1,7 @@
 'use strict'
 
 performTest = require './perform_test'
+testOutputs = require './test_outputs'
 unless typeof describe is 'function'
   tapeRunner = require './tape_runner'
 
@@ -62,20 +63,7 @@ module.exports =
     for spec in specSet.specs
       performTest spec, specSet
 
-  report: (report) ->
+  sendOutput: (type, argArray) ->
     return unless @.output
-    return @.reportToMocha report if @.forMocha()
-    @.reportToTape report
-
-  reportToMocha: (report) ->
-    for statement in report
-      describe statement.title, ->
-        for messages in statement.messages
-          it messages
-
-  reportToTape: (report) ->
-    console.log " \n \n"
-    for statement in report
-      console.log "\x1b[0m#{statement.title}"
-      for messages in statement.messages
-        console.log "  \x1b[36m- #{messages}\x1b[0m"
+    return testOutputs[type].toMocha.apply @, argArray if @.forMocha()
+    testOutputs[type].toTape.apply @, argArray

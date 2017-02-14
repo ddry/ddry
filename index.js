@@ -26,13 +26,16 @@
   };
 
   DataDriven.prototype.modular = function(params) {
-    var i, len, module, modules;
+    var i, len, module, modules, that;
+    this.modularTitle = params.title || 'Modular spec';
     parsing.addCustomMatchers(this, params);
     parsing.attachHelper(this, params);
     modules = parsing.parseModular(this, params);
+    that = this;
+    parsing.setContext('modular', this.modularTitle, function() {});
     for (i = 0, len = modules.length; i < len; i++) {
       module = modules[i];
-      params = [this].concat(codeModule.load.apply(codeModule, module));
+      params = [that].concat(codeModule.load.apply(codeModule, module));
       parsing.describeModule.apply(codeModule, params);
     }
     return parsing.processModular(this);
@@ -47,6 +50,10 @@
   DataDriven.prototype.method = function(name, specs) {
     specs = codeModule.setMethod(this, name, specs);
     return parsing.describeMethod(this, name, specs);
+  };
+
+  DataDriven.prototype.context = function(title, specs) {
+    return parsing.setContext('context', title, specs);
   };
 
   DataDriven.prototype.drive = function(spec) {

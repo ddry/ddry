@@ -20,4 +20,5 @@ module.exports = (harness, subject) ->
       'error_report'
       'require_safe'
       'spec_helper'
+      'matchers'
     ]

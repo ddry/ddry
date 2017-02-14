@@ -23,6 +23,11 @@ module.exports =
   validObject: (value) ->
     return false unless value and typeof value is 'object'
     if Array.isArray value
-      return false unless value.length
+      return false unless @.containsObjects value
     return false unless Object.keys(value).length
     true
+
+  containsObjects: (value) ->
+    for element in value
+      return true if element and typeof element is 'object'
+    false

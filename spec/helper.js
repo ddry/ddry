@@ -34,20 +34,9 @@
     return this.requireSafeProxy(params);
   };
 
+  SpecHelper.prototype.tape = require('tape');
+
   SpecHelper.prototype.initTapeContext = function() {
-    var tape;
-    tape = require('tape');
-    if (typeof describe === 'function') {
-      tape.createStream({
-        objectMode: true
-      }).on('data', function(row) {
-        return false;
-      });
-    }
-    tape.test(' ', function(t) {
-      this.t = t;
-      return t.end();
-    });
     return true;
   };
 

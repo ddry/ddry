@@ -24,14 +24,12 @@ SpecHelper.prototype.requireSafe = (params) ->
     prefix: @.prefix
   @.requireSafeProxy params
 
+SpecHelper.prototype.tape = require 'tape'
+
 SpecHelper.prototype.initTapeContext = ->
-  tape = require 'tape'
-  if typeof describe is 'function'
-    tape.createStream( objectMode: true ).on 'data', (row) ->
-      false
-  tape.test ' ', (t) ->
-    @.t = t
-    t.end()
+  # if typeof describe is 'function'
+  #   tape.createStream( objectMode: true ).on 'data', (row) ->
+  #     false
   true
 
 SpecHelper.prototype.mergeHashes = (lo, hi) ->

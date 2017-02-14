@@ -5,6 +5,6 @@
 
   config = require('./config');
 
-  config('edge', 'ddry');
+  config('ddry', 'edge');
 
 }).call(this);

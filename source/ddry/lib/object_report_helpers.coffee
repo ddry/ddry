@@ -4,8 +4,7 @@ module.exports =
   create: (object, baseKey = [], report = []) ->
     for key, value of object
       if @.validObject value
-        baseKey.push key
-        report = @.create value, baseKey, report
+        report = @.create value, baseKey.concat [ key ], report
       else
         finalValue = {}
         finalKey = baseKey.slice 0

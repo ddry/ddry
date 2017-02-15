@@ -29,6 +29,12 @@ specContext = (harness, subject) ->
     spec_helper: 'spec/helper'
   initial:
     spec_helper: helper
+    method_context: [
+      require './examples/code/lib/numbering'
+      'ordinal'
+      require '../lib/matchers'
+      false
+    ]
 
 module.exports = (harness, subject, params) ->
   spec = require "#{prefixes.harness[harness]}/modular"

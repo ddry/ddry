@@ -20,7 +20,7 @@
         require_safe: 'Safe require wrapper',
         spec_helper: 'Spec helper spec'
       },
-      only: ['code_module', 'code_module_errors', 'code_module_types', 'construct', 'error_report', 'matchers', 'matchers_helpers', 'parse_method_name', 'require_safe', 'spec_helper']
+      only: ['code_module', 'code_module_errors', 'code_module_types', 'construct', 'error_report', 'matchers', 'matchers_helpers', 'method_context', 'parse_method_name', 'require_safe', 'spec_helper']
     });
   };
 

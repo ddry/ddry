@@ -39,7 +39,8 @@
         spec_helper: 'spec/helper'
       },
       initial: {
-        spec_helper: helper
+        spec_helper: helper,
+        method_context: [require('./examples/code/lib/numbering'), 'ordinal', require('../lib/matchers'), false]
       }
     };
   };

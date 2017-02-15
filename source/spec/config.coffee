@@ -24,6 +24,7 @@ module.exports = (harness, subject) ->
       'error_report'
       'matchers'
       'matchers_helpers'
+      'method_context'
       'parse_method_name'
       'require_safe'
       'spec_helper'

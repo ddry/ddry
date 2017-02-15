@@ -11,6 +11,7 @@ module.exports =
     specSet = [ specSet ] unless Array.isArray specSet
     specSet = @.processSpecSet specSet, specSetParams
     testEngine.outputTape specSet
+    specSet
 
   parseSpecSetParams: (code, name, matchers, use, tapeContext) ->
     _ =

@@ -10,6 +10,9 @@ SpecHelper = (helperPrefix, requirePrefix) ->
     tape = require 'tape'
     tape.createStream( objectMode: true ).on 'data', (row) ->
       false
+    tape.test 'cover', (t) ->
+      t.deepEqual 1, 1
+      t.end()
 
   @.requireSafe
     prefix: @.prefix

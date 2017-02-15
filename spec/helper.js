@@ -17,6 +17,10 @@
       }).on('data', function(row) {
         return false;
       });
+      tape.test('cover', function(t) {
+        t.deepEqual(1, 1);
+        return t.end();
+      });
     }
     this.requireSafe({
       prefix: this.prefix

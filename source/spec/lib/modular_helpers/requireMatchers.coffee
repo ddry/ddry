@@ -22,6 +22,4 @@ module.exports = (dd) ->
               once: dd.helper.examples.properties.deep.deep.deep.inside.once
               twice: dd.helper.examples.properties.deep.deep.deep.inside.twice
               thrice: dd.helper.examples.properties.deep.deep.deep.inside.thrice
-      few: 2
-      many: 4
   ]

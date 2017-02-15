@@ -4,9 +4,11 @@
   module.exports = function(dd) {
     var code;
     code = dd.helper.examples.properties;
-    code.few = 2;
-    code.many = 4;
     return dd.drive({
+      before: function() {
+        code.few = 2;
+        return code.many = 4;
+      },
       it: 'matches given code module public properties with given values',
       i: [
         code, null, {
@@ -14,7 +16,11 @@
           many: 4
         }
       ],
-      e: true
+      e: true,
+      after: function() {
+        delete code.few;
+        return delete code.many;
+      }
     });
   };
 

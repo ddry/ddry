@@ -10,9 +10,9 @@ module.exports =
 
   addCustomMatchers: (dd, params) ->
     params.matchers = [ params.matchers ] if typeof params.matchers is 'string'
-    return unless Array.isArray params.matchers
+    return false unless Array.isArray params.matchers
     customMatchers = helpers.requireMatchers params.matchers
-    return unless customMatchers
+    return false unless Object.keys(customMatchers).length
     dd.matchers = helpers.mergeHashes dd.matchers, customMatchers
 
   attachHelper: (dd, params) ->
@@ -28,15 +28,19 @@ module.exports =
     specModulePaths = helpers.parseSharedSpecs codeModules, params
     modules = []
     for moduleName in specModules
-      moduleParams =
-        title: helpers.getOption 'moduleTitles', params, moduleName
-        path: codeModules[moduleName]
-        methods: helpers.getOption 'methods', params, moduleName
-      initial = helpers.getOption 'initial', params, moduleName
-      moduleParams.initial = initial if Array.isArray initial
-      moduleParams.use = helpers.getSetOption 'use', params, moduleName
+      moduleParams = @.getModuleParams codeModules, moduleName, params
       modules.push [ dd, moduleParams, specModulePaths[moduleName] ]
     modules
+
+  getModuleParams: (codeModules, moduleName, params) ->
+    moduleParams =
+      title: helpers.getOption 'moduleTitles', params, moduleName
+      path: codeModules[moduleName]
+      methods: helpers.getOption 'methods', params, moduleName
+    initial = helpers.getOption 'initial', params, moduleName
+    moduleParams.initial = initial if Array.isArray initial
+    moduleParams.use = helpers.getSetOption 'use', params, moduleName
+    moduleParams
 
   initCodeModules: (params) ->
     return {} unless params.code?
@@ -47,14 +51,18 @@ module.exports =
     methodNames = helpers.getFilteredList methodList, params.methods
     specList = helpers.filterHash methodList, methodNames
     testEngine.runModuleSpecFolder dd, params.title, specList
+    true
 
   describeModule: (dd, params, specs) ->
-    if params
-      testEngine.describeModule dd, params, specs
+    return false unless params
+    testEngine.describeModule dd, params, specs
+    true
 
   describeMethod: (dd, name, specs) ->
-    if specs
-      testEngine.describeMethod dd, name, specs
+    return false unless specs
+    testEngine.describeMethod dd, name, specs
+    true
 
   setContext: (type, title, specs) ->
     testEngine.sendOutput type, [ title, specs ]
+    true

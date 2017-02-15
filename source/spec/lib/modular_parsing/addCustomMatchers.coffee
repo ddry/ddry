@@ -1,0 +1,24 @@
+'use strict'
+
+module.exports = (dd) ->
+  ddry = dd.helper.ddry()
+
+  dd.drive [
+    it: "returns false if no custom matchers specified"
+    i: [ ddry, {} ]
+    e: false
+  ,
+    it: "returns false if no valid matchers given"
+    i: [ ddry, matchers: 'matcher/failing/path' ]
+    e: false
+  ,
+    it: "adds custom matchers"
+    i: [ ddry, matchers: 'spec/examples/code/lib/numbering' ]
+    e:
+      default: ddry.matchers.default
+      anyOrder: ddry.matchers.anyOrder
+      property: ddry.matchers.property
+      ordinal: dd.helper.examples.numbering.ordinal
+      query: dd.helper.examples.numbering.query
+      selector: dd.helper.examples.numbering.selector
+  ]

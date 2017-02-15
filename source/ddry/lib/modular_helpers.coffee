@@ -21,13 +21,13 @@ module.exports =
   filterHash: (hash, keys) ->
     filtered = {}
     for key in keys
-      filtered[key] = hash[key]
+      filtered[key] = hash[key] if hash[key]?
     filtered
 
   getFilteredList: (filesHash, params) ->
     list = Object.keys filesHash
     return list unless params and typeof params is 'object'
-    return params.only if params.only
+    return Object.keys @.filterHash(filesHash, params.only) if params.only
     return list unless params.except
     list = list.filter (name) ->
       params.except.indexOf(name) is -1
@@ -51,7 +51,7 @@ module.exports =
     specPaths = {}
     for moduleName in moduleNames
       specPaths[moduleName] = "#{params.spec}/#{moduleName}"
-    return specPaths unless typeof params.shareSpecs is 'object'
+    return specPaths unless params.shareSpecs and typeof params.shareSpecs is 'object'
     for sharedSpecFolder, sharingModules of params.shareSpecs
       for module in sharingModules
         if typeof specPaths[module] is 'string'
@@ -61,9 +61,7 @@ module.exports =
   requireMatchers: (pathsArray) ->
     matchers = {}
     for matcherPath in pathsArray
-      matcher = requireSafe
-        title: matcherPath
-        path: matcherPath
+      matcher = requireSafe matcherPath
       if matcher
         @.mergeHashes matchers, matcher
     matchers

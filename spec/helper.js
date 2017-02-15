@@ -4,16 +4,25 @@
   var SpecHelper;
 
   SpecHelper = function(helperPrefix, requirePrefix) {
-    var i, len, name, ref;
+    var i, len, name, ref, tape;
     this.prefix = requirePrefix;
     this.dataDriven = require(helperPrefix + "index");
     this.methodContext = require(helperPrefix + "lib/method_context");
     this.requireSafe = require(helperPrefix + "lib/require_safe");
+    if (this.forMocha()) {
+      this.tapeRunner = require(helperPrefix + "lib/tape_runner");
+      tape = require('tape');
+      tape.createStream({
+        objectMode: true
+      }).on('data', function(row) {
+        return false;
+      });
+    }
     this.requireSafe({
       prefix: this.prefix
     });
     this.examples = {};
-    ref = ['function_export', 'instance', 'numbering', 'properties'];
+    ref = ['function_export', 'instance', 'numbering', 'numbering_rewrite', 'properties'];
     for (i = 0, len = ref.length; i < len; i++) {
       name = ref[i];
       this.examples[name] = this.requireSafe("spec/examples/code/lib/" + name);
@@ -34,6 +43,10 @@
     });
     ddry.muteOutput();
     return ddry;
+  };
+
+  SpecHelper.prototype.forMocha = function() {
+    return typeof describe === 'function';
   };
 
   SpecHelper.prototype.tapeStub = require('assert');

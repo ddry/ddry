@@ -14,10 +14,13 @@ module.exports =
   forMocha: ->
     typeof describe is 'function'
 
-  modular: (dd) ->
-    return unless @.output
-    unless @.forMocha()
-      tapeRunner.process dd
+  modular: (dd, output = @.output, forMocha, testTapeRunner) ->
+    return false unless output
+    forMocha ?= @.forMocha()
+    return false if forMocha
+    tapeRunner = tapeRunner or testTapeRunner
+    tapeRunner.process dd
+    true
 
   runModuleSpecFolder: (dd, title, methodList) ->
     return @.processMethodList dd, methodList unless @.forMocha()
@@ -30,20 +33,22 @@ module.exports =
       dd.method methodName, methodFile
 
   describeModule: (dd, params, specs) ->
-    return unless @.output
-    return unless @.forMocha()
+    return false unless @.output
+    return false unless @.forMocha()
     describe params.title, -> specs dd.that
+    true
 
   describeMethod: (dd, name, specs) ->
-    return unless @.output
-    return unless @.forMocha()
+    return false unless @.output
+    return false unless @.forMocha()
     if dd.use
       specs dd, dd.that.use
-      return
+      true
     if typeof dd.methodName is 'boolean'
       specs dd, dd.that
     else
       describe "#{name}()", -> specs dd, dd.that
+    true
 
   outputMocha: (specParams, specSet) ->
     return unless @.output
@@ -64,6 +69,6 @@ module.exports =
       performTest spec, specSet
 
   sendOutput: (type, argArray) ->
-    return unless @.output
+    return false unless @.output
     return testOutputs[type].toMocha.apply @, argArray if @.forMocha()
     testOutputs[type].toTape.apply @, argArray

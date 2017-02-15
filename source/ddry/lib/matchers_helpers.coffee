@@ -1,16 +1,12 @@
 'use strict'
 
 assert = require 'assert'
-parseMethodName = require './parse_method_name'
 report = require './object_report'
 
 module.exports =
   cleanArray:
     extra: []
     missing: []
-
-  getThatProperty: (code, key) ->
-    parseMethodName code, key
 
   compare: (i, e, tapeContext, tapeMessage) ->
     if tapeContext

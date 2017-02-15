@@ -26,14 +26,12 @@ module.exports =
     true
 
   getModuleParams: (codeModules, moduleName, params) ->
-    moduleParams =
+    _ =
       title: helpers.getOption 'moduleTitles', params, moduleName
       path: codeModules[moduleName]
       methods: helpers.getOption 'methods', params, moduleName
-    initial = helpers.getOption 'initial', params, moduleName
-    moduleParams.initial = initial if Array.isArray initial
-    moduleParams.use = helpers.getSetOption 'use', params, moduleName
-    moduleParams
+      initial: helpers.getOption 'initial', params, moduleName
+      use: helpers.getSetOption 'use', params, moduleName
 
   initCodeModules: (params) ->
     return {} unless params.code?

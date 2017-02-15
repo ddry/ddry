@@ -1,6 +1,7 @@
 'use strict'
 
 helpers = require './matchers_helpers'
+parseMethodName = require './parse_method_name'
 
 module.exports =
   default: (code, i, e, tapeContext, tapeMessage) ->
@@ -14,6 +15,6 @@ module.exports =
 
   property: (code, i, e, tapeContext, tapeMessage) ->
     for key, value of e
-      actual = helpers.getThatProperty code, key
+      actual = parseMethodName code, key
       helpers.compare actual, value, tapeContext, tapeMessage
     true

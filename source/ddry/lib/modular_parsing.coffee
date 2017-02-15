@@ -5,9 +5,6 @@ readFolderFiles = require './read_folder_files'
 testEngine = require './test_engine'
 
 module.exports =
-  muteOutput: ->
-    testEngine.muteOutput()
-
   addCustomMatchers: (dd, params) ->
     params.matchers = [ params.matchers ] if typeof params.matchers is 'string'
     return false unless Array.isArray params.matchers
@@ -18,19 +15,15 @@ module.exports =
   attachHelper: (dd, params) ->
     dd.helper = helpers.attachDDHelper params.helper
 
-  processModular: (dd) ->
-    testEngine.modular dd
+  describeModule: (dd, params, specs) ->
+    return false unless params
+    testEngine.describeModule dd, params, specs
+    true
 
-  parseModular: (dd, params) ->
-    codeModules = @.initCodeModules params
-    codeModules = helpers.addOutsideModules codeModules, params
-    specModules = helpers.getFilteredList codeModules, params
-    specModulePaths = helpers.parseSharedSpecs codeModules, params
-    modules = []
-    for moduleName in specModules
-      moduleParams = @.getModuleParams codeModules, moduleName, params
-      modules.push [ dd, moduleParams, specModulePaths[moduleName] ]
-    modules
+  describeMethod: (dd, name, specs) ->
+    return false unless specs
+    testEngine.describeMethod dd, name, specs
+    true
 
   getModuleParams: (codeModules, moduleName, params) ->
     moduleParams =
@@ -53,15 +46,22 @@ module.exports =
     testEngine.runModuleSpecFolder dd, params.title, specList
     true
 
-  describeModule: (dd, params, specs) ->
-    return false unless params
-    testEngine.describeModule dd, params, specs
-    true
+  muteOutput: ->
+    testEngine.muteOutput()
 
-  describeMethod: (dd, name, specs) ->
-    return false unless specs
-    testEngine.describeMethod dd, name, specs
-    true
+  parseModular: (dd, params) ->
+    codeModules = @.initCodeModules params
+    codeModules = helpers.addOutsideModules codeModules, params
+    specModules = helpers.getFilteredList codeModules, params
+    specModulePaths = helpers.parseSharedSpecs codeModules, params
+    modules = []
+    for moduleName in specModules
+      moduleParams = @.getModuleParams codeModules, moduleName, params
+      modules.push [ dd, moduleParams, specModulePaths[moduleName] ]
+    modules
+
+  processModular: (dd) ->
+    testEngine.modular dd
 
   setContext: (type, title, specs) ->
     testEngine.sendOutput type, [ title, specs ]

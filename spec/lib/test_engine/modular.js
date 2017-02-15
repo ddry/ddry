@@ -22,9 +22,9 @@
       ]);
     } else {
       ddry.modular({
-        title: 'Unmutable Tape test instance',
+        title: 'muteTape test instance',
         outside: {
-          tape: 'spec/examples/code/lib/test_singleton'
+          muteTape: 'spec/examples/code/lib/test_singleton'
         },
         spec: 'spec/examples/spec'
       });

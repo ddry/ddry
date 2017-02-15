@@ -33,7 +33,7 @@ s- s-%:
 	make m-$* t-$*
 
 t- t-%:
-	tape spec/modes/$*.js | node_modules/.bin/tap-spec
+	tape spec/modes/$*.js | grep -v 'muteTape' | node_modules/.bin/tap-spec 
 
 ta: c- tape
 

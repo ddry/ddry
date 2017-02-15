@@ -4,24 +4,43 @@
   module.exports = function(dd) {
     var code;
     code = dd.helper.examples.properties;
-    return dd.drive({
-      before: function() {
-        code.few = 2;
-        return code.many = 4;
-      },
-      it: 'matches given code module public properties with given values',
-      i: [
-        code, null, {
-          few: 2,
-          many: 4
+    return dd.drive([
+      {
+        before: function() {
+          code.few = 2;
+          return code.many = 4;
+        },
+        after: function() {
+          delete code.few;
+          return delete code.many;
         }
-      ],
-      e: true,
-      after: function() {
-        delete code.few;
-        return delete code.many;
+      }, {
+        it: 'matches given code module single public property with given value',
+        i: [
+          code, null, {
+            few: 2
+          }
+        ],
+        e: true
+      }, {
+        it: 'matches given code module multiple public properties with given values',
+        i: [
+          code, null, {
+            few: 2,
+            many: 4
+          }
+        ],
+        e: true
+      }, {
+        it: 'and shows the power of shared spec params',
+        i: [
+          code, null, {
+            many: 4
+          }
+        ],
+        e: true
       }
-    });
+    ]);
   };
 
 }).call(this);

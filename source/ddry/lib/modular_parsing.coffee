@@ -37,7 +37,7 @@ module.exports =
 
   initCodeModules: (params) ->
     return {} unless params.code?
-    readFolderFiles(params.title, params.code)
+    readFolderFiles(params.title, params.code, true)
 
   loadModuleSpecFolder: (dd, params, specs) ->
     methodList = readFolderFiles params.title, specs, true

@@ -4,7 +4,7 @@ run = require './run'
 
 module.exports = (harness, subject) ->
   run harness, subject,
-    title: 'ddry-by-edge'
+    title: 'ddry by npm published version'
     moduleTitles:
       code_module: 'Code module processing core'
       code_module_errors: 'Code module processing error handling'

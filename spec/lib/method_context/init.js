@@ -10,7 +10,7 @@
         matchers: require('../../../lib/matchers'),
         methodName: 'ordinal',
         sharedSpecKeys: dd.helper.f,
-        specs: false,
+        specs: [],
         tapeContext: null,
         use: false
       }

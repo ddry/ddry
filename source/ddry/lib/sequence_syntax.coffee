@@ -39,8 +39,5 @@ module.exports =
     @.setSpecData specParams, input, expected, message
 
   setSpecData: (specParams, input, expected, message) ->
-    mochaMethod = specParams.mochaMethod
-    matcher = specParams.matcher
-    before = specParams.before
-    after = specParams.after
-    new SpecData mochaMethod, matcher, input, expected, message, before, after
+    sp = specParams
+    new SpecData sp.mochaMethod, sp.matcher, input, expected, message, sp.before, sp.after

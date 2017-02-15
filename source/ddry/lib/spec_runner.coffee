@@ -34,7 +34,7 @@ module.exports =
   collectSpecParams: (spec, specSetParams) ->
     if !@.itIsSingle(spec) and !@.itIsSequence(spec)
       specSetParams.sharedSpecKeys = spec
-      return false
+      return []
     specParams =
       mochaMethod: @.getMochaMethod spec
       matcher: spec.matcher ? 'default'

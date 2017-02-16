@@ -1,5 +1,6 @@
 'use strict'
 
+options = require './modular_options'
 helpers = require './modular_helpers'
 readFolderFiles = require './read_folder_files'
 testEngine = require './test_engine'
@@ -26,12 +27,12 @@ module.exports =
     true
 
   getModuleParams: (codeModules, moduleName, params) ->
-    _ =
-      title: helpers.getOption 'moduleTitles', params, moduleName
+    options.collect params, moduleName,
       path: codeModules[moduleName]
-      methods: helpers.getOption 'methods', params, moduleName
-      initial: helpers.getOption 'initial', params, moduleName
-      use: helpers.getSetOption 'use', params, moduleName
+      , [ 'title:moduleTitles'
+          'methods'
+          'initial'
+          [ 'use' ] ]
 
   initCodeModules: (params) ->
     return {} unless params.code?

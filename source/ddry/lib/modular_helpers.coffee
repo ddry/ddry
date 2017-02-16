@@ -32,15 +32,6 @@ module.exports =
     list = list.filter (name) ->
       params.except.indexOf(name) is -1
 
-  getOption: (option, params, name) ->
-    return name unless params[option]
-    return name unless params[option][name]
-    params[option][name]
-
-  getSetOption: (option, params, name) ->
-    return false unless Array.isArray params[option]
-    params[option].indexOf(name) isnt -1
-
   mergeHashes: (lo, hi) ->
     for key, value of hi
       lo[key] = value

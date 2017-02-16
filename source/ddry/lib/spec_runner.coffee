@@ -4,7 +4,7 @@ sequenceSyntax = require './sequence_syntax'
 testEngine = require './test_engine'
 
 module.exports =
-  mochaMethods: ['it', 'specify', 'xit', 'xspecify']
+  mochaMethods: [ 'xit', 'xspecify', 'it', 'specify' ]
 
   process: (specSet, code, name, matchers, use, tapeContext) ->
     specSetParams = @.parseSpecSetParams code, name, matchers, use, tapeContext
@@ -36,9 +36,10 @@ module.exports =
       specSetParams.sharedSpecKeys = spec
       return []
     specParams =
-      mochaMethod: @.getMochaMethod spec
       matcher: spec.matcher ? 'default'
     @.addSharedKeys specParams, specSetParams
+    @.applyMochaMethod spec, specParams
+    specParams.mochaMethod = @.getMochaMethod spec
     specParams.before = spec.before if spec.before
     specParams.after = spec.after if spec.after
     @.processSpecData spec, specParams
@@ -48,6 +49,11 @@ module.exports =
     for mochaMethod in @.mochaMethods
       return mochaMethod if keys.indexOf(mochaMethod) isnt -1
     false
+
+  applyMochaMethod: (spec, specParams) ->
+    paramsMethod = @.getMochaMethod specParams
+    return false unless paramsMethod
+    spec[paramsMethod] = specParams[paramsMethod]
 
   processSpecData: (spec, specParams) ->
     _ = if @.itIsSequence spec, specParams

@@ -1,7 +1,6 @@
 'use strict'
 
-TapeSpec = (module, method, spec) ->
-  @.spec = spec
+TapeSpec = (module, method) ->
   @.module = module
   @.method = method
 
@@ -11,12 +10,11 @@ TapeSpec.prototype.formatSpec = (dd, module, method, title) ->
       generator: dd.generators[module]
       methodName: false
       title: "#{title} in '#{method}'"
-  else
-    format =
-      generator: dd.generators[module][method]
-      methodName: method
-      title: "#{title}: #{@.method}()"
-  format
+    return format
+  format =
+    generator: dd.generators[module][method]
+    methodName: method
+    title: "#{title}: #{@.method}()"
 
 TapeSpec.prototype.run = (dd, t) ->
   module = @.module

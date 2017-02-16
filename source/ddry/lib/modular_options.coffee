@@ -39,7 +39,7 @@ module.exports =
   parseSingle: (option) ->
     option = option.split ':'
     [ paramsKey, ... , optionName ] = option
-    paramsOption = @.get option
+    paramsOption = @.get optionName
     required = option.length > 1
     paramsOption = @.parseRequired paramsOption, required
     @.moduleParams[paramsKey] = paramsOption if paramsOption

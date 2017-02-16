@@ -1,4 +1,4 @@
-.PHONY: all ddry edge npmv c- coveralls m- mo mocha s- t- ta tape test
+.PHONY: all ddry edge npmv c- ce- cleanup coveralls m- mo mocha s- t- ta tape test
 
 all: ddry edge npmv
 
@@ -8,8 +8,18 @@ edge: s-ed s-en
 
 npmv: s-nd s-ne
 
+cleanup:
+	rm -rf edge lib spec
+
 c- c-%:
+	make cleanup
 	coffee -c$*o . source/ddry & \
+	coffee -c$*o spec source/spec
+
+ce- ce-%:
+	make cleanup
+	coffee -c$*o . source/ddry & \
+	coffee -c$*o edge source/ddry & \
 	coffee -c$*o spec source/spec
 
 coveralls:

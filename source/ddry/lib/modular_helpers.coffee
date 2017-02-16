@@ -41,7 +41,8 @@ module.exports =
     moduleNames = Object.keys(filesHash)
     specPaths = {}
     for moduleName in moduleNames
-      specPaths[moduleName] = "#{params.spec}/#{moduleName}"
+      modulePath = moduleName.split('.').join '/'
+      specPaths[moduleName] = "#{params.spec}/#{modulePath}"
     return specPaths unless params.shareSpecs and typeof params.shareSpecs is 'object'
     for sharedSpecFolder, sharingModules of params.shareSpecs
       for module in sharingModules

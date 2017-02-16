@@ -3,14 +3,16 @@
   'use strict';
   var SpecHelper;
 
-  SpecHelper = function(helperPrefix, requirePrefix) {
-    var i, len, name, ref, tape;
-    this.prefix = requirePrefix;
-    this.dataDriven = require(helperPrefix + "index");
-    this.methodContext = require(helperPrefix + "lib/method_context");
-    this.requireSafe = require(helperPrefix + "lib/require_safe");
+  SpecHelper = function(harness, subject, relative) {
+    var common, i, len, name, ref, tape;
+    this.prefix = relative;
+    this.dataDriven = require(subject + "index");
+    this.methodContext = require(subject + "lib/method_context");
+    this.requireSafe = require(subject + "lib/require_safe");
+    common = require(harness + "lib/common");
+    common.mergeHashes(this, common);
     if (this.forMocha()) {
-      this.tapeRunner = require(helperPrefix + "lib/tape_runner");
+      this.tapeRunner = require(subject + "lib/tape_runner");
       tape = require('tape');
       tape.createStream({
         objectMode: true
@@ -49,20 +51,7 @@
     return ddry;
   };
 
-  SpecHelper.prototype.forMocha = function() {
-    return typeof describe === 'function';
-  };
-
   SpecHelper.prototype.tapeStub = require('assert');
-
-  SpecHelper.prototype.mergeHashes = function(lo, hi) {
-    var key, value;
-    for (key in hi) {
-      value = hi[key];
-      lo[key] = value;
-    }
-    return lo;
-  };
 
   SpecHelper.prototype.f = function() {
     return 1;

@@ -1,7 +1,7 @@
 'use strict'
 
 matchers = require './lib/matchers'
-codeModule = require './lib/code_module'
+codeModule = require './lib/code'
 parsing = require './lib/modular_parsing'
 
 DataDriven = (path) ->

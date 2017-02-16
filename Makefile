@@ -50,4 +50,4 @@ ta: c- tape
 tape:
 	tape spec/ddry.js | grep -v 'muteTape' | node_modules/.bin/tap-spec
 
-test: c- mocha tape
+test: mocha tape

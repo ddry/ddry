@@ -1,10 +1,10 @@
 'use strict'
 
-errors = require './code_module_errors'
-errorReport = require './error_report'
-parsing = require './modular_parsing'
-requireSafe = require './require_safe'
-types = require './code_module_types'
+errors = require './errors'
+errorReport = require '../error_report'
+parsing = require '../modular_parsing'
+requireSafe = require '../require_safe'
+types = require './types'
 
 module.exports =
   load: (dd, title, specs) ->

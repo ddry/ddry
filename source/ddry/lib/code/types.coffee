@@ -1,7 +1,7 @@
 'use strict'
 
-construct = require './construct'
-MethodContext = require './method_context'
+construct = require('../common').construct
+MethodContext = require '../method_context'
 
 module.exports =
   get: (params, code) ->

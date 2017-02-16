@@ -3,7 +3,7 @@
   'use strict';
   module.exports = function(dd) {
     var errorHash, unordered;
-    errorHash = dd.helper.requireSafe('lib/code_module_errors');
+    errorHash = dd.helper.requireSafe('lib/code/errors');
     unordered = dd.helper.mergeHashes({}, errorHash);
     delete unordered.order;
     return dd.drive([

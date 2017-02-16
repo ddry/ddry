@@ -1,12 +1,14 @@
 'use strict'
 
-SpecHelper = (helperPrefix, requirePrefix) ->
-  @.prefix = requirePrefix
-  @.dataDriven = require "#{helperPrefix}index"
-  @.methodContext = require "#{helperPrefix}lib/method_context"
-  @.requireSafe = require "#{helperPrefix}lib/require_safe"
+SpecHelper = (harness, subject, relative) ->
+  @.prefix = relative
+  @.dataDriven = require "#{subject}index"
+  @.methodContext = require "#{subject}lib/method_context"
+  @.requireSafe = require "#{subject}lib/require_safe"
+  common = require "#{harness}lib/common"
+  common.mergeHashes @, common
   if @.forMocha()
-    @.tapeRunner = require "#{helperPrefix}lib/tape_runner"
+    @.tapeRunner = require "#{subject}lib/tape_runner"
     tape = require 'tape'
     tape.createStream( objectMode: true ).on 'data', (row) ->
       false
@@ -30,15 +32,7 @@ SpecHelper.prototype.ddry = (path = '') ->
   ddry.muteOutput()
   ddry
 
-SpecHelper.prototype.forMocha = ->
-  typeof describe is 'function'
-
 SpecHelper.prototype.tapeStub = require 'assert'
-
-SpecHelper.prototype.mergeHashes = (lo, hi) ->
-  for key, value of hi
-    lo[key] = value
-  lo
 
 SpecHelper.prototype.f = -> 1
 

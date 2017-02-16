@@ -1,7 +1,7 @@
 'use strict'
 
 requireSafe = require './require_safe'
-construct = require './construct'
+common = require './common'
 
 module.exports =
   addOutsideModules: (codeModules, params) ->
@@ -16,7 +16,7 @@ module.exports =
     return false unless Array.isArray helper.initial
     Helper = requireSafe helper.path
     return false unless typeof Helper is 'function'
-    construct Helper, helper.initial
+    common.construct Helper, helper.initial
 
   filterHash: (hash, keys) ->
     filtered = {}
@@ -31,11 +31,6 @@ module.exports =
     return list unless params.except
     list = list.filter (name) ->
       params.except.indexOf(name) is -1
-
-  mergeHashes: (lo, hi) ->
-    for key, value of hi
-      lo[key] = value
-    lo
 
   parseSharedSpecs: (filesHash, params) ->
     moduleNames = Object.keys(filesHash)
@@ -55,5 +50,5 @@ module.exports =
     for matcherPath in pathsArray
       matcher = requireSafe matcherPath
       if matcher
-        @.mergeHashes matchers, matcher
+        common.mergeHashes matchers, matcher
     matchers

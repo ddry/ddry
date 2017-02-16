@@ -14,10 +14,14 @@ prefixes =
     edge: 'edge/'
     npmv: 'ddry/'
 
+prefix = (mode) ->
+  "#{prefixes.harness[mode]}/"
+
 specContext = (harness, subject) ->
-  helperPrefix = "#{prefixes.harness[subject]}/"
+  harness = prefix harness
+  helper = prefix subject
   relative = "#{prefixes.relative[subject]}"
-  helper = [ helperPrefix, relative ]
+  helper = [ harness, helper, relative ]
   code: "#{prefixes.root[subject]}lib"
   spec: 'spec/lib'
   helper:

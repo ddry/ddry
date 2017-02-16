@@ -3,7 +3,7 @@
   'use strict';
   module.exports = function(dd) {
     var errorHash;
-    errorHash = dd.helper.requireSafe('lib/code_module_errors');
+    errorHash = dd.helper.requireSafe('lib/code/errors');
     return dd.drive([
       {
         it: "returns false if no errors found",

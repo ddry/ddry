@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = (dd) ->
-  errorHash = dd.helper.requireSafe 'lib/code_module_errors'
+  errorHash = dd.helper.requireSafe 'lib/code/errors'
   unordered = dd.helper.mergeHashes {}, errorHash
   delete unordered.order
 

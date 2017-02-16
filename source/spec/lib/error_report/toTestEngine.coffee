@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = (dd) ->
-  errorHash = dd.helper.requireSafe 'lib/code_module_errors'
+  errorHash = dd.helper.requireSafe 'lib/code/errors'
   dd.drive [
     it: "returns false if no errors found"
     i: [ errorHash, [ 'title', dd.helper.f, 'name', true ] ]

@@ -6,10 +6,11 @@ module.exports = (harness, subject) ->
   run harness, subject,
     title: 'ddry by npm published version'
     moduleTitles:
-      code_module: 'Code module processing core'
-      code_module_errors: 'Code module processing error handling'
-      code_module_types: 'Code module types processing'
-      construct: 'Instance constructor'
+      code:
+        index: 'Code module processing core'
+        errors: 'Code module processing error handling'
+        types: 'Code module types processing'
+      common: 'Commonly used methods'
       error_report: 'Error reporter'
       matchers: 'Default matchers set'
       matchers_helpers: 'Default matchers helpers'
@@ -22,10 +23,10 @@ module.exports = (harness, subject) ->
       spec_helper: 'Spec helper spec'
       test_engine: 'Test engine interface'
     only: [
-      'code_module'
-      'code_module_errors'
-      'code_module_types'
-      'construct'
+      'code.index'
+      'code.errors'
+      'code.types'
+      'common'
       'error_report'
       'matchers'
       'matchers_helpers'

@@ -2,6 +2,7 @@
 
 options = require './modular_options'
 helpers = require './modular_helpers'
+mergeHashes = require('./common').mergeHashes
 readFolderFiles = require './read_folder_files'
 testEngine = require './test_engine'
 
@@ -11,7 +12,7 @@ module.exports =
     return false unless Array.isArray params.matchers
     customMatchers = helpers.requireMatchers params.matchers
     return false unless Object.keys(customMatchers).length
-    dd.matchers = helpers.mergeHashes dd.matchers, customMatchers
+    dd.matchers = mergeHashes dd.matchers, customMatchers
 
   attachHelper: (dd, params) ->
     dd.helper = helpers.attachDDHelper params.helper

@@ -9,7 +9,7 @@
     this.dataDriven = require(subject + "index");
     this.methodContext = require(subject + "lib/method_context");
     this.requireSafe = require(subject + "lib/require_safe");
-    common = require(harness + "lib/common");
+    common = require(subject + "lib/common");
     common.mergeHashes(this, common);
     if (this.forMocha()) {
       this.tapeRunner = require(subject + "lib/tape_runner");

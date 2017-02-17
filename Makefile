@@ -1,4 +1,4 @@
-.PHONY: all ddry edge npmv c- ce- cleanup coveralls m- mo mocha s- t- ta tape test
+.PHONY: all ddry edge npmv c- ce- cleanup coveralls m- mo mocha s- t- te- tap tape test travis
 
 all: ddry edge npmv
 
@@ -31,8 +31,6 @@ m- m-%:
 		spec/modes/$*.js \
 		--check-leaks
 
-mo: c- mocha
-
 mocha:
 	./node_modules/.bin/mocha \
 		--no-exit \
@@ -40,12 +38,13 @@ mocha:
 		--check-leaks
 
 s- s-%:
-	make m-$* t-$*
+	make m-$* te-$* t-$*
 
 t- t-%:
-	tape spec/modes/$*.js | grep -v 'muteTape' | node_modules/.bin/tap-spec 
+	node_modules/.bin/tap spec/$*.js
 
-ta: c- tape
+te- te-%:
+	tape spec/modes/$*.js | grep -v 'muteTape' | node_modules/.bin/tap-spec 
 
 tap:
 	node_modules/.bin/tap spec/ddry.js
@@ -54,3 +53,6 @@ tape:
 	tape spec/ddry.js | grep -v 'muteTape' | node_modules/.bin/tap-spec
 
 test: mocha tape tap
+
+travis:
+	make tape tap coveralls

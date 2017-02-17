@@ -45,7 +45,13 @@
       },
       initial: {
         spec_helper: helper,
-        method_context: [require('./examples/code/lib/numbering'), 'ordinal', require('../lib/matchers'), false]
+        method_context: [
+          require('./examples/code/lib/numbering'), 'ordinal', {
+            harness: 'tape',
+            matchers: require('../lib/matchers'),
+            use: false
+          }
+        ]
       }
     };
   };

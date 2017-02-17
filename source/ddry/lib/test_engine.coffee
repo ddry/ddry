@@ -66,7 +66,6 @@ module.exports =
     for spec in specSet.specs
       performTest spec, specSet
 
-  sendOutput: (type, argArray) ->
+  sendOutput: (harness, type, argArray) ->
     return false unless @.output
-    return testOutputs[type].toMocha.apply @, argArray if forMocha()
-    testOutputs[type].toTape.apply @, argArray
+    testOutputs[type][harness].apply @, argArray

@@ -2,30 +2,45 @@
 
 module.exports =
   context:
-    toMocha: (title, specs) ->
+    mocha: (title, specs) ->
       describe title, specs
 
-    toTape: (title, specs) ->
+    tap: (title, specs) ->
+      specs()
+
+    tape: (title, specs) ->
       console.log "\x1b[0m#{title}"
       specs()
 
   modular:
-    toMocha: (title, specs) ->
+    mocha: (title, specs) ->
       console.log "\n\n#{title} \x1b[32mdd\x1b[34mry\x1b[0m modular spec"
       specs()
 
-    toTape: (title, specs) ->
+    tap: (title, specs) ->
+      console.log " \n#{title} \x1b[32mdd\x1b[34mry\x1b[0m modular spec"
+      specs()
+
+    tape: (title, specs) ->
       specs()
 
   report:
-    toMocha: (report) ->
+    mocha: (report) ->
       for statement in report
         describe statement.title, ->
           for messages in statement.messages
             it messages
 
-    toTape: (report) ->
-      console.log " \n \n"
+    tap: (report) ->
+      console.log " \n"
+      for statement in report
+        console.log "\x1b[0m#{statement.title}"
+        for messages in statement.messages
+          console.log "  \x1b[36m- #{messages}\x1b[0m"
+      console.log " \n"
+
+    tape: (report) ->
+      console.log " \n"
       for statement in report
         console.log "\x1b[0m#{statement.title}"
         for messages in statement.messages

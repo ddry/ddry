@@ -6,22 +6,23 @@ testEngine = require './test_engine'
 module.exports =
   mochaMethods: [ 'xit', 'xspecify', 'it', 'specify' ]
 
-  process: (specSet, code, name, matchers, use, tapeContext) ->
-    specSetParams = @.parseSpecSetParams code, name, matchers, use, tapeContext
+  process: (specSet, code, name, dd, tapeContext) ->
+    specSetParams = @.parseSpecSetParams code, name, dd, tapeContext
     specSet = [ specSet ] unless Array.isArray specSet
     specSet = @.processSpecSet specSet, specSetParams
     testEngine.outputTape specSet
     specSet
 
-  parseSpecSetParams: (code, name, matchers, use, tapeContext) ->
+  parseSpecSetParams: (code, name, dd, tapeContext) ->
     _ =
       code: code
-      matchers: matchers
+      harness: dd.harness
+      matchers: dd.matchers
       methodName: name
       sharedSpecKeys: {}
       specs: []
       tapeContext: tapeContext
-      use: use
+      use: dd.use
 
   processSpecSet: (specSet, specSetParams) ->
     for spec in specSet
@@ -39,7 +40,6 @@ module.exports =
       matcher: spec.matcher ? 'default'
     @.addSharedKeys specParams, specSetParams
     @.applyMochaMethod spec, specParams
-    specParams.mochaMethod = @.getMochaMethod spec
     specParams.before = spec.before if spec.before
     specParams.after = spec.after if spec.after
     @.processSpecData spec, specParams
@@ -50,10 +50,18 @@ module.exports =
       return mochaMethod if keys.indexOf(mochaMethod) isnt -1
     false
 
+  getPendingMessage: (message) ->
+    return 'pending' unless typeof message is 'string'
+    return 'pending' unless message.length
+    message
+
   applyMochaMethod: (spec, specParams) ->
     paramsMethod = @.getMochaMethod specParams
-    return false unless paramsMethod
-    spec[paramsMethod] = specParams[paramsMethod]
+    if paramsMethod
+      pendingMessage = @.getPendingMessage specParams[paramsMethod]
+      specMessage = spec[@.getMochaMethod spec]
+      spec[paramsMethod] = "#{pendingMessage}: #{specMessage}"
+    specParams.mochaMethod = @.getMochaMethod spec
 
   processSpecData: (spec, specParams) ->
     _ = if @.itIsSequence spec, specParams

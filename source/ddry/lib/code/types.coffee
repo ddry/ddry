@@ -32,7 +32,7 @@ module.exports =
   processFunction: (dd, params, code) ->
     dd.modules[dd.path] = code
     dd.methodName = false
-    dd.generators[dd.path] = new MethodContext code, false, dd.matchers, dd.use
+    dd.generators[dd.path] = new MethodContext code, false, dd
     dd.that = dd.modules[dd.path]
 
   processInstance: (dd, params, code) ->
@@ -49,4 +49,4 @@ module.exports =
     return false if typeof dd.methodName is 'boolean'
     dd.methodName = name
     dd.that = @.getThat dd, name
-    dd.generators[dd.path][name] ?= new MethodContext dd.that, name, dd.matchers, dd.use
+    dd.generators[dd.path][name] ?= new MethodContext dd.that, name, dd

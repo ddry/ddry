@@ -36,8 +36,9 @@ specContext = (harness, subject) ->
     method_context: [
       require './examples/code/lib/numbering'
       'ordinal'
-      require '../lib/matchers'
-      false
+        harness: 'tape'
+        matchers: require '../lib/matchers'
+        use: false
     ]
 
 module.exports = (harness, subject, params) ->

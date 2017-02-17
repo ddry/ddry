@@ -4,6 +4,7 @@
   module.exports = function(dd) {
     var ddry;
     ddry = dd.helper.ddry();
+    ddry.harness = 'tape';
     if (dd.helper.forMocha()) {
       return dd.drive([
         {

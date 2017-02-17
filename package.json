@@ -32,7 +32,9 @@
   "devDependencies": {
     "coveralls": "^2.11.16",
     "ddry-mocha-tape": "0.0.12",
-    "ddry-tap-spec": "^0.0.2",
-    "mocha-lcov-reporter": "^1.2.0"
+    "ddry-tap-spec": "0.0.2",
+    "mocha-lcov-reporter": "^1.2.0",
+    "tap": "^10.1.1",
+    "tap-spec": "^4.1.1"
   }
 }

@@ -2,6 +2,7 @@
 
 module.exports = (dd) ->
   ddry = dd.helper.ddry()
+  ddry.harness = 'tape'
 
   if dd.helper.forMocha()
     dd.drive [

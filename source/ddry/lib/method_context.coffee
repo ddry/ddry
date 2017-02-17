@@ -2,14 +2,16 @@
 
 specRunner = require './spec_runner'
 
-MethodContext = (code, name, matchers, use) ->
+MethodContext = (code, name, dd) ->
   @.codeModule = code
-  @.matchers = matchers
+  @.dd =
+    harness: dd.harness
+    matchers: dd.matchers
+    use: dd.use
   @.tapeContext = null
-  @.use = use
   @.methodName = name
 
 MethodContext.prototype.init = (spec) ->
-  specRunner.process spec, @.codeModule, @.methodName, @.matchers, @.use, @.tapeContext
+  specRunner.process spec, @.codeModule, @.methodName, @.dd, @.tapeContext
 
 module.exports = MethodContext

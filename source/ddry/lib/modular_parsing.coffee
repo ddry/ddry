@@ -63,6 +63,6 @@ module.exports =
   processModular: (dd) ->
     testEngine.modular dd
 
-  setContext: (type, title, specs) ->
-    testEngine.sendOutput type, [ title, specs ]
+  setContext: (harness, type, title, specs) ->
+    testEngine.sendOutput harness, type, [ title, specs ]
     true

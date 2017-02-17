@@ -6,7 +6,8 @@ module.exports = (dd) ->
     i: [ dd.helper.f ]
     e:
       code: dd.helper.examples.numbering
-      matchers: require '../../../lib/matchers'
+      harness: 'tape'
+      matchers: dd.helper.requireSafe 'lib/matchers'
       methodName: 'ordinal'
       sharedSpecKeys: dd.helper.f
       specs: []

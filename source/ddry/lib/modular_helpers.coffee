@@ -1,14 +1,34 @@
 'use strict'
 
+fs = require 'fs'
+path = require 'path'
+
+readFolderFiles = require './read_folder_files'
 requireSafe = require './require_safe'
 common = require './common'
 
 module.exports =
   addOutsideModules: (codeModules, params) ->
     return codeModules unless params.outside and typeof params.outside is 'object'
-    for name, path of params.outside
-      codeModules[name] ?= path
+    for name, outsidePath of params.outside
+      outside = @.parseOutsidePath name, outsidePath
+      common.mergeHashes codeModules, outside
     codeModules
+
+  parseOutsidePath: (name, outsidePath) ->
+    return "#{name}": outsidePath unless @.isFolder outsidePath
+    folderModules = readFolderFiles name, outsidePath
+    mounted = {}
+    for moduleName, modulePath of folderModules
+      mounted["#{name}.#{moduleName}"] = modulePath
+    mounted
+
+  isFolder: (dir) ->
+    try
+      folder = fs.lstatSync(path.join dir).isDirectory()
+    catch e
+      folder = false
+    folder
 
   attachDDHelper: (helper) ->
     return false unless helper and typeof helper is 'object'

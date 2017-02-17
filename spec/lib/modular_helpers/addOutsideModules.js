@@ -59,7 +59,7 @@
           helper: 'helper'
         }
       }, {
-        it: "doesn't overwrite input modules with outside ones",
+        it: "overwrites input modules with outside ones",
         i: [
           {
             code_one: 'lib/code_one',
@@ -73,7 +73,7 @@
         ],
         e: {
           code_one: 'lib/code_one',
-          code_two: 'lib/code_two',
+          code_two: 'code_two',
           index: 'index'
         }
       }

@@ -36,4 +36,6 @@ module.exports = (dd, that) ->
       it: "Says 'blahblah' twice"
       i: [ 'blah' ]
       e: 'blahblahblahblah'
+      after: ->
+        delete that.few
     ]

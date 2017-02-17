@@ -4,6 +4,8 @@ module.exports = (dd, that) ->
   if typeof describe is 'function'
     before ->
       that.container = ''
+    after ->
+      delete that.container
     context "with 'az'", ->
       beforeEach ->
         that.container += 'a'
@@ -51,4 +53,6 @@ module.exports = (dd, that) ->
       it: "wraps '1' again and again"
       i: [ 3 ]
       e: 'abc|1|xyzabc|2|xyzabc|3|'
+      after: ->
+        delete that.container
     ]

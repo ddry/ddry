@@ -8,13 +8,13 @@
           before: function() {
             return that.few = 2;
           },
-          it: "Says 'hihi' once",
+          it: "Says 'hihi' thrice",
           i: [],
-          e: 'hihi'
+          e: 'hihihihihihi'
         }, {
-          it: "Says 'blahblah' once",
+          it: "Says 'blahblah' thrice",
           i: ['blah'],
-          e: 'blahblah'
+          e: 'blahblahblahblahblahblah'
         }
       ]);
     });
@@ -24,13 +24,13 @@
           before: function() {
             return that.few = 3;
           },
-          it: "Says 'hihihi' once",
+          it: "Says 'hihihi' thrice",
           i: [],
-          e: 'hihihi'
+          e: 'hihihihihihihihihi'
         }, {
-          it: "Says 'blahblahblah' once",
+          it: "Says 'blahblahblah' thrice",
           i: ['blah'],
-          e: 'blahblahblah'
+          e: 'blahblahblahblahblahblahblahblahblah'
         }
       ]);
     });
@@ -40,13 +40,16 @@
           before: function() {
             return that.few = 2;
           },
-          it: "Says 'hihi' once",
+          it: "Says 'hihi' thrice",
           i: [],
-          e: 'hihi'
+          e: 'hihihihihihi'
         }, {
-          it: "Says 'blahblah' once",
+          it: "Says 'blahblah' thrice",
           i: ['blah'],
-          e: 'blahblah'
+          e: 'blahblahblahblahblahblah',
+          after: function() {
+            return delete that.few;
+          }
         }
       ]);
     });

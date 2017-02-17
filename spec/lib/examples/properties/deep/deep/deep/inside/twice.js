@@ -46,7 +46,10 @@
         }, {
           it: "Says 'blahblah' twice",
           i: ['blah'],
-          e: 'blahblahblahblah'
+          e: 'blahblahblahblah',
+          after: function() {
+            return delete that.few;
+          }
         }
       ]);
     });

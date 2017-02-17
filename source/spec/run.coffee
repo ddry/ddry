@@ -28,10 +28,13 @@ specContext = (harness, subject) ->
     path: 'spec/helper'
     initial: helper
   outside:
+    examples: "spec/examples/code/lib"
     index: "#{prefixes.root[subject]}index"
     modular: "#{prefixes.root[subject]}modular"
     spec_helper: 'spec/helper'
   initial:
+    examples:
+      instance: [ 'title', 'message' ]
     spec_helper: helper
     method_context: [
       require './examples/code/lib/numbering'

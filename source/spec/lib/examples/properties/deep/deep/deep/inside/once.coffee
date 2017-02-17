@@ -5,35 +5,37 @@ module.exports = (dd, that) ->
     dd.drive [
       before: ->
         that.few = 2
-      it: "Says 'hihi' thrice"
+      it: "Says 'hihi' once"
       i: []
-      e: 'hihihihihihi'
+      e: 'hihi'
     ,
-      it: "Says 'blahblah' thrice"
+      it: "Says 'blahblah' once"
       i: [ 'blah' ]
-      e: 'blahblahblahblahblahblah'
+      e: 'blahblah'
     ]
   dd.context "With few set to 3", ->
     dd.drive [
       before: ->
         that.few = 3
-      it: "Says 'hihihi' thrice"
+      it: "Says 'hihihi' once"
       i: []
-      e: 'hihihihihihihihihi'
+      e: 'hihihi'
     ,
-      it: "Says 'blahblahblah' thrice"
+      it: "Says 'blahblahblah' once"
       i: [ 'blah' ]
-      e: 'blahblahblahblahblahblahblahblahblah'
+      e: 'blahblahblah'
     ]
   dd.context "With few set again to 2", ->
     dd.drive [
       before: ->
         that.few = 2
-      it: "Says 'hihi' thrice"
+      it: "Says 'hihi' once"
       i: []
-      e: 'hihihihihihi'
+      e: 'hihi'
     ,
-      it: "Says 'blahblah' thrice"
+      it: "Says 'blahblah' once"
       i: [ 'blah' ]
-      e: 'blahblahblahblahblahblah'
+      e: 'blahblah'
+      after: ->
+        delete that.few
     ]

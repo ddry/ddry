@@ -6,6 +6,9 @@
       before(function() {
         return that.container = '';
       });
+      after(function() {
+        return delete that.container;
+      });
       return context("with 'az'", function() {
         beforeEach(function() {
           return that.container += 'a';
@@ -66,7 +69,10 @@
         }, {
           it: "wraps '1' again and again",
           i: [3],
-          e: 'abc|1|xyzabc|2|xyzabc|3|'
+          e: 'abc|1|xyzabc|2|xyzabc|3|',
+          after: function() {
+            return delete that.container;
+          }
         }
       ]);
     }

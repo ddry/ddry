@@ -37,17 +37,11 @@ mocha:
 		spec/ddry.js \
 		--check-leaks
 
-mex:
-	./node_modules/.bin/mocha \
-		--no-exit \
-		spec/examples/spec.js \
-		--check-leaks
-
 s- s-%:
 	make m-$* te-$* t-$*
 
 t- t-%:
-	node_modules/.bin/tap spec/$*.js
+	node_modules/.bin/tap spec/modes/$*.js
 
 te- te-%:
 	tape spec/modes/$*.js | grep -v 'muteTape' | node_modules/.bin/tap-spec 
@@ -62,3 +56,19 @@ test: mocha tape tap
 
 travis:
 	make tape tap coveralls
+
+# Examples specs
+
+ex: mex teex tex
+
+mex:
+	./node_modules/.bin/mocha \
+		--no-exit \
+		spec/examples/spec.js \
+		--check-leaks
+
+teex:
+	tape spec/examples/spec.js | node_modules/.bin/tap-spec 
+
+tex:
+	node_modules/.bin/tap spec/examples/spec.js

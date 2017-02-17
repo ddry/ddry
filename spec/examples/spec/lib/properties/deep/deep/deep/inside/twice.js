@@ -2,12 +2,12 @@
 (function() {
   'use strict';
   module.exports = function(dd, that) {
-    context("With few set to 2", function() {
-      before(function() {
-        return that.few = 2;
-      });
+    dd.context("With few set to 2", function() {
       return dd.drive([
         {
+          before: function() {
+            return that.few = 2;
+          },
           it: "Says 'hihi' twice",
           i: [],
           e: 'hihihihi'
@@ -18,12 +18,12 @@
         }
       ]);
     });
-    context("With few set to 3", function() {
-      before(function() {
-        return that.few = 3;
-      });
+    dd.context("With few set to 3", function() {
       return dd.drive([
         {
+          before: function() {
+            return that.few = 3;
+          },
           it: "Says 'hihihi' twice",
           i: [],
           e: 'hihihihihihi'
@@ -34,12 +34,12 @@
         }
       ]);
     });
-    return context("With few set again to 2", function() {
-      before(function() {
-        return that.few = 2;
-      });
+    return dd.context("With few set again to 2", function() {
       return dd.drive([
         {
+          before: function() {
+            return that.few = 2;
+          },
           it: "Says 'hihi' twice",
           i: [],
           e: 'hihihihi'

@@ -10,9 +10,9 @@
       npmv: 'ddry'
     },
     relative: {
-      ddry: '../',
-      edge: '../../',
-      npmv: '../../../'
+      ddry: '../../',
+      edge: '../../../',
+      npmv: '../../../../'
     },
     root: {
       ddry: '',
@@ -29,7 +29,7 @@
     var helper, relative;
     harness = prefix(harness);
     helper = prefix(subject);
-    relative = "" + prefixes.relative[subject];
+    relative = prefixes.relative[subject];
     helper = [harness, helper, relative];
     return {
       code: prefixes.root[subject] + "lib",
@@ -45,17 +45,7 @@
         spec_helper: 'spec/helper'
       },
       initial: {
-        examples: {
-          instance: ['title', 'message']
-        },
-        spec_helper: helper,
-        method_context: [
-          require('./examples/code/lib/numbering'), 'ordinal', {
-            harness: 'tape',
-            matchers: require('../lib/matchers'),
-            use: false
-          }
-        ]
+        spec_helper: helper
       }
     };
   };

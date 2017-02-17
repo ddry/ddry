@@ -1,7 +1,7 @@
 'use strict'
 
 construct = require('../common').construct
-MethodContext = require '../method_context'
+Context = require '../spec/context'
 
 module.exports =
   get: (params, code) ->
@@ -32,7 +32,7 @@ module.exports =
   processFunction: (dd, params, code) ->
     dd.modules[dd.path] = code
     dd.methodName = false
-    dd.generators[dd.path] = new MethodContext code, false, dd
+    dd.generators[dd.path] = new Context code, false, dd
     dd.that = dd.modules[dd.path]
 
   processInstance: (dd, params, code) ->
@@ -49,4 +49,4 @@ module.exports =
     return false if typeof dd.methodName is 'boolean'
     dd.methodName = name
     dd.that = @.getThat dd, name
-    dd.generators[dd.path][name] ?= new MethodContext dd.that, name, dd
+    dd.generators[dd.path][name] ?= new Context dd.that, name, dd

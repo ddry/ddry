@@ -2,8 +2,8 @@
 
 errors = require './errors'
 errorReport = require '../error_report'
-parsing = require '../modular_parsing'
-requireSafe = require '../require_safe'
+modular = require '../modular'
+requireSafe = require '../fs/require_safe'
 types = require './types'
 
 module.exports =
@@ -22,7 +22,7 @@ module.exports =
     dd.specs[dd.path] = {}
     @.processModuleType dd, params, code
     if typeof specs is 'string'
-      parsing.loadModuleSpecFolder dd, params, specs
+      modular.loadModuleSpecFolder dd, params, specs
       return false
     params
 

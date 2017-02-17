@@ -3,12 +3,12 @@
 SpecHelper = (harness, subject, relative) ->
   @.prefix = relative
   @.dataDriven = require "#{subject}index"
-  @.methodContext = require "#{subject}lib/method_context"
-  @.requireSafe = require "#{subject}lib/require_safe"
+  @.methodContext = require "#{subject}lib/spec/context"
+  @.requireSafe = require "#{subject}lib/fs/require_safe"
   common = require "#{subject}lib/common"
   common.mergeHashes @, common
   if @.forMocha()
-    @.tapeRunner = require "#{subject}lib/tape_runner"
+    @.tapeRunner = require "#{subject}lib/test/tap"
     tape = require 'tape'
     tape.createStream( objectMode: true ).on 'data', (row) ->
       false

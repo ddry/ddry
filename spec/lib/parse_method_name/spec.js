@@ -19,8 +19,8 @@
     return dd.drive([
       {
         it: 'returns simple-named module method',
-        i: [code, 'mapHash'],
-        e: code.mapHash
+        i: [code, 'repeatFewTimes'],
+        e: code.repeatFewTimes
       }, {
         it: 'returns failed trodden path to method',
         i: [code, 'deep.deep.deep.somewhere.else'],

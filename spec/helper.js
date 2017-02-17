@@ -7,12 +7,12 @@
     var common, i, len, name, ref, tape;
     this.prefix = relative;
     this.dataDriven = require(subject + "index");
-    this.methodContext = require(subject + "lib/method_context");
-    this.requireSafe = require(subject + "lib/require_safe");
+    this.methodContext = require(subject + "lib/spec/context");
+    this.requireSafe = require(subject + "lib/fs/require_safe");
     common = require(subject + "lib/common");
     common.mergeHashes(this, common);
     if (this.forMocha()) {
-      this.tapeRunner = require(subject + "lib/tape_runner");
+      this.tapeRunner = require(subject + "lib/test/tap");
       tape = require('tape');
       tape.createStream({
         objectMode: true

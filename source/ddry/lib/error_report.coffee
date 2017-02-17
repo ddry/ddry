@@ -1,13 +1,13 @@
 'use strict'
 
-common = require './common'
-testEngine = require './test_engine'
+harness = require './harness'
+testEngine = require './test/engine'
 
 module.exports =
   toTestEngine: (errorHash, paramsArray) ->
     errorReport = @.detectErrors errorHash, paramsArray
     if errorReport.length
-      testEngine.sendOutput common.harness(), 'report', [ errorReport ]
+      testEngine.sendOutput harness(), 'report', [ errorReport ]
       return true
     false
 

@@ -1,5 +1,6 @@
 'use strict'
 
+common = require './lib/common'
 DataDriven = require './index'
 dd = new DataDriven()
 
@@ -12,11 +13,5 @@ module.exports = (config = {}) ->
       prefix: prefix
 
   apply: (constraints = {}) ->
-    jobConfig = @.compose constraints
+    jobConfig = common.mergeObjects @.config, constraints
     @.dd.modular jobConfig
-
-  compose: (constraints) ->
-    jobConfig = @.config
-    for key, value of constraints
-      jobConfig[key] = value
-    jobConfig

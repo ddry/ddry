@@ -37,6 +37,12 @@ mocha:
 		spec/ddry.js \
 		--check-leaks
 
+mex:
+	./node_modules/.bin/mocha \
+		--no-exit \
+		spec/examples/spec.js \
+		--check-leaks
+
 s- s-%:
 	make m-$* te-$* t-$*
 

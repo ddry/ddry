@@ -55,12 +55,16 @@ module.exports =
     return 'pending' unless message.length
     message
 
+  setSpecMessage: (pending, spec) ->
+    return "#{pending}: #{spec}" if typeof spec is 'string'
+    (i, e) -> "#{pending}: #{spec i, e}"
+
   applyMochaMethod: (spec, specParams) ->
     paramsMethod = @.getMochaMethod specParams
     if paramsMethod
       pendingMessage = @.getPendingMessage specParams[paramsMethod]
       specMessage = spec[@.getMochaMethod spec]
-      spec[paramsMethod] = "#{pendingMessage}: #{specMessage}"
+      spec[paramsMethod] = @.setSpecMessage pendingMessage, specMessage
     specParams.mochaMethod = @.getMochaMethod spec
 
   processSpecData: (spec, specParams) ->

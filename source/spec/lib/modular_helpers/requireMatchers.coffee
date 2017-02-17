@@ -1,18 +1,18 @@
 'use strict'
 
 module.exports = (dd) ->
+  numberingRewrite = dd.helper.requireSafe 'spec/examples/numbering_rewrite'
   dd.drive [
     it: "collects matchers module rewriting earlier defined methods"
     i: [ [
       'spec/examples/code/lib/numbering'
       'spec/examples/code/lib/properties'
-      'spec/examples/code/lib/numbering_rewrite'
+      'spec/examples/numbering_rewrite'
     ] ]
     e:
-      ordinal: dd.helper.examples.numbering_rewrite.ordinal
+      ordinal: numberingRewrite.ordinal
       query: dd.helper.examples.numbering.query
-      selector: dd.helper.examples.numbering_rewrite.selector
-      mapHash: dd.helper.examples.properties.mapHash
+      selector: numberingRewrite.selector
       repeatFewTimes: dd.helper.examples.properties.repeatFewTimes
       wrapIt: dd.helper.examples.properties.wrapIt
       deep:

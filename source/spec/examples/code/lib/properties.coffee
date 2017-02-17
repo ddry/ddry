@@ -1,13 +1,6 @@
 'use strict'
 
 module.exports =
-  mapHash: (hash, methodName, argArray = []) ->
-    mappedHash = {}
-    for key, value of hash
-      argArray.unshift value
-      mappedHash[key] = @[methodName].apply @, argArray
-    mappedHash
-
   repeatFewTimes: (n, string = 'hi') ->
     Array(n * @.few + 1).join string
 

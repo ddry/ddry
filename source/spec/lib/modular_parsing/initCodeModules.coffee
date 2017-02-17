@@ -15,7 +15,5 @@ module.exports = (dd) ->
       function_export: 'spec/examples/code/lib/function_export'
       instance: 'spec/examples/code/lib/instance'
       numbering: 'spec/examples/code/lib/numbering'
-      numbering_rewrite: 'spec/examples/code/lib/numbering_rewrite'
       properties: 'spec/examples/code/lib/properties'
-      test_singleton: 'spec/examples/code/lib/test_singleton'
   ]

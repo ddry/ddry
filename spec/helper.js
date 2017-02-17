@@ -28,7 +28,7 @@
       prefix: this.prefix
     });
     this.examples = {};
-    ref = ['function_export', 'instance', 'numbering', 'numbering_rewrite', 'properties'];
+    ref = ['function_export', 'instance', 'numbering', 'properties'];
     for (i = 0, len = ref.length; i < len; i++) {
       name = ref[i];
       this.examples[name] = this.requireSafe("spec/examples/code/lib/" + name);

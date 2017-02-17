@@ -4,12 +4,10 @@ module.exports =
   create: (object, baseKey = [], report = []) ->
     for key, value of object
       if @.validObject value
-        report = @.create value, baseKey.concat [ key ], report
+        report = @.create value, baseKey.concat([key]), report
       else
         finalValue = {}
-        finalKey = baseKey.slice 0
-        finalKey.push key
-        finalValue[ finalKey.join '.' ] = @.format value
+        finalValue[ baseKey.concat([key]).join '.' ] = @.format value
         report.push finalValue
     report
 

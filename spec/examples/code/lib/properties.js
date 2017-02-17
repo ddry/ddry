@@ -2,19 +2,6 @@
 (function() {
   'use strict';
   module.exports = {
-    mapHash: function(hash, methodName, argArray) {
-      var key, mappedHash, value;
-      if (argArray == null) {
-        argArray = [];
-      }
-      mappedHash = {};
-      for (key in hash) {
-        value = hash[key];
-        argArray.unshift(value);
-        mappedHash[key] = this[methodName].apply(this, argArray);
-      }
-      return mappedHash;
-    },
     repeatFewTimes: function(n, string) {
       if (string == null) {
         string = 'hi';

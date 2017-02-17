@@ -18,8 +18,7 @@
           function_export: 'Function export example',
           instance: 'Instance example',
           numbering: 'Numbering example sequenced spec',
-          properties: 'Module properties and hooks example spec',
-          test_singleton: 'Test singleton. Easiest function export'
+          properties: 'Module properties and hooks example spec'
         },
         common: 'Commonly used methods',
         error_report: 'Error reporter',
@@ -34,7 +33,7 @@
         spec_helper: 'Spec helper spec',
         test_engine: 'Test engine interface'
       },
-      only: ['code.index', 'code.errors', 'code.types', 'common', 'error_report', 'examples.function_export', 'examples.instance', 'examples.numbering', 'examples.properties', 'examples.test_singleton', 'matchers_helpers', 'method_context', 'modular_helpers', 'modular_options', 'modular_parsing', 'parse_method_name', 'require_safe', 'spec_helper', 'test_engine']
+      only: ['code.index', 'code.errors', 'code.types', 'common', 'error_report', 'examples.function_export', 'examples.instance', 'examples.numbering', 'examples.properties', 'matchers_helpers', 'method_context', 'modular_helpers', 'modular_options', 'modular_parsing', 'parse_method_name', 'require_safe', 'spec_helper', 'test_engine']
     });
   };
 

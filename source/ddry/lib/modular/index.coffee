@@ -2,7 +2,7 @@
 
 options = require './options'
 helpers = require './helpers'
-mergeHashes = require('../common').mergeHashes
+mergeHashes = require('../common/object').mergeHashes
 folder = require '../fs/folder'
 testEngine = require '../test/engine'
 

@@ -1,7 +1,7 @@
 'use strict'
 
 errors = require './errors'
-errorReport = require '../error_report'
+errorReport = require '../common/error_report'
 modular = require '../modular'
 requireSafe = require '../fs/require_safe'
 types = require './types'

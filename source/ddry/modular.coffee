@@ -1,6 +1,6 @@
 'use strict'
 
-common = require './lib/common'
+common = require './lib/common/object'
 DataDriven = require './index'
 dd = new DataDriven()
 

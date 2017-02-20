@@ -10,6 +10,7 @@ module.exports =
   containsObjects: (value) ->
     for element in value
       return true if element and typeof element is 'object'
+      return true if typeof element is 'function'
     false
 
   create: (object, baseKey = [], report = [], raw = false) ->
@@ -17,16 +18,14 @@ module.exports =
       if @.validObject value
         report = @.create value, baseKey.concat([key]), report, raw
       else
-        finalValue = {}
-        finalValue[ baseKey.concat([key]).join '.' ] = if raw
-        then value else @.format value
-        report.push finalValue
+        report.push @.reportValue(value, baseKey.concat([key]).join('.'), raw)
     report
 
   format: (value) ->
     if typeof value is 'function'
       definition = "#{value}".replace(/ /g, '')
       return definition.replace(/__cov_[^\+]*\+\+;/g, '')
+    return value if Array.isArray value
     "#{value}"
 
   forMocha: ->
@@ -65,6 +64,11 @@ module.exports =
     for key in report
       reportHash = @.mergeHashes reportHash, key
     reportHash
+
+  reportValue: (value, key, raw) ->
+    return "#{key}: #{@.format value}" unless raw
+    _ =
+      "#{key}": value
 
   validObject: (value) ->
     return false unless value and typeof value is 'object'

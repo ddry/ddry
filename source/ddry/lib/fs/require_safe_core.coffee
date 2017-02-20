@@ -1,6 +1,6 @@
 'use strict'
 
-errorReport = require '../error_report'
+errorReport = require '../common/error_report'
 
 module.exports =
   prefix: '../../../../'

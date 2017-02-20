@@ -31,19 +31,9 @@
         it: 'returns object report as array',
         i: [object],
         e: [
-          {
-            "one1": function() {
-              return 1;
-            }
-          }, {
-            "one2.two21.0.one": 1
-          }, {
-            "one2.two21.1.two.two": 2
-          }, {
-            "one2.two21.2.three.three.three": 3
-          }, {
-            "one3": ''
-          }
+          "one1: " + (dd.helper.format(function() {
+            return 1;
+          })), "one2.two21.0.one: 1", "one2.two21.1.two.two: 2", "one2.two21.2.three.three.three: 3", "one3: "
         ]
       }, {
         it: 'returns object report as hash',

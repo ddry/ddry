@@ -1,6 +1,6 @@
 'use strict'
 
-construct = require('../common').construct
+construct = require('../common/object').construct
 Context = require '../spec/context'
 
 module.exports =

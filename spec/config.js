@@ -14,6 +14,12 @@
           errors: 'Code module processing error handling',
           types: 'Code module types processing'
         },
+        common: {
+          object: 'Commonly used object methods',
+          error_report: 'Error reporter',
+          harness: 'Harness detector',
+          parse_method_name: 'Method name parsing module'
+        },
         examples: {
           function_export: 'Function export example',
           instance: 'Instance example',
@@ -38,9 +44,6 @@
         test: {
           engine: 'Test engine interface'
         },
-        common: 'Commonly used methods',
-        error_report: 'Error reporter',
-        parse_method_name: 'Method name parsing module',
         spec_helper: 'Spec helper spec'
       },
       initial: {
@@ -57,7 +60,7 @@
           ]
         }
       },
-      only: ['code.index', 'code.errors', 'code.types', 'common', 'error_report', 'examples.function_export', 'examples.instance', 'examples.numbering', 'examples.properties', 'fs.require_safe', 'matchers.index', 'matchers.helpers', 'spec.context', 'modular.helpers', 'modular.options', 'modular.index', 'parse_method_name', 'spec_helper', 'test.engine']
+      only: ['code.index', 'code.errors', 'code.types', 'common.object', 'common.error_report', 'common.harness', 'common.parse_method_name', 'examples.function_export', 'examples.instance', 'examples.numbering', 'examples.properties', 'fs.require_safe', 'matchers.index', 'matchers.helpers', 'spec.context', 'modular.helpers', 'modular.options', 'modular.index', 'spec_helper', 'test.engine']
     });
   };
 

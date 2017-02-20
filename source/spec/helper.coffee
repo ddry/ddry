@@ -5,8 +5,8 @@ SpecHelper = (harness, subject, relative) ->
   @.dataDriven = require "#{subject}index"
   @.methodContext = require "#{subject}lib/spec/context"
   @.requireSafe = require "#{subject}lib/fs/require_safe"
-  common = require "#{subject}lib/common"
-  common.mergeHashes @, common
+  object = require "#{subject}lib/common/object"
+  object.mergeHashes @, object
   if @.forMocha()
     @.tapeRunner = require "#{subject}lib/test/tap"
     tape = require 'tape'

@@ -1,6 +1,6 @@
 'use strict'
 
-parseMethodName = require '../parse_method_name'
+parseMethodName = require '../common/parse_method_name'
 
 module.exports =
   order: [ 'noModuleContext', 'modulePropertiesError', 'methodNotDefined' ]

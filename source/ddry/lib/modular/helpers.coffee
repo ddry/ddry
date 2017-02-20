@@ -2,7 +2,7 @@
 
 folder = require '../fs/folder'
 requireSafe = require '../fs/require_safe'
-common = require '../common'
+common = require '../common/object'
 
 module.exports =
   addOutsideModules: (codeModules, params) ->

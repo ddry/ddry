@@ -1,7 +1,7 @@
 'use strict'
 
 helpers = require './helpers'
-parseMethodName = require '../parse_method_name'
+parseMethodName = require '../common/parse_method_name'
 
 module.exports =
   default: (code, i, e, tapeContext, tapeMessage) ->

@@ -1,7 +1,7 @@
 'use strict'
 
 harness = require './harness'
-testEngine = require './test/engine'
+testEngine = require '../test/engine'
 
 module.exports =
   toTestEngine: (errorHash, paramsArray) ->

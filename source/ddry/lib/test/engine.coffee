@@ -1,6 +1,6 @@
 'use strict'
 
-forMocha = require('../common').forMocha
+forMocha = require('../common/object').forMocha
 perform = require './perform'
 outputs = require './outputs'
 unless forMocha()

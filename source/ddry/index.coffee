@@ -1,6 +1,6 @@
 'use strict'
 
-harness = require './lib/harness'
+harness = require './lib/common/harness'
 matchers = require './lib/matchers'
 codeModule = require './lib/code'
 modular = require './lib/modular'

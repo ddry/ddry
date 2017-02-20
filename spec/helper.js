@@ -4,13 +4,13 @@
   var SpecHelper;
 
   SpecHelper = function(harness, subject, relative) {
-    var common, i, len, name, ref, tape;
+    var i, len, name, object, ref, tape;
     this.prefix = relative;
     this.dataDriven = require(subject + "index");
     this.methodContext = require(subject + "lib/spec/context");
     this.requireSafe = require(subject + "lib/fs/require_safe");
-    common = require(subject + "lib/common");
-    common.mergeHashes(this, common);
+    object = require(subject + "lib/common/object");
+    object.mergeHashes(this, object);
     if (this.forMocha()) {
       this.tapeRunner = require(subject + "lib/test/tap");
       tape = require('tape');

@@ -1,6 +1,7 @@
 'use strict'
 
 run = require './run'
+initial = require './initial'
 
 module.exports = (harness, subject) ->
   run harness, subject,
@@ -34,36 +35,19 @@ module.exports = (harness, subject) ->
       test:
         engine: 'Test engine interface'
       spec_helper: 'Spec helper spec'
-    initial:
-      examples:
-        instance: [ 'title', 'message' ]
-      spec:
-        context: [
-          require './examples/code/lib/numbering'
-          'ordinal'
-            harness: 'tape'
-            matchers: require '../lib/matchers'
-            use: false
-        ]
-    only: [
-      'code.index'
-      'code.errors'
-      'code.types'
-      'common.object'
-      'common.error_report'
-      'common.harness'
-      'common.parse_method_name'
-      'examples.function_export'
-      'examples.instance'
-      'examples.numbering'
-      'examples.properties'
-      'fs.require_safe'
-      'matchers.index'
-      'matchers.helpers'
-      'spec.context'
-      'modular.helpers'
-      'modular.options'
-      'modular.index'
-      'spec_helper'
-      'test.engine'
+    initial: initial
+    except: [
+      'common.get_method'
+      'fs.require_safe_core'
+      'fs.folder'
+      'index'
+      'modular_wrapper'
+      'spec.data'
+      'spec.runner'
+      'spec.syntax'
+      'test.invoke'
+      'test.outputs'
+      'test.perform'
+      'test.tap'
+      'test.tap_spec'
     ]

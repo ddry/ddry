@@ -41,7 +41,7 @@
       outside: {
         examples: "spec/examples/code/lib",
         index: prefixes.root[subject] + "index",
-        modular: prefixes.root[subject] + "modular",
+        modular_wrapper: prefixes.root[subject] + "modular",
         spec_helper: 'spec/helper'
       },
       initial: {

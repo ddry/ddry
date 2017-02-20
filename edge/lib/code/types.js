@@ -8,6 +8,23 @@
   Context = require('../spec/context');
 
   module.exports = {
+    codeThat: function(dd, name) {
+      var constructor, instance, that;
+      that = dd.modules[dd.path];
+      if (typeof dd.constructors[dd.path] !== 'function') {
+        return that;
+      }
+      name = name.split('.');
+      if (name.length === 1) {
+        return that;
+      }
+      constructor = dd.constructors[dd.path];
+      instance = that[name[0]];
+      if (instance instanceof constructor) {
+        return instance;
+      }
+      return that;
+    },
     get: function(params, code) {
       if (params.use) {
         return 'Driver';
@@ -23,13 +40,42 @@
     getThat: function(dd, name) {
       var code;
       if (!dd.use) {
-        return dd.modules[dd.path];
+        return this.codeThat(dd, name);
       }
       code = dd.driverFactories[dd.path];
       return dd.drivers[dd.path][name] = construct(code, []);
     },
     instanceValid: function(params, code) {
-      return Array.isArray(params.initial) && typeof code === 'function';
+      var key, ref, value;
+      if (typeof code !== 'function') {
+        return false;
+      }
+      if (Array.isArray(params.initial)) {
+        return true;
+      }
+      if (!(params.initial && typeof params.initial === 'object')) {
+        return false;
+      }
+      ref = params.initial;
+      for (key in ref) {
+        value = ref[key];
+        if (!Array.isArray(value)) {
+          return false;
+        }
+      }
+      return true;
+    },
+    parseInitial: function(code, initials) {
+      var initial, instanceName, instances;
+      if (Array.isArray(initials)) {
+        return construct(code, initials);
+      }
+      instances = {};
+      for (instanceName in initials) {
+        initial = initials[instanceName];
+        instances[instanceName] = construct(code, initial);
+      }
+      return instances;
     },
     parseTitle: function(title, path) {
       var _;
@@ -53,7 +99,8 @@
       return dd.that = dd.modules[dd.path];
     },
     processInstance: function(dd, params, code) {
-      dd.modules[dd.path] = construct(code, params.initial);
+      dd.modules[dd.path] = this.parseInitial(code, params.initial);
+      dd.constructors[dd.path] = code;
       dd.generators[dd.path] = {};
       return dd.that = dd.modules[dd.path];
     },

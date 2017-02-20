@@ -6,6 +6,7 @@ codeModule = require './lib/code'
 modular = require './lib/modular'
 
 DataDriven = (path) ->
+  @.constructors = {}
   @.driverFactories = {}
   @.drivers = {}
   @.generators = {}

@@ -1,14 +1,14 @@
 'use strict'
 
-module.exports = (dd, that) ->
+module.exports = (dd) ->
   dd.drive [
     it: 'returns its report'
     i: []
-    e: 'title: title, message: message'
+    e: 'title: second title, message: second message'
   ,
     matcher: 'property'
     it: 'checks module property'
     i: []
     e: 
-      title: 'title'
+      title: 'second title'
   ]

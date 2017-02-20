@@ -29,18 +29,31 @@ module.exports =
     common.construct Helper, helper.initial
 
   filterHash: (hash, keys) ->
+    return hash unless keys.length
+    hashKeys = Object.keys hash
     filtered = {}
-    for key in keys
-      filtered[key] = hash[key] if hash[key]?
+    for hashKey in hashKeys
+      filtered[hashKey] = hash[hashKey] if hash[hashKey]? and @.match hashKey, keys
     filtered
 
   getFilteredList: (filesHash, params) ->
     list = Object.keys filesHash
     return list unless params and typeof params is 'object'
-    return Object.keys @.filterHash(filesHash, params.only) if params.only
-    return list unless params.except
-    list = list.filter (name) ->
+    params.only ?= []
+    list = Object.keys @.filterHash(filesHash, params.only)
+    return list unless Array.isArray params.except
+    list.filter (name) ->
       params.except.indexOf(name) is -1
+
+  match: (hashKey, keys) ->
+    return true if keys.indexOf(hashKey) isnt -1
+    hashKey = hashKey.split '.'
+    return false if hashKey.length is 1
+    xPath = []
+    for node in hashKey
+      xPath.push node
+      return true if keys.indexOf(xPath.join '.') isnt -1
+    false
 
   parseSharedSpecs: (filesHash, params) ->
     moduleNames = Object.keys(filesHash)

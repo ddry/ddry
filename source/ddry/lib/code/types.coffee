@@ -4,6 +4,16 @@ construct = require('../common/object').construct
 Context = require '../spec/context'
 
 module.exports =
+  codeThat: (dd, name) ->
+    that = dd.modules[dd.path]
+    return that unless typeof dd.constructors[dd.path] is 'function'
+    name = name.split '.'
+    return that if name.length is 1
+    constructor = dd.constructors[dd.path]
+    instance = that[name[0]]
+    return instance if instance instanceof constructor
+    that
+
   get: (params, code) ->
     return 'Driver' if params.use
     return 'Instance' if @.instanceValid params, code
@@ -11,12 +21,24 @@ module.exports =
     'Module'
 
   getThat: (dd, name) ->
-    return dd.modules[dd.path] unless dd.use
+    return @.codeThat dd, name unless dd.use
     code = dd.driverFactories[dd.path]
     dd.drivers[dd.path][name] = construct code, []
 
   instanceValid: (params, code) ->
-    Array.isArray(params.initial) and typeof code is 'function'
+    return false unless typeof code is 'function'
+    return true if Array.isArray params.initial
+    return false unless params.initial and typeof params.initial is 'object'
+    for key, value of params.initial
+      return false unless Array.isArray value
+    true
+
+  parseInitial: (code, initials) ->
+    return construct code, initials if Array.isArray initials
+    instances = {}
+    for instanceName, initial of initials
+      instances[instanceName] = construct code, initial
+    instances
 
   parseTitle: (title, path) ->
     return title if title and typeof title is 'object'
@@ -36,7 +58,8 @@ module.exports =
     dd.that = dd.modules[dd.path]
 
   processInstance: (dd, params, code) ->
-    dd.modules[dd.path] = construct code, params.initial
+    dd.modules[dd.path] = @.parseInitial code, params.initial
+    dd.constructors[dd.path] = code
     dd.generators[dd.path] = {}
     dd.that = dd.modules[dd.path]
 

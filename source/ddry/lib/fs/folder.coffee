@@ -24,7 +24,7 @@ module.exports =
 
   isFolder: (dir) ->
     try
-      folder = fs.lstatSync(path.join dir).isDirectory()
+      folder = fs.statSync(path.join dir).isDirectory()
     catch e
       folder = false
     folder

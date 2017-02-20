@@ -58,12 +58,16 @@
       return common.construct(Helper, helper.initial);
     },
     filterHash: function(hash, keys) {
-      var filtered, i, key, len;
+      var filtered, hashKey, hashKeys, i, len;
+      if (!keys.length) {
+        return hash;
+      }
+      hashKeys = Object.keys(hash);
       filtered = {};
-      for (i = 0, len = keys.length; i < len; i++) {
-        key = keys[i];
-        if (hash[key] != null) {
-          filtered[key] = hash[key];
+      for (i = 0, len = hashKeys.length; i < len; i++) {
+        hashKey = hashKeys[i];
+        if ((hash[hashKey] != null) && this.match(hashKey, keys)) {
+          filtered[hashKey] = hash[hashKey];
         }
       }
       return filtered;
@@ -74,15 +78,35 @@
       if (!(params && typeof params === 'object')) {
         return list;
       }
-      if (params.only) {
-        return Object.keys(this.filterHash(filesHash, params.only));
+      if (params.only == null) {
+        params.only = [];
       }
-      if (!params.except) {
+      list = Object.keys(this.filterHash(filesHash, params.only));
+      if (!Array.isArray(params.except)) {
         return list;
       }
-      return list = list.filter(function(name) {
+      return list.filter(function(name) {
         return params.except.indexOf(name) === -1;
       });
+    },
+    match: function(hashKey, keys) {
+      var i, len, node, xPath;
+      if (keys.indexOf(hashKey) !== -1) {
+        return true;
+      }
+      hashKey = hashKey.split('.');
+      if (hashKey.length === 1) {
+        return false;
+      }
+      xPath = [];
+      for (i = 0, len = hashKey.length; i < len; i++) {
+        node = hashKey[i];
+        xPath.push(node);
+        if (keys.indexOf(xPath.join('.')) !== -1) {
+          return true;
+        }
+      }
+      return false;
     },
     parseSharedSpecs: function(filesHash, params) {
       var i, j, len, len1, module, moduleName, moduleNames, modulePath, ref, sharedSpecFolder, sharingModules, specPaths;

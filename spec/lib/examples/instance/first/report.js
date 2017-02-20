@@ -6,13 +6,13 @@
       {
         it: 'returns its report',
         i: [],
-        e: 'title: title, message: message'
+        e: 'title: first title, message: first message'
       }, {
         matcher: 'property',
         it: 'checks module property',
         i: [],
         e: {
-          title: 'title'
+          title: 'first title'
         }
       }
     ]);

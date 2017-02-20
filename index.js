@@ -12,6 +12,7 @@
   modular = require('./lib/modular');
 
   DataDriven = function(path) {
+    this.constructors = {};
     this.driverFactories = {};
     this.drivers = {};
     this.generators = {};

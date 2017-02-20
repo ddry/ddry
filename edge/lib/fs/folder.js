@@ -44,7 +44,7 @@
     isFolder: function(dir) {
       var e, folder;
       try {
-        folder = fs.lstatSync(path.join(dir)).isDirectory();
+        folder = fs.statSync(path.join(dir)).isDirectory();
       } catch (error) {
         e = error;
         folder = false;

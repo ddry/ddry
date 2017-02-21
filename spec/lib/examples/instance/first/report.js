@@ -17,8 +17,8 @@
       }, {
         matcher: 'plain',
         it: 'has access to all instances',
-        i: Object.keys(dd.instances),
-        e: ['first', 'second']
+        i: Object.keys(dd.instances()),
+        e: ['first', 'folder', 'second']
       }
     ]);
   };

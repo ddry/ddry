@@ -20,7 +20,6 @@ module.exports =
     dd.use = params.use
     dd.titles[dd.path] = params.title
     dd.specs[dd.path] = {}
-    dd.instances = {}
     @.processModuleType dd, params, code
     if typeof specs is 'string'
       modular.loadModuleSpecFolder dd, params, specs
@@ -32,7 +31,9 @@ module.exports =
     types["process#{moduleType}"] dd, params, code
 
   setMethod: (dd, name, specs) ->
-    return false if errorReport.toTestEngine errors, [ dd.title, dd.that, name, dd.use ]
+    instances = dd.instances()
+    code = if Object.keys(instances).length then instances else dd.that
+    return false if errorReport.toTestEngine errors, [ dd.title, code, name, dd.use ]
     if typeof specs is 'string'
       specs = requireSafe
         title: "#{name}() of #{dd.title}"

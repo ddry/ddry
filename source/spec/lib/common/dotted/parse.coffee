@@ -22,7 +22,7 @@ module.exports = (dd) ->
     e: [ [ 'deep', 'deep', 'deep' ], 'somewhere' ]
   ,
     it: 'returns valid trodden path to object'
-    i: [ code, 'deep.deep.deep.inside' ]
+    i: [ code, 'deep.deep.deep.inside', false ]
     e: [ [ 'deep', 'deep', 'deep' ], 'inside' ]
   ,
     it: 'returns method by dot-notated name'

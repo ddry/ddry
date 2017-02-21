@@ -8,17 +8,19 @@
         it: 'Sets instance property',
         i: [
           'prop01', {
-            first: {
-              one: 1,
-              two: function() {
-                return 2;
+            folder: {
+              first: {
+                one: 1,
+                two: function() {
+                  return 2;
+                }
               }
             }
           }
         ],
         e: {
-          "prop01.first.one": 1,
-          "prop01.first.two": function() {
+          "prop01.folder.first.one": 1,
+          "prop01.folder.first.two": function() {
             return 2;
           }
         }

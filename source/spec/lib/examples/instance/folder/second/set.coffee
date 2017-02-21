@@ -5,10 +5,11 @@ module.exports = (dd, that) ->
     matcher: 'property'
     it: 'Sets instance property'
     i: [ 'prop01',
-      second:
-        one: 1
-        two: -> 2 ]
+      folder:
+        second:
+          one: 1
+          two: -> 2 ]
     e:
-      "prop01.second.one": 1
-      "prop01.second.two": -> 2
+      "prop01.folder.second.one": 1
+      "prop01.folder.second.two": -> 2
     ]

@@ -1,8 +1,9 @@
 'use strict'
 
-harness = require './lib/common/harness'
-matchers = require './lib/matchers'
 codeModule = require './lib/code'
+harness = require './lib/common/harness'
+object = require './lib/common/object'
+matchers = require './lib/matchers'
 modular = require './lib/modular'
 
 DataDriven = (path) ->
@@ -11,8 +12,9 @@ DataDriven = (path) ->
   @.drivers = {}
   @.generators = {}
   @.harness = harness()
-  @.instances = {}
-  @.matchers = matchers
+  @.instancesList = {}
+  @.instanceNames = {}
+  @.matchers = object.mergeHashes {}, matchers
   @.modules = {}
   @.specs = {}
   @.titles = {}
@@ -37,6 +39,11 @@ DataDriven.prototype.modular = (params) ->
 DataDriven.prototype.module = (title, specs) ->
   params = codeModule.load @, title, specs
   modular.describeModule @, params, specs
+
+DataDriven.prototype.instances = ->
+  instances = @.instancesList[@.path]
+  return {} unless instances and typeof instances is 'object'
+  @.instancesList[@.path]
 
 DataDriven.prototype.method = (name, specs) ->
   specs = codeModule.setMethod @, name, specs

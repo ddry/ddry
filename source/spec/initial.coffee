@@ -3,6 +3,15 @@
 module.exports =
   examples:
     instance:
+      folder:
+        first: [
+          'first folder title'
+          'first folder message'
+        ]
+        second: [
+          'second folder title'
+          'second folder message'
+        ]
       first: [
         'first title'
         'first message'
@@ -16,6 +25,8 @@ module.exports =
       require './examples/code/numbering'
       'ordinal'
         harness: 'tape'
+        instanceNames: {}
+        instances: -> {}
         matchers: require '../lib/matchers'
         use: false
     ]

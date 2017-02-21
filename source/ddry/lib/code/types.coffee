@@ -1,6 +1,6 @@
 'use strict'
 
-construct = require('../common/object').construct
+object = require '../common/object'
 Context = require '../spec/context'
 
 module.exports =
@@ -23,22 +23,36 @@ module.exports =
   getThat: (dd, name) ->
     return @.codeThat dd, name unless dd.use
     code = dd.driverFactories[dd.path]
-    dd.drivers[dd.path][name] = construct code, []
+    dd.drivers[dd.path][name] = object.construct code, []
 
   instanceValid: (params, code) ->
     return false unless typeof code is 'function'
     return true if Array.isArray params.initial
     return false unless params.initial and typeof params.initial is 'object'
-    for key, value of params.initial
+    initials = object.report params.initial, true
+    for key, value of initials
       return false unless Array.isArray value
     true
 
-  parseInitial: (code, initials) ->
-    return construct code, initials if Array.isArray initials
+  parseInitial: (code, initials, path) ->
+    if Array.isArray initials
+      instances =
+        modules:
+          "#{path}": object.construct code, initials
+        instanceNames:
+          "#{path}": {}
+      return instances
     instances = {}
+    initials = object.report initials, true
     for instanceName, initial of initials
-      instances[instanceName] = construct code, initial
-    instances
+      object.insertKey instances, instanceName, object.construct code, initial
+    _ =
+      modules:
+        "#{path}": instances
+      instanceNames:
+        "#{path}": Object.keys initials
+      instancesList:
+        "#{path}": instances
 
   parseTitle: (title, path) ->
     return title if title and typeof title is 'object'
@@ -58,9 +72,9 @@ module.exports =
     dd.that = dd.modules[dd.path]
 
   processInstance: (dd, params, code) ->
-    dd.modules[dd.path] = @.parseInitial code, params.initial
+    instances = @.parseInitial code, params.initial, dd.path
+    dd = object.mergeObjects dd, instances
     dd.constructors[dd.path] = code
-    dd.instances = dd.modules[dd.path]
     dd.generators[dd.path] = {}
     dd.that = dd.modules[dd.path]
 

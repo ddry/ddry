@@ -6,6 +6,8 @@ MethodContext = (code, name, dd) ->
   @.codeModule = code
   @.dd =
     harness: dd.harness
+    instanceNames: dd.instanceNames[dd.path] or {}
+    instancesList: dd.instances()
     matchers: dd.matchers
     use: dd.use
   @.tapeContext = null

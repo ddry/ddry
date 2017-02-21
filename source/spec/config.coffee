@@ -23,6 +23,9 @@ module.exports = (harness, subject) ->
         properties: 'Module properties and hooks example spec'
       fs:
         require_safe: 'Safe require wrapper'
+      matchers:
+        index: 'Default matchers set'
+        helpers: 'Matchers helpers'
       modular:
         helpers: 'Modular spec parsing helpers'
         options: 'Modular spec options parsing'
@@ -35,14 +38,13 @@ module.exports = (harness, subject) ->
     initial: initial
     except: [
       'assertion'
-      'common.get_method'
-      'common.parse_method_name'
       'common.unordered'
       'fs.require_safe_core'
       'fs.folder'
       'index'
-      'matchers'
+      'matchers.index'
       'modular_wrapper'
+      'spec_helper'
       'spec.data'
       'spec.runner'
       'spec.syntax'

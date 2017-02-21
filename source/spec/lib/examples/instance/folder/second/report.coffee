@@ -1,16 +1,16 @@
 'use strict'
 
-module.exports = (dd, that) ->
+module.exports = (dd) ->
   dd.drive [
     it: 'returns its report'
     i: []
-    e: 'title: first title, message: first message'
+    e: 'title: second folder title, message: second folder message'
   ,
     matcher: 'property'
     it: 'checks module property'
     i: []
     e: 
-      title: 'first title'
+      title: 'second folder title'
   ,
     matcher: 'plain'
     it: 'has access to all instances'

@@ -1,6 +1,9 @@
 'use strict'
 
 helpers = require './helpers'
+dotted = require '../common/dotted'
+object = require '../common/object'
+unordered = require '../common/unordered'
 
 module.exports =
   default: (spec, specSet) ->
@@ -10,7 +13,9 @@ module.exports =
 
   anyOrder: (spec, specSet) ->
     actual = helpers.getActual spec, specSet
-    helpers.anyOrder actual, spec.expected
+    _ =
+      actual: unordered.compare actual, spec.expected
+      expected: unordered.clean
 
   plain: (spec, specSet) ->
     _ =
@@ -20,6 +25,9 @@ module.exports =
   property: (spec, specSet) ->
     helpers.getActual spec, specSet
     actual = {}
+    code = helpers.getCode specSet
     for key, value of spec.expected
-      actual[key] = helpers.getMethod specSet.code, key
-    helpers.anyOrder actual, spec.expected
+      actual[key] = dotted.parse code.that, key
+    _ =
+      actual: actual
+      expected: spec.expected

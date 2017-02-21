@@ -1,6 +1,6 @@
 'use strict'
 
-getMethod = require '../common/get_method'
+dotted = require '../common/dotted'
 
 module.exports =
   order: [ 'noModuleContext', 'modulePropertiesError', 'methodNotDefined' ]
@@ -13,13 +13,13 @@ module.exports =
       false
     modulePropertiesError: (title, that, name, use) ->
       return false if use
-      method = getMethod that, name
+      method = dotted.parse that, name, false
       return [ title, name, method[0], method[1] ] if Array.isArray method
       false
     methodNotDefined: (title, that, name, use) ->
       return false if use
       return false if typeof that is 'function'
-      method = getMethod that, name
+      method = dotted.parse that, name, false
       return [ title, name ] unless typeof method is 'function'
       false
   messages:

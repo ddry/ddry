@@ -1,17 +1,26 @@
 'use strict'
 
-getMethod = require '../common/get_method'
-unordered = require '../common/unordered'
+dotted = require '../common/dotted'
 
 module.exports =
-  anyOrder: (actual, expected) ->
-    _ =
-      actual: unordered.compare actual, expected
-      expected: unordered.clean
-
   getActual: (spec, specSet) ->
-    method = getMethod specSet.code, specSet.methodName
-    actual = method.apply specSet.code, spec.input
+    code = @.getCode specSet
+    method = dotted.parse code.root, specSet.methodName, false
+    method.apply code.that, spec.input
 
-  getMethod: (code, key) ->
-    getMethod code, key
+  getCode: (specSet) ->
+    return @.singleton specSet unless Object.keys(specSet.instanceNames).length
+    instanceName = @.getInstance specSet
+    _ =
+      root: specSet.code
+      that: dotted.parse specSet.code, instanceName
+
+  getInstance: (specSet) ->
+    for instance in specSet.instanceNames
+      return instance if specSet.methodName.split("#{instance}.").length > 1
+    false
+
+  singleton: (specSet) ->
+    _ =
+      root: specSet.code
+      that: specSet.code

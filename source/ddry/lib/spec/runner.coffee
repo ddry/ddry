@@ -17,6 +17,8 @@ module.exports =
     _ =
       code: code
       harness: dd.harness
+      instanceNames: dd.instanceNames
+      instancesList: dd.instancesList
       matchers: dd.matchers
       methodName: name
       sharedSpecKeys: {}

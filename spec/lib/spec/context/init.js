@@ -2,12 +2,16 @@
 (function() {
   'use strict';
   module.exports = function(dd) {
+    var ddry;
+    ddry = dd.helper.ddry();
     return dd.drive({
       it: 'creates method context',
       i: [dd.helper.f],
       e: {
         code: dd.helper.examples.numbering,
         harness: 'tape',
+        instanceNames: {},
+        instancesList: {},
         matchers: dd.helper.requireSafe('lib/matchers'),
         methodName: 'ordinal',
         sharedSpecKeys: dd.helper.f,

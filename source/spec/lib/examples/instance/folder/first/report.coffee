@@ -4,13 +4,13 @@ module.exports = (dd, that) ->
   dd.drive [
     it: 'returns its report'
     i: []
-    e: 'title: first title, message: first message'
+    e: 'title: first folder title, message: first folder message'
   ,
     matcher: 'property'
     it: 'checks module property'
     i: []
     e: 
-      title: 'first title'
+      title: 'first folder title'
   ,
     matcher: 'plain'
     it: 'has access to all instances'

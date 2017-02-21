@@ -13,10 +13,11 @@ module.exports = (dd) ->
     e: false
   ,
     it: "adds custom matchers"
-    i: [ ddry, matchers: 'spec/examples/code/lib/numbering' ]
+    i: [ ddry, matchers: 'spec/examples/code/numbering' ]
     e:
       default: ddry.matchers.default
       anyOrder: ddry.matchers.anyOrder
+      plain: ddry.matchers.plain
       property: ddry.matchers.property
       ordinal: dd.helper.examples.numbering.ordinal
       query: dd.helper.examples.numbering.query

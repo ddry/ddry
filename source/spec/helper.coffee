@@ -20,7 +20,7 @@ SpecHelper = (harness, subject, relative) ->
     prefix: @.prefix
   @.examples = {}
   for name in [ 'function_export', 'instance', 'numbering', 'properties' ]
-    @.examples[name] = @.requireSafe "spec/examples/code/lib/#{name}"
+    @.examples[name] = @.requireSafe "spec/examples/code/#{name}"
   @.ddry()
   true
 

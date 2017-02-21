@@ -7,7 +7,7 @@
     ddryWithFunction = dd.helper.ddry();
     ddryWithFunction.modular({
       outside: {
-        module: 'spec/examples/code/lib/function_export'
+        module: 'spec/examples/code/function_export'
       }
     });
     dd.drive({
@@ -18,7 +18,7 @@
     ddryWithModule = dd.helper.ddry();
     ddryWithModule.modular({
       outside: {
-        module: 'spec/examples/code/lib/numbering'
+        module: 'spec/examples/code/numbering'
       }
     });
     return dd.drive({

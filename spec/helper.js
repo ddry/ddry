@@ -31,7 +31,7 @@
     ref = ['function_export', 'instance', 'numbering', 'properties'];
     for (i = 0, len = ref.length; i < len; i++) {
       name = ref[i];
-      this.examples[name] = this.requireSafe("spec/examples/code/lib/" + name);
+      this.examples[name] = this.requireSafe("spec/examples/code/" + name);
     }
     this.ddry();
     return true;

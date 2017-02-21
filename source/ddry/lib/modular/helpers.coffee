@@ -42,8 +42,9 @@ module.exports =
     params.only ?= []
     list = Object.keys @.filterHash(filesHash, params.only)
     return list unless Array.isArray params.except
+    that = @
     list.filter (name) ->
-      params.except.indexOf(name) is -1
+      not that.match name, params.except
 
   match: (hashKey, keys) ->
     return true if keys.indexOf(hashKey) isnt -1

@@ -6,7 +6,7 @@ module.exports = (dd) ->
   ddryWithFunction = dd.helper.ddry()
   ddryWithFunction.modular
     outside:
-      module: 'spec/examples/code/lib/function_export'
+      module: 'spec/examples/code/function_export'
 
   dd.drive
     it: 'returns false for function module export'
@@ -16,7 +16,7 @@ module.exports = (dd) ->
   ddryWithModule = dd.helper.ddry()
   ddryWithModule.modular
     outside:
-      module: 'spec/examples/code/lib/numbering'
+      module: 'spec/examples/code/numbering'
 
   dd.drive
     it: 'sets context for module method'

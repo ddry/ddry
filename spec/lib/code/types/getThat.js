@@ -6,7 +6,7 @@
     ddryWithModule = dd.helper.ddry();
     ddryWithModule.modular({
       outside: {
-        module: 'spec/examples/code/lib/numbering'
+        module: 'spec/examples/code/numbering'
       }
     });
     dd.drive({
@@ -17,7 +17,7 @@
     ddryWithDriver = dd.helper.ddry();
     ddryWithDriver.modular({
       outside: {
-        driver: 'spec/examples/code/lib/instance'
+        driver: 'spec/examples/code/instance'
       },
       use: ['driver']
     });

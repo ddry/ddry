@@ -7,7 +7,7 @@
     return dd.drive([
       {
         it: "collects matchers module rewriting earlier defined methods",
-        i: [['spec/examples/code/lib/numbering', 'spec/examples/code/lib/properties', 'spec/examples/numbering_rewrite']],
+        i: [['spec/examples/code/numbering', 'spec/examples/code/properties', 'spec/examples/numbering_rewrite']],
         e: {
           ordinal: numberingRewrite.ordinal,
           query: dd.helper.examples.numbering.query,

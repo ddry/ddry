@@ -2,7 +2,7 @@
 
 validModule = 
   title: 'numbering'
-  path: 'spec/examples/code/lib/numbering'
+  path: 'spec/examples/code/numbering'
 
 module.exports = (dd) ->
   ddryWithoutModuleContext = dd.helper.ddry()

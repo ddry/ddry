@@ -1,6 +1,6 @@
 'use strict'
 
-numbering = require '../../../examples/code/lib/numbering'
+numbering = require '../../../examples/code/numbering'
 
 module.exports = (dd) ->
   dd.drive [
@@ -32,7 +32,7 @@ module.exports = (dd) ->
     it: 'loads valid code module'
     i: [
       title: 'Module exporting empty object'
-      path: 'spec/examples/code/lib/numbering'
+      path: 'spec/examples/code/numbering'
     ]
     e: numbering
   ]

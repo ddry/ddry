@@ -28,14 +28,14 @@ module.exports = (dd) ->
   ,
     it: 'returns false if helper module exports object'
     i: [
-      path: 'spec/examples/code/lib/numbering'
+      path: 'spec/examples/code/numbering'
       initial: [ 'initial' ]
     ]
     e: false
   ,
     it: 'returns helper instance with initial values'
     i: [
-      path: 'spec/examples/code/lib/instance'
+      path: 'spec/examples/code/instance'
       initial: [ 'title', 'message' ]
     ]
     e: new Instance 'title', 'message'

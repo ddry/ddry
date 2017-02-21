@@ -5,8 +5,8 @@ module.exports = (dd) ->
   dd.drive [
     it: "collects matchers module rewriting earlier defined methods"
     i: [ [
-      'spec/examples/code/lib/numbering'
-      'spec/examples/code/lib/properties'
+      'spec/examples/code/numbering'
+      'spec/examples/code/properties'
       'spec/examples/numbering_rewrite'
     ] ]
     e:

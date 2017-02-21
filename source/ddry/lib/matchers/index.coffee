@@ -1,20 +1,25 @@
 'use strict'
 
 helpers = require './helpers'
-parseMethodName = require '../common/parse_method_name'
 
 module.exports =
-  default: (code, i, e, tapeContext, tapeMessage) ->
-    helpers.compare i, e, tapeContext, tapeMessage
-    true
+  default: (spec, specSet) ->
+    _ =
+      actual: helpers.getActual spec, specSet
+      expected: spec.expected
 
-  anyOrder: (code, i, e, tapeContext, tapeMessage) ->
-    actual = helpers.compareUnordered i, e
-    helpers.compare actual, helpers.cleanArray, tapeContext, tapeMessage
-    true
+  anyOrder: (spec, specSet) ->
+    actual = helpers.getActual spec, specSet
+    helpers.anyOrder actual, spec.expected
 
-  property: (code, i, e, tapeContext, tapeMessage) ->
-    for key, value of e
-      actual = parseMethodName code, key
-      helpers.compare actual, value, tapeContext, tapeMessage
-    true
+  plain: (spec, specSet) ->
+    _ =
+      actual: spec.input
+      expected: spec.expected
+
+  property: (spec, specSet) ->
+    helpers.getActual spec, specSet
+    actual = {}
+    for key, value of spec.expected
+      actual[key] = helpers.getMethod specSet.code, key
+    helpers.anyOrder actual, spec.expected

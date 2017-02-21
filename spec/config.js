@@ -31,10 +31,6 @@
         fs: {
           require_safe: 'Safe require wrapper'
         },
-        matchers: {
-          index: 'Default matchers set',
-          helpers: 'Default matchers helpers'
-        },
         modular: {
           helpers: 'Modular spec parsing helpers',
           options: 'Modular spec options parsing',
@@ -49,7 +45,7 @@
         spec_helper: 'Spec helper spec'
       },
       initial: initial,
-      except: ['common.get_method', 'fs.require_safe_core', 'fs.folder', 'index', 'modular_wrapper', 'spec.data', 'spec.runner', 'spec.syntax', 'test.invoke', 'test.outputs', 'test.perform', 'test.tap', 'test.tap_spec']
+      except: ['assertion', 'common.get_method', 'common.parse_method_name', 'common.unordered', 'fs.require_safe_core', 'fs.folder', 'index', 'matchers', 'modular_wrapper', 'spec.data', 'spec.runner', 'spec.syntax', 'test.outputs', 'test.tap', 'test.tap_spec']
     });
   };
 

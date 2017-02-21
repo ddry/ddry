@@ -13,7 +13,7 @@ module.exports =
       ]
   spec:
     context: [
-      require './examples/code/lib/numbering'
+      require './examples/code/numbering'
       'ordinal'
         harness: 'tape'
         matchers: require '../lib/matchers'

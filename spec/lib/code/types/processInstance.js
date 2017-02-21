@@ -6,10 +6,10 @@
     ddry = dd.helper.ddry();
     ddry.modular({
       outside: {
-        module: 'spec/examples/code/lib/instance'
+        module: 'spec/examples/code/instance'
       }
     });
-    Instance = dd.helper.requireSafe('spec/examples/code/lib/instance');
+    Instance = dd.helper.requireSafe('spec/examples/code/instance');
     return dd.drive({
       it: 'returns stored constructor instance',
       i: [

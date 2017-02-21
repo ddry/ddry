@@ -3,7 +3,7 @@
   'use strict';
   var numbering;
 
-  numbering = require('../../../examples/code/lib/numbering');
+  numbering = require('../../../examples/code/numbering');
 
   module.exports = function(dd) {
     return dd.drive([
@@ -47,7 +47,7 @@
         i: [
           {
             title: 'Module exporting empty object',
-            path: 'spec/examples/code/lib/numbering'
+            path: 'spec/examples/code/numbering'
           }
         ],
         e: numbering

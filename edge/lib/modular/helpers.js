@@ -73,7 +73,7 @@
       return filtered;
     },
     getFilteredList: function(filesHash, params) {
-      var list;
+      var list, that;
       list = Object.keys(filesHash);
       if (!(params && typeof params === 'object')) {
         return list;
@@ -85,8 +85,9 @@
       if (!Array.isArray(params.except)) {
         return list;
       }
+      that = this;
       return list.filter(function(name) {
-        return params.except.indexOf(name) === -1;
+        return !that.match(name, params.except);
       });
     },
     match: function(hashKey, keys) {

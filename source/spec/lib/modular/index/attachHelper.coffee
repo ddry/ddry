@@ -7,7 +7,7 @@ module.exports = (dd) ->
   dd.drive
     it: "attaches specified helper"
     i: [ ddry, helper:
-      path: 'spec/examples/code/lib/instance'
+      path: 'spec/examples/code/instance'
       initial: [ 'title', 'message' ]
     ]
     e: new Instance 'title', 'message'

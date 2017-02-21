@@ -1,7 +1,7 @@
 'use strict'
 
 forMocha = require('../common/object').forMocha
-perform = require './perform'
+assertion = require '../assertion'
 outputs = require './outputs'
 unless forMocha()
   tap = require './tap'
@@ -58,13 +58,13 @@ module.exports =
     else
       specParams.forEach (spec) ->
         global[spec.mochaMethod] spec.message, ->
-          perform spec, specSet
+          assertion.make spec, specSet
 
   outputTape: (specSet) ->
     return unless @.output
     return if forMocha()
     for spec in specSet.specs
-      perform spec, specSet
+      assertion.make spec, specSet
 
   sendOutput: (harness, type, argArray) ->
     return false unless @.output

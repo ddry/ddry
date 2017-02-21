@@ -10,7 +10,7 @@
       i: [
         ddry, {
           helper: {
-            path: 'spec/examples/code/lib/instance',
+            path: 'spec/examples/code/instance',
             initial: ['title', 'message']
           }
         }

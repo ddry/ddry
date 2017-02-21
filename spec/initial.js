@@ -10,7 +10,7 @@
     },
     spec: {
       context: [
-        require('./examples/code/lib/numbering'), 'ordinal', {
+        require('./examples/code/numbering'), 'ordinal', {
           harness: 'tape',
           matchers: require('../lib/matchers'),
           use: false

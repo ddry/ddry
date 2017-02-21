@@ -28,7 +28,7 @@ specContext = (harness, subject) ->
     path: 'spec/helper'
     initial: helper
   outside:
-    examples: "spec/examples/code/lib"
+    examples: "spec/examples/code"
     index: "#{prefixes.root[subject]}index"
     modular_wrapper: "#{prefixes.root[subject]}modular"
     spec_helper: 'spec/helper'

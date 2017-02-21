@@ -101,6 +101,7 @@
     processInstance: function(dd, params, code) {
       dd.modules[dd.path] = this.parseInitial(code, params.initial);
       dd.constructors[dd.path] = code;
+      dd.instances = dd.modules[dd.path];
       dd.generators[dd.path] = {};
       return dd.that = dd.modules[dd.path];
     },

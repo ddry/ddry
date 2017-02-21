@@ -60,6 +60,7 @@ module.exports =
   processInstance: (dd, params, code) ->
     dd.modules[dd.path] = @.parseInitial code, params.initial
     dd.constructors[dd.path] = code
+    dd.instances = dd.modules[dd.path]
     dd.generators[dd.path] = {}
     dd.that = dd.modules[dd.path]
 

@@ -29,6 +29,7 @@
       dd.use = params.use;
       dd.titles[dd.path] = params.title;
       dd.specs[dd.path] = {};
+      dd.instances = {};
       this.processModuleType(dd, params, code);
       if (typeof specs === 'string') {
         modular.loadModuleSpecFolder(dd, params, specs);

@@ -17,6 +17,7 @@
     this.drivers = {};
     this.generators = {};
     this.harness = harness();
+    this.instances = {};
     this.matchers = matchers;
     this.modules = {};
     this.specs = {};

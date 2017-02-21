@@ -20,6 +20,7 @@ module.exports =
     dd.use = params.use
     dd.titles[dd.path] = params.title
     dd.specs[dd.path] = {}
+    dd.instances = {}
     @.processModuleType dd, params, code
     if typeof specs is 'string'
       modular.loadModuleSpecFolder dd, params, specs

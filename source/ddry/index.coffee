@@ -11,6 +11,7 @@ DataDriven = (path) ->
   @.drivers = {}
   @.generators = {}
   @.harness = harness()
+  @.instances = {}
   @.matchers = matchers
   @.modules = {}
   @.specs = {}

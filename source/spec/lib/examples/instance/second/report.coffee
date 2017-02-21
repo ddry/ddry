@@ -11,4 +11,9 @@ module.exports = (dd) ->
     i: []
     e: 
       title: 'second title'
+  ,
+    matcher: 'plain'
+    it: 'has access to all instances'
+    i: Object.keys dd.instances
+    e: [ 'first', 'second' ]
   ]

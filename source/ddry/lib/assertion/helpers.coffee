@@ -1,7 +1,7 @@
 'use strict'
 
 assert = require 'assert'
-common = require '../common/object'
+object = require '../common/object'
 unordered = require '../common/unordered'
 
 module.exports =
@@ -16,8 +16,8 @@ module.exports =
     @.tapeContext = tapeContext
     @.tapeMessage = tapeMessage
     assertion =
-      actual: common.report data.actual
-      expected: common.report data.expected
+      actual: object.report data.actual
+      expected: object.report data.expected
     assertion = @.balance assertion
     return @.compareValues assertion unless Array.isArray assertion.actual
     @.compareObjects assertion

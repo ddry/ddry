@@ -1,33 +1,6 @@
 'use strict'
 
-folder = require '../fs/folder'
-requireSafe = require '../fs/require_safe'
-common = require '../common/object'
-
 module.exports =
-  addOutsideModules: (codeModules, params) ->
-    return codeModules unless params.outside and typeof params.outside is 'object'
-    for name, outsidePath of params.outside
-      outside = @.parseOutsidePath name, outsidePath
-      common.mergeHashes codeModules, outside
-    codeModules
-
-  parseOutsidePath: (name, outsidePath) ->
-    return "#{name}": outsidePath unless folder.isFolder outsidePath
-    folderModules = folder.read name, outsidePath
-    mounted = {}
-    for moduleName, modulePath of folderModules
-      mounted["#{name}.#{moduleName}"] = modulePath
-    mounted
-
-  attachDDHelper: (helper) ->
-    return false unless helper and typeof helper is 'object'
-    return false unless typeof helper.path is 'string'
-    return false unless Array.isArray helper.initial
-    Helper = requireSafe helper.path
-    return false unless typeof Helper is 'function'
-    common.construct Helper, helper.initial
-
   filterHash: (hash, keys) ->
     return hash unless keys.length
     hashKeys = Object.keys hash
@@ -68,11 +41,3 @@ module.exports =
         if typeof specPaths[module] is 'string'
           specPaths[module] = "#{params.spec}/#{sharedSpecFolder}"
     specPaths
-
-  requireMatchers: (pathsArray) ->
-    matchers = {}
-    for matcherPath in pathsArray
-      matcher = requireSafe matcherPath
-      if matcher
-        common.mergeHashes matchers, matcher
-    matchers

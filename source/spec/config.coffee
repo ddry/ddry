@@ -38,13 +38,15 @@ module.exports = (harness, subject) ->
     initial: initial
     except: [
       'assertion'
+      'code.instance.parse_initial'
       'common.unordered'
       'fs.require_safe_core'
       'fs.folder'
+      'fs.folder_core'
       'index'
       'matchers.index'
       'modular_wrapper'
-      'spec_helper'
+      'modular.parse_path'
       'spec.data'
       'spec.runner'
       'spec.syntax'

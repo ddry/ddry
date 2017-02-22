@@ -49,7 +49,7 @@
         spec_helper: 'Spec helper spec'
       },
       initial: initial,
-      except: ['assertion', 'common.unordered', 'fs.require_safe_core', 'fs.folder', 'index', 'matchers.index', 'modular_wrapper', 'spec_helper', 'spec.data', 'spec.runner', 'spec.syntax', 'test.outputs', 'test.tap', 'test.tap_spec']
+      except: ['assertion', 'code.instance.parse_initial', 'common.unordered', 'fs.require_safe_core', 'fs.folder', 'fs.folder_core', 'index', 'matchers.index', 'modular_wrapper', 'modular.parse_path', 'spec.data', 'spec.runner', 'spec.syntax', 'test.outputs', 'test.tap', 'test.tap_spec']
     });
   };
 

@@ -1,6 +1,6 @@
 'use strict'
 
-TapeSpec = require './tap_spec'
+TapSpec = require './tap_spec'
 
 module.exports =
   process: (dd) ->
@@ -8,7 +8,7 @@ module.exports =
     tapeList = []
     for module, methodList of dd.specs
       for methodName, methodSpec of methodList
-        tapeList.push new TapeSpec module, methodName, methodSpec
+        tapeList.push new TapSpec module, methodName, methodSpec
     that = @
     @.test dd.modularTitle, (t) ->
       unless that.mute dd

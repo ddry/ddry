@@ -27,6 +27,11 @@
       }
       return cursor;
     },
+    getModuleParams: function(codeModules, moduleName, params) {
+      return this.collect(params, moduleName, {
+        path: codeModules[moduleName]
+      }, ['title:moduleTitles', 'methods', 'initial', ['use']]);
+    },
     getSet: function(option) {
       if (!Array.isArray(this.params[option])) {
         return false;

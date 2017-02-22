@@ -18,6 +18,14 @@ module.exports =
       cursor = cursor[node]
     cursor
 
+  getModuleParams: (codeModules, moduleName, params) ->
+    @.collect params, moduleName,
+      path: codeModules[moduleName]
+      , [ 'title:moduleTitles'
+          'methods'
+          'initial'
+          [ 'use' ] ]
+
   getSet: (option) ->
     return false unless Array.isArray @.params[option]
     @.params[option].indexOf(@.moduleName) isnt -1

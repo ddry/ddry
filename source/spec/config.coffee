@@ -38,7 +38,7 @@ module.exports = (harness, subject) ->
     initial: initial
     except: [
       'assertion'
-      'code.instance.parse_initial'
+      'code.instance.initial'
       'common.unordered'
       'fs.require_safe_core'
       'fs.folder'

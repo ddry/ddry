@@ -1,12 +1,11 @@
 'use strict'
 
 helpers = require './helpers'
-matchers = require '../matchers'
 
 module.exports =
   make: (spec, specSet) ->
     spec.before.call specSet.code if spec.before
-    @.data = matchers[spec.matcher] spec, specSet
+    @.data = specSet.matchers[spec.matcher] spec, specSet
     @.engine spec, specSet
     spec.after.call specSet.code if spec.after
 

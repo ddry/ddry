@@ -41,7 +41,7 @@ module.exports =
     return false unless forMocha()
     if dd.use
       specs dd, dd.that.use
-      true
+      return true
     if typeof dd.methodName is 'boolean'
       specs dd, dd.that
     else

@@ -1,7 +1,7 @@
 'use strict'
 
 object = require '../../common/object'
-parseInitial = require './parse_initial'
+initial = require './initial'
 
 module.exports =
   valid: (params, code) ->
@@ -14,8 +14,8 @@ module.exports =
     true
 
   process: (dd, params, code) ->
-    instances = parseInitial code, params.initial, dd.path
-    dd = object.mergeObjects dd, instances
+    instances = initial.parse code, params.initial
+    dd = initial.mount dd, instances
     dd.constructors[dd.path] = code
     dd.generators[dd.path] = {}
     dd.that = dd.modules[dd.path]

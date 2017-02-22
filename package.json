@@ -30,6 +30,6 @@
   },
   "homepage": "https://github.com/ddry/ddry#readme",
   "devDependencies": {
-    "ddry-mocha-tape": "0.0.13"
+    "ddry-mocha-tape": "0.0.14"
   }
 }

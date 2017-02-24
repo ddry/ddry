@@ -2,7 +2,7 @@
 
 codeModule = require './lib/code'
 harness = require './lib/common/harness'
-object = require './lib/common/object'
+extend = require('./lib/common/object').extend
 matchers = require './lib/matchers'
 modular = require './lib/modular'
 
@@ -11,10 +11,10 @@ DataDriven = (path) ->
   @.driverFactories = {}
   @.drivers = {}
   @.generators = {}
-  @.harness = harness()
+  @.harness = harness.detect()
   @.instancesList = {}
   @.instanceNames = {}
-  @.matchers = object.mergeHashes {}, matchers
+  @.matchers = extend {}, matchers
   @.modules = {}
   @.specs = {}
   @.titles = {}

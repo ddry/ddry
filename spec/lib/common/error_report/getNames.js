@@ -4,7 +4,7 @@
   module.exports = function(dd) {
     var errorHash, unordered;
     errorHash = dd.helper.requireSafe('lib/code/errors');
-    unordered = dd.helper.mergeHashes({}, errorHash);
+    unordered = dd.helper.extend({}, errorHash);
     delete unordered.order;
     return dd.drive([
       {

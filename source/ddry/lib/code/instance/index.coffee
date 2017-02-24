@@ -1,6 +1,6 @@
 'use strict'
 
-object = require '../../common/object'
+report = require('../../common/object/report').create
 initial = require './initial'
 
 module.exports =
@@ -8,7 +8,7 @@ module.exports =
     return false unless typeof code is 'function'
     return true if Array.isArray params.initial
     return false unless params.initial and typeof params.initial is 'object'
-    initials = object.report params.initial, true
+    initials = report params.initial, true
     for key, value of initials
       return false unless Array.isArray value
     true

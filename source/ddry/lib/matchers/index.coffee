@@ -2,7 +2,6 @@
 
 helpers = require './helpers'
 dotted = require '../common/dotted'
-object = require '../common/object'
 unordered = require '../common/unordered'
 
 module.exports =

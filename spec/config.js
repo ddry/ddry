@@ -26,7 +26,8 @@
           function_export: 'Function export example',
           instance: 'Instance example',
           numbering: 'Numbering example sequenced spec',
-          properties: 'Module properties and hooks example spec'
+          properties: 'Module properties and hooks example spec',
+          selenium: 'Selenium Webdriver example spec'
         },
         fs: {
           require_safe: 'Safe require wrapper'
@@ -48,7 +49,14 @@
         },
         spec_helper: 'Spec helper spec'
       },
+      matchers: 'ddry-selenium-matchers',
       initial: initial,
+      use: ['examples.selenium'],
+      harness: {
+        tap: {
+          except: ['examples.selenium']
+        }
+      },
       except: ['assertion', 'code.instance.initial', 'common.unordered', 'fs.require_safe_core', 'fs.folder', 'fs.folder_core', 'index', 'matchers.index', 'modular_wrapper', 'modular.parse_path', 'spec.data', 'spec.runner', 'spec.syntax', 'test.outputs', 'test.tap', 'test.tap_spec']
     });
   };

@@ -1,4 +1,4 @@
-.PHONY: all ddry edge npmv c- ce- cleanup coveralls m- mo mocha s- t- te- tap tape test travis
+.PHONY: all ddry edge npmv c- ce- coveralls m- mo mocha ps server- s- t- te- tap tape test travis
 
 all: ddry edge npmv
 
@@ -8,16 +8,22 @@ edge: s-ed s-en
 
 npmv: s-nd s-ne
 
-cleanup:
+server- server-%:
 	rm -rf edge lib spec
+	@if [ "$*" = "w" ]; then \
+		sh selenium/sh/server; \
+	fi
+
+ps:
+	sh selenium/sh/ps_cleanup
 
 c- c-%:
-	make cleanup
+	make server-$*
 	coffee -c$*o . source/ddry & \
 	coffee -c$*o spec source/spec
 
 ce- ce-%:
-	make cleanup
+	make server-$*
 	coffee -c$*o . source/ddry & \
 	coffee -c$*o edge source/ddry & \
 	coffee -c$*o spec source/spec
@@ -36,6 +42,7 @@ mocha:
 		--no-exit \
 		spec/ddry.js \
 		--check-leaks
+	sh selenium/sh/pjs_cleanup
 
 s- s-%:
 	make m-$* te-$* t-$*

@@ -16,4 +16,5 @@ module.exports = (dd) ->
       instance: 'spec/examples/code/instance'
       numbering: 'spec/examples/code/numbering'
       properties: 'spec/examples/code/properties'
+      selenium: 'spec/examples/code/selenium'
   ]

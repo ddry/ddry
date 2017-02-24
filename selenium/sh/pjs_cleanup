@@ -1,0 +1,1 @@
+kill `ps | grep -E 'phantomjs' | grep -o -E '^[ 0-9]+'`

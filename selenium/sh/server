@@ -1,0 +1,3 @@
+cd selenium
+sh sh/ps_cleanup
+brunch w -s &

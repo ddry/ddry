@@ -21,6 +21,7 @@ module.exports = (harness, subject) ->
         instance: 'Instance example'
         numbering: 'Numbering example sequenced spec'
         properties: 'Module properties and hooks example spec'
+        selenium: 'Selenium Webdriver example spec'
       fs:
         require_safe: 'Safe require wrapper'
       matchers:
@@ -35,7 +36,12 @@ module.exports = (harness, subject) ->
       test:
         engine: 'Test engine interface'
       spec_helper: 'Spec helper spec'
+    matchers: 'ddry-selenium-matchers'
     initial: initial
+    use: [ 'examples.selenium' ]
+    harness:
+      tap:
+        except: [ 'examples.selenium' ]
     except: [
       'assertion'
       'code.instance.initial'

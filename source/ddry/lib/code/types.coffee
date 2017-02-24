@@ -1,7 +1,7 @@
 'use strict'
 
 Context = require '../spec/context'
-object = require '../common/object'
+construct = require('../common/object').construct
 instance = require './instance'
 
 module.exports =
@@ -16,7 +16,7 @@ module.exports =
   getThat: (dd, name) ->
     return dd.modules[dd.path] unless dd.use
     code = dd.driverFactories[dd.path]
-    dd.drivers[dd.path][name] = object.construct code, []
+    dd.drivers[dd.path][name] = construct code, []
 
   parseTitle: (title, path) ->
     return title if title and typeof title is 'object'

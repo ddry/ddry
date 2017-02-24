@@ -1,6 +1,15 @@
 'use strict'
 
+object = require '../common/object'
+
 module.exports =
+  applyHarnessScope: (dd, params) ->
+    harnessScope = params.harness
+    return params unless harnessScope and typeof harnessScope is 'object'
+    for harness, scope of harnessScope
+      params = object.merge params, scope if dd.harness.split(harness).length > 1
+    params
+
   filterHash: (hash, keys) ->
     return hash unless keys.length
     hashKeys = Object.keys hash

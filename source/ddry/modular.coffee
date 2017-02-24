@@ -1,6 +1,6 @@
 'use strict'
 
-common = require './lib/common/object'
+object = require './lib/common/object'
 DataDriven = require './index'
 dd = new DataDriven()
 
@@ -13,5 +13,5 @@ module.exports = (config = {}) ->
       prefix: prefix
 
   apply: (constraints = {}) ->
-    jobConfig = common.mergeObjects @.config, constraints
+    jobConfig = object.merge @.config, constraints
     @.dd.modular jobConfig

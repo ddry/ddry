@@ -3,7 +3,7 @@
 attach = require './attach'
 options = require './options'
 helpers = require './helpers'
-object = require '../common/object'
+extend = require('../common/object').extend
 folders = require './folders'
 testEngine = require '../test/engine'
 
@@ -13,7 +13,7 @@ module.exports =
     return false unless Array.isArray params.matchers
     customMatchers = attach.matchers params.matchers
     return false unless Object.keys(customMatchers).length
-    dd.matchers = object.mergeHashes dd.matchers, customMatchers
+    dd.matchers = extend dd.matchers, customMatchers
 
   attachHelper: (dd, params) ->
     dd.helper = attach.helper params.helper
@@ -41,6 +41,7 @@ module.exports =
   parseModular: (dd, params) ->
     codeModules = folders.initCodeModules params
     codeModules = attach.outside codeModules, params
+    params = helpers.applyHarnessScope dd, params
     specModules = helpers.getFilteredList codeModules, params
     specModulePaths = helpers.parseSharedSpecs codeModules, params
     modules = []

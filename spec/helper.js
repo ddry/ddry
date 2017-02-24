@@ -7,10 +7,11 @@
     var i, len, name, object, ref, tape;
     this.prefix = relative;
     this.dataDriven = require(subject + "index");
+    this.forMocha = require(subject + "lib/common/harness").forMocha;
     this.methodContext = require(subject + "lib/spec/context");
     this.requireSafe = require(subject + "lib/fs/require_safe");
     object = require(subject + "lib/common/object");
-    object.mergeHashes(this, object);
+    object.extend(this, object);
     if (this.forMocha()) {
       this.tapeRunner = require(subject + "lib/test/tap");
       tape = require('tape');

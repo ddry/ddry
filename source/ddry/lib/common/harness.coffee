@@ -1,8 +1,12 @@
 'use strict'
 
-module.exports = (mocha, tape)->
-  mocha ?= typeof describe is 'function'
-  tape ?= /tape/.test process.argv[1]
-  return 'mocha' if mocha
-  return 'tape' if tape
-  'tap'
+module.exports =
+  forMocha: ->
+    typeof describe is 'function'
+
+  detect: (mocha, tape) ->
+    mocha ?= @.forMocha()
+    tape ?= /tape/.test process.argv[1]
+    return 'mocha' if mocha
+    return 'tape' if tape
+    'tap'

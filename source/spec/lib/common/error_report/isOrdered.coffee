@@ -2,7 +2,7 @@
 
 module.exports = (dd) ->
   errorHash = dd.helper.requireSafe 'lib/code/errors'
-  unordered = dd.helper.mergeHashes {}, errorHash
+  unordered = dd.helper.extend {}, errorHash
   delete unordered.order
 
   dd.drive [

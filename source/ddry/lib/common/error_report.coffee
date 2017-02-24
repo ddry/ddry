@@ -7,7 +7,7 @@ module.exports =
   toTestEngine: (errorHash, paramsArray) ->
     errorReport = @.detectErrors errorHash, paramsArray
     if errorReport.length
-      testEngine.sendOutput harness(), 'report', [ errorReport ]
+      testEngine.sendOutput harness.detect(), 'report', [ errorReport ]
       return true
     false
 

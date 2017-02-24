@@ -1,6 +1,6 @@
 'use strict'
 
-forMocha = require('../common/object').forMocha
+forMocha = require('../common/harness').forMocha
 assertion = require '../assertion'
 outputs = require './outputs'
 unless forMocha()

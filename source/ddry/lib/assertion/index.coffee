@@ -17,9 +17,9 @@ module.exports =
     helpers.compare @.data
 
   tape: (spec, specSet) ->
-    return specSet.tapeContext.skip spec.message if /x/.test spec.mochaMethod
-    helpers.compare @.data, specSet.tapeContext, spec.message
+    return specSet.tapContext.skip spec.message if /x/.test spec.mochaMethod
+    helpers.compare @.data, specSet.tapContext, spec.message
 
   tap: (spec, specSet) ->
     spec.message = "# skip #{spec.message}" if /x/.test spec.mochaMethod
-    helpers.compare @.data, specSet.tapeContext, spec.message
+    helpers.compare @.data, specSet.tapContext, spec.message

@@ -16,7 +16,7 @@
         methodName: 'ordinal',
         sharedSpecKeys: dd.helper.f,
         specs: [],
-        tapeContext: null,
+        tapContext: null,
         use: false
       }
     });

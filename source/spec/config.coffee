@@ -9,6 +9,7 @@ module.exports = (harness, subject) ->
     moduleTitles:
       assertion:
         helpers: 'Assertion helpers'
+        index: 'Assertion engine'
       code:
         index: 'Code module processing core'
         errors: 'Code module processing error handling'
@@ -45,7 +46,6 @@ module.exports = (harness, subject) ->
       tap:
         except: 'examples.selenium'
     except: [
-      'assertion.index'
       'code.instance.initial'
       'common.unordered'
       'fs.require_safe_core'

@@ -1,10 +1,10 @@
 'use strict'
 
-module.exports = (dd, that) ->
+module.exports = (dd) ->
   dd.context "With few set to 2", ->
     dd.drive [
       before: ->
-        that.few = 2
+        @.few = 2
       it: "Says 'hihi' once"
       i: []
       e: 'hihi'
@@ -16,7 +16,7 @@ module.exports = (dd, that) ->
   dd.context "With few set to 3", ->
     dd.drive [
       before: ->
-        that.few = 3
+        @.few = 3
       it: "Says 'hihihi' once"
       i: []
       e: 'hihihi'
@@ -28,7 +28,7 @@ module.exports = (dd, that) ->
   dd.context "With few set again to 2", ->
     dd.drive [
       before: ->
-        that.few = 2
+        @.few = 2
       it: "Says 'hihi' once"
       i: []
       e: 'hihi'
@@ -37,5 +37,5 @@ module.exports = (dd, that) ->
       i: [ 'blah' ]
       e: 'blahblah'
       after: ->
-        delete that.few
+        delete @.few
     ]

@@ -17,6 +17,7 @@ module.exports = (dd) ->
       it: 'x-skips assertion'
       i: [
         matcher: 'default'
+        mochaMethod: 'xit'
         xit: 'returns 1st for 1'
         input: [ 1 ]
         expected: '1st'

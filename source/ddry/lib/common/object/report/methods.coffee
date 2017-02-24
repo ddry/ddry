@@ -1,5 +1,7 @@
 'use strict'
 
+Clone = require '../../clone'
+
 module.exports = 
   containsObjects: (value) ->
     for element in value
@@ -22,10 +24,11 @@ module.exports =
     return value if Array.isArray value
     "#{value}"
 
-  extend: (lo, hi) ->
+  extend: (lo, hi, clone = false) ->
     for key, value of hi
       lo[key] = value
-    lo
+    return lo unless clone
+    new Clone lo
 
   reportValue: (value, key, raw) ->
     return "#{key}: #{@.format value}" unless raw

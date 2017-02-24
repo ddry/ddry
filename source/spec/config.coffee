@@ -47,6 +47,7 @@ module.exports = (harness, subject) ->
         except: 'examples.selenium'
     except: [
       'code.instance.initial'
+      'common.clone'
       'common.unordered'
       'fs.require_safe_core'
       'fs.folder'

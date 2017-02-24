@@ -2,10 +2,9 @@
 (function() {
   'use strict';
   module.exports = function(dd) {
-    var specSet;
+    var spec, specSet;
     specSet = {
       code: dd.helper.examples.numbering,
-      harness: 'mocha',
       instanceNames: {},
       instancesList: {},
       matchers: dd.helper.requireSafe('lib/matchers'),
@@ -15,7 +14,7 @@
       tapContext: null,
       use: false
     };
-    dd.context('With Mocha as harness', function() {
+    spec = function(specSet) {
       return dd.drive([
         {
           it: 'makes assertion without hooks',
@@ -47,80 +46,15 @@
           e: true
         }
       ]);
-    });
-    dd.context('With Tap as harness', function() {
-      var tapSpecSet;
-      tapSpecSet = dd.helper.extend(specSet, {
-        harness: 'tap'
+    };
+    return ['mocha', 'tap', 'tape'].forEach(function(harness) {
+      return dd.context("With " + harness + " as harness", function() {
+        var specData;
+        specData = dd.helper.extend(specSet, {
+          harness: harness
+        }, true);
+        return spec(specData);
       });
-      return dd.drive([
-        {
-          it: 'makes assertion without hooks',
-          i: [
-            {
-              matcher: 'default',
-              it: 'returns 1st for 1',
-              input: [1],
-              expected: '1st'
-            }, tapSpecSet
-          ],
-          e: true
-        }, {
-          it: 'makes assertion with hooks',
-          i: [
-            {
-              before: function() {
-                return this.property = 'values';
-              },
-              matcher: 'default',
-              it: 'returns 1st for 1',
-              input: [1],
-              expected: '1st',
-              after: function() {
-                return delete this.property;
-              }
-            }, tapSpecSet
-          ],
-          e: true
-        }
-      ]);
-    });
-    return dd.context('With Tape as harness', function() {
-      var tapeSpecSet;
-      tapeSpecSet = dd.helper.extend(specSet, {
-        harness: 'tape'
-      });
-      return dd.drive([
-        {
-          it: 'makes assertion without hooks',
-          i: [
-            {
-              matcher: 'default',
-              it: 'returns 1st for 1',
-              input: [1],
-              expected: '1st'
-            }, tapeSpecSet
-          ],
-          e: true
-        }, {
-          it: 'makes assertion with hooks',
-          i: [
-            {
-              before: function() {
-                return this.property = 'values';
-              },
-              matcher: 'default',
-              it: 'returns 1st for 1',
-              input: [1],
-              expected: '1st',
-              after: function() {
-                return delete this.property;
-              }
-            }, tapeSpecSet
-          ],
-          e: true
-        }
-      ]);
     });
   };
 

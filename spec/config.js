@@ -61,7 +61,7 @@
           except: 'examples.selenium'
         }
       },
-      except: ['code.instance.initial', 'common.unordered', 'fs.require_safe_core', 'fs.folder', 'fs.folder_core', 'index', 'matchers.index', 'modular_wrapper', 'modular.parse_path', 'modular.spec_folder', 'spec.data', 'spec.runner', 'spec.syntax', 'test.outputs', 'test.tap', 'test.tap_spec']
+      except: ['code.instance.initial', 'common.clone', 'common.unordered', 'fs.require_safe_core', 'fs.folder', 'fs.folder_core', 'index', 'matchers.index', 'modular_wrapper', 'modular.parse_path', 'modular.spec_folder', 'spec.data', 'spec.runner', 'spec.syntax', 'test.outputs', 'test.tap', 'test.tap_spec']
     });
   };
 

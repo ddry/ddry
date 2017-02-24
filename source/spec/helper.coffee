@@ -34,7 +34,7 @@ SpecHelper.prototype.ddry = (path = '') ->
   ddry.muteOutput()
   ddry
 
-SpecHelper.prototype.tapeStub = require 'assert'
+SpecHelper.prototype.tapStub = require 'assert'
 
 SpecHelper.prototype.f = -> 1
 

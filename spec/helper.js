@@ -52,7 +52,7 @@
     return ddry;
   };
 
-  SpecHelper.prototype.tapeStub = require('assert');
+  SpecHelper.prototype.tapStub = require('assert');
 
   SpecHelper.prototype.f = function() {
     return 1;

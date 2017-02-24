@@ -35,25 +35,6 @@
       tap.process(dd);
       return true;
     },
-    runModuleSpecFolder: function(dd, title, methodList) {
-      var that;
-      if (!forMocha()) {
-        return this.processMethodList(dd, methodList);
-      }
-      that = this;
-      return describe(title, function() {
-        return that.processMethodList(dd, methodList);
-      });
-    },
-    processMethodList: function(dd, methodList) {
-      var methodFile, methodName, results;
-      results = [];
-      for (methodName in methodList) {
-        methodFile = methodList[methodName];
-        results.push(dd.method(methodName, methodFile));
-      }
-      return results;
-    },
     describeModule: function(dd, params, specs) {
       if (!this.output) {
         return false;

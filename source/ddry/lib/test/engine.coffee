@@ -20,16 +20,6 @@ module.exports =
     tap.process dd
     true
 
-  runModuleSpecFolder: (dd, title, methodList) ->
-    return @.processMethodList dd, methodList unless forMocha()
-    that = @
-    describe title, ->
-      that.processMethodList dd, methodList
-
-  processMethodList: (dd, methodList) ->
-    for methodName, methodFile of methodList
-      dd.method methodName, methodFile
-
   describeModule: (dd, params, specs) ->
     return false unless @.output
     return false unless forMocha()

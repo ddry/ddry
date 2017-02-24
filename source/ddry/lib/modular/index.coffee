@@ -1,10 +1,11 @@
 'use strict'
 
 attach = require './attach'
-options = require './options'
+folders = require './folders'
 helpers = require './helpers'
 object = require '../common/object'
-folders = require './folders'
+options = require './options'
+specFolder = require './spec_folder'
 testEngine = require '../test/engine'
 
 module.exports =
@@ -32,7 +33,7 @@ module.exports =
     methodList = folders.read params.title, specs, true
     methodNames = helpers.getFilteredList methodList, params.methods
     specList = helpers.filterHash methodList, methodNames
-    testEngine.runModuleSpecFolder dd, params.title, specList
+    specFolder.run dd, params.title, specList
     true
 
   muteOutput: ->

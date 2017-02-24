@@ -53,6 +53,7 @@ module.exports = (harness, subject) ->
       'matchers.index'
       'modular_wrapper'
       'modular.parse_path'
+      'modular.spec_folder'
       'spec.data'
       'spec.runner'
       'spec.syntax'

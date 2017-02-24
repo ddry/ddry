@@ -7,6 +7,8 @@ module.exports = (harness, subject) ->
   run harness, subject,
     title: 'ddry by npm published version'
     moduleTitles:
+      assertion:
+        helpers: 'Assertion helpers'
       code:
         index: 'Code module processing core'
         errors: 'Code module processing error handling'

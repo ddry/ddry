@@ -2,29 +2,15 @@
 (function() {
   'use strict';
   module.exports = function(dd) {
-    dd.context('Without Tap context', function() {
-      return dd.drive({
-        it: 'compares values',
-        i: [
-          {
-            actual: 1,
-            expected: 1
-          }
-        ],
-        e: true
-      });
-    });
-    return dd.context('With Tap context', function() {
-      return dd.drive({
-        it: 'compares values',
-        i: [
-          {
-            actual: 1,
-            expected: 1
-          }, dd.helper.tapeStub, 'tap message'
-        ],
-        e: true
-      });
+    return dd.drive({
+      it: 'compares values',
+      i: [
+        {
+          actual: 1,
+          expected: 1
+        }
+      ],
+      e: true
     });
   };
 

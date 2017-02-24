@@ -2,41 +2,21 @@
 (function() {
   'use strict';
   module.exports = function(dd) {
-    dd.context('Without Tap context', function() {
-      return dd.drive({
-        it: 'compares objects',
-        i: [
-          {
-            actual: {
-              one: 1,
-              two: 2
-            },
-            expected: {
-              one: 1,
-              two: 2
-            }
+    return dd.drive({
+      it: 'compares objects',
+      i: [
+        {
+          actual: {
+            one: 1,
+            two: 2
+          },
+          expected: {
+            one: 1,
+            two: 2
           }
-        ],
-        e: true
-      });
-    });
-    return dd.context('With Tap context', function() {
-      return dd.drive({
-        it: 'compares objects',
-        i: [
-          {
-            actual: {
-              one: 1,
-              two: 2
-            },
-            expected: {
-              one: 1,
-              two: 2
-            }
-          }, dd.helper.tapeStub, 'tap message'
-        ],
-        e: true
-      });
+        }
+      ],
+      e: true
     });
   };
 

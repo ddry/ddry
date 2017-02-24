@@ -43,7 +43,7 @@ module.exports = (harness, subject) ->
       tap:
         except: 'examples.selenium'
     except: [
-      'assertion'
+      'assertion.index'
       'code.instance.initial'
       'common.unordered'
       'fs.require_safe_core'

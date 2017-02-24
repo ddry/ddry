@@ -8,6 +8,7 @@ SpecHelper = (harness, subject, relative) ->
   @.requireSafe = require "#{subject}lib/fs/require_safe"
   object = require "#{subject}lib/common/object"
   object.extend @, object
+
   if @.forMocha()
     @.tapeRunner = require "#{subject}lib/test/tap"
     tape = require 'tape'

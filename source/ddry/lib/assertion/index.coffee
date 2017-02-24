@@ -8,6 +8,7 @@ module.exports =
     @.data = specSet.matchers[spec.matcher] spec, specSet
     @.engine spec, specSet
     spec.after.call specSet.code if spec.after
+    true
 
   engine: (spec, specSet) ->
     @[specSet.harness] spec, specSet

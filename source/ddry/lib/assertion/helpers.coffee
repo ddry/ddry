@@ -12,9 +12,9 @@ module.exports =
     return @.makeArray assertion, 'expected' if actualArray
     @.makeArray assertion, 'actual'
 
-  compare: (data, tapeContext, tapeMessage) ->
-    @.tapeContext = tapeContext
-    @.tapeMessage = tapeMessage
+  compare: (data, tapContext, tapMessage) ->
+    @.tapContext = tapContext
+    @.tapMessage = tapMessage
     assertion =
       actual: report data.actual
       expected: report data.expected
@@ -23,16 +23,16 @@ module.exports =
     @.compareObjects assertion
 
   compareValues: (assertion) ->
-    if @.tapeContext
-      @.tapeContext.deepEqual assertion.actual, assertion.expected, @.tapeMessage
+    if @.tapContext
+      @.tapContext.deepEqual assertion.actual, assertion.expected, @.tapMessage
     else
       assert.deepEqual assertion.actual, assertion.expected
     true
 
   compareObjects: (assertion) ->
     assertionReport = unordered.compare assertion.actual, assertion.expected
-    if @.tapeContext
-      @.tapeContext.deepEqual assertionReport, unordered.clean, @.tapeMessage
+    if @.tapContext
+      @.tapContext.deepEqual assertionReport, unordered.clean, @.tapMessage
     else
       assert.deepEqual assertionReport, unordered.clean
     true

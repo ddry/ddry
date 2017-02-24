@@ -2,7 +2,7 @@
 (function() {
   'use strict';
   module.exports = function(dd) {
-    var spec, specSet;
+    var specSet;
     specSet = {
       code: dd.helper.examples.numbering,
       instanceNames: {},
@@ -14,58 +14,55 @@
       tapContext: dd.helper.tapStub,
       use: false
     };
-    spec = function(specSet) {
-      return dd.drive([
-        {
-          it: 'x-skips assertion',
-          i: [
-            {
-              matcher: 'default',
-              mochaMethod: 'xit',
-              xit: 'returns 1st for 1',
-              input: [1],
-              expected: '1st'
-            }, specSet
-          ],
-          e: true
-        }, {
-          it: 'makes assertion without hooks',
-          i: [
-            {
-              matcher: 'default',
-              it: 'returns 1st for 1',
-              input: [1],
-              expected: '1st'
-            }, specSet
-          ],
-          e: true
-        }, {
-          it: 'makes assertion with hooks',
-          i: [
-            {
-              before: function() {
-                return this.property = 'values';
-              },
-              matcher: 'default',
-              it: 'returns 1st for 1',
-              input: [1],
-              expected: '1st',
-              after: function() {
-                return delete this.property;
-              }
-            }, specSet
-          ],
-          e: true
-        }
-      ]);
-    };
     return ['mocha', 'tap', 'tape'].forEach(function(harness) {
-      return dd.context("With " + harness + " as harness", function() {
-        var specData;
-        specData = dd.helper.extend(specSet, {
-          harness: harness
-        }, true);
-        return spec(specData);
+      var data;
+      data = dd.helper.extend(specSet, {
+        harness: harness
+      }, true);
+      return dd.helper.context(dd, "With " + harness + " as harness", data, function(specSet) {
+        return dd.drive([
+          {
+            it: 'x-skips assertion',
+            i: [
+              {
+                matcher: 'default',
+                mochaMethod: 'xit',
+                xit: 'returns 1st for 1',
+                input: [1],
+                expected: '1st'
+              }, specSet
+            ],
+            e: true
+          }, {
+            it: 'makes assertion without hooks',
+            i: [
+              {
+                matcher: 'default',
+                it: 'returns 1st for 1',
+                input: [1],
+                expected: '1st'
+              }, specSet
+            ],
+            e: true
+          }, {
+            it: 'makes assertion with hooks',
+            i: [
+              {
+                before: function() {
+                  return this.property = 'values';
+                },
+                matcher: 'default',
+                it: 'returns 1st for 1',
+                input: [1],
+                expected: '1st',
+                after: function() {
+                  return delete this.property;
+                }
+              }, specSet
+            ],
+            e: true
+          }
+        ]);
       });
     });
   };

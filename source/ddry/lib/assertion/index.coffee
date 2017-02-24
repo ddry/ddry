@@ -6,12 +6,9 @@ module.exports =
   make: (spec, specSet) ->
     spec.before.call specSet.code if spec.before
     @.data = specSet.matchers[spec.matcher] spec, specSet
-    @.engine spec, specSet
+    @[specSet.harness] spec, specSet
     spec.after.call specSet.code if spec.after
     true
-
-  engine: (spec, specSet) ->
-    @[specSet.harness] spec, specSet
 
   mocha: (spec, specSet) ->
     helpers.compare @.data

@@ -54,6 +54,10 @@
 
   SpecHelper.prototype.tapStub = require('assert');
 
+  SpecHelper.prototype.tapStub.skip = function() {
+    return 1;
+  };
+
   SpecHelper.prototype.f = function() {
     return 1;
   };

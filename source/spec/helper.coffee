@@ -36,6 +36,8 @@ SpecHelper.prototype.ddry = (path = '') ->
 
 SpecHelper.prototype.tapStub = require 'assert'
 
+SpecHelper.prototype.tapStub.skip = -> 1
+
 SpecHelper.prototype.f = -> 1
 
 SpecHelper.prototype.ff = -> 2

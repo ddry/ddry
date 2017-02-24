@@ -11,7 +11,7 @@
       methodName: 'ordinal',
       sharedSpecKeys: {},
       specs: [],
-      tapContext: null,
+      tapContext: dd.helper.tapStub,
       use: false
     };
     spec = function(specSet) {

@@ -14,6 +14,16 @@ module.exports = (dd) ->
 
   spec = (specSet)->
     dd.drive [
+      it: 'x-skips assertion'
+      i: [
+        matcher: 'default'
+        xit: 'returns 1st for 1'
+        input: [ 1 ]
+        expected: '1st'
+      , specSet
+      ]
+      e: true
+    ,
       it: 'makes assertion without hooks'
       i: [
         matcher: 'default'

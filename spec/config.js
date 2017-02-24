@@ -21,10 +21,10 @@
           types: 'Code module types processing'
         },
         common: {
-          object: 'Commonly used object methods',
+          dotted: 'Dotted name parser',
           error_report: 'Error reporter',
           harness: 'Harness detector',
-          parse_method_name: 'Method name parsing module'
+          object: 'Commonly used object methods'
         },
         examples: {
           function_export: 'Function export example',

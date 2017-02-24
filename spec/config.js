@@ -51,10 +51,10 @@
       },
       matchers: 'ddry-selenium-matchers',
       initial: initial,
-      use: ['examples.selenium'],
+      use: 'examples.selenium',
       harness: {
         tap: {
-          except: ['examples.selenium']
+          except: 'examples.selenium'
         }
       },
       except: ['assertion', 'code.instance.initial', 'common.unordered', 'fs.require_safe_core', 'fs.folder', 'fs.folder_core', 'index', 'matchers.index', 'modular_wrapper', 'modular.parse_path', 'spec.data', 'spec.runner', 'spec.syntax', 'test.outputs', 'test.tap', 'test.tap_spec']

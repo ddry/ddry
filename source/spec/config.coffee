@@ -38,10 +38,10 @@ module.exports = (harness, subject) ->
       spec_helper: 'Spec helper spec'
     matchers: 'ddry-selenium-matchers'
     initial: initial
-    use: [ 'examples.selenium' ]
+    use: 'examples.selenium'
     harness:
       tap:
-        except: [ 'examples.selenium' ]
+        except: 'examples.selenium'
     except: [
       'assertion'
       'code.instance.initial'

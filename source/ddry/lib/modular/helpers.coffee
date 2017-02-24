@@ -21,8 +21,9 @@ module.exports =
   getFilteredList: (filesHash, params) ->
     list = Object.keys filesHash
     return list unless params and typeof params is 'object'
-    params.only ?= []
+    params.only = object.toArray params.only
     list = Object.keys @.filterHash(filesHash, params.only)
+    params.except = object.toArray params.except, 'string'
     return list unless Array.isArray params.except
     that = @
     list.filter (name) ->

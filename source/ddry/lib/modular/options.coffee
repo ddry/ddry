@@ -1,5 +1,7 @@
 'use strict'
 
+object = require '../common/object'
+
 module.exports = 
   collect: (params, moduleName, moduleParams, options) ->
     @.params = params
@@ -27,8 +29,9 @@ module.exports =
           [ 'use' ] ]
 
   getSet: (option) ->
-    return false unless Array.isArray @.params[option]
-    @.params[option].indexOf(@.moduleName) isnt -1
+    optionValue = object.toArray @.params[option], 'string'
+    return false unless Array.isArray optionValue
+    optionValue.indexOf(@.moduleName) isnt -1
 
   parse: (option) ->
     return @.parseSet option if Array.isArray option

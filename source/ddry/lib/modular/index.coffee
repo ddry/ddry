@@ -3,17 +3,17 @@
 attach = require './attach'
 options = require './options'
 helpers = require './helpers'
-extend = require('../common/object').extend
+object = require '../common/object'
 folders = require './folders'
 testEngine = require '../test/engine'
 
 module.exports =
   addCustomMatchers: (dd, params) ->
-    params.matchers = [ params.matchers ] if typeof params.matchers is 'string'
+    params.matchers = object.toArray params.matchers, 'string'
     return false unless Array.isArray params.matchers
     customMatchers = attach.matchers params.matchers
     return false unless Object.keys(customMatchers).length
-    dd.matchers = extend dd.matchers, customMatchers
+    dd.matchers = object.extend dd.matchers, customMatchers
 
   attachHelper: (dd, params) ->
     dd.helper = attach.helper params.helper

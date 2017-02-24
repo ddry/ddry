@@ -44,6 +44,10 @@ module.exports =
       lo = @.insertKey lo, key, value
     lo
 
-  toArray: (value) ->
+  toArray: (value, types) ->
+    return [] unless value
     return value if Array.isArray value
-    [ value ]
+    return [ value ] unless types
+    types = @.toArray types
+    return [ value ] if types.indexOf(typeof value) isnt -1
+    value

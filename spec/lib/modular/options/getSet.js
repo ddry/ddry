@@ -6,14 +6,14 @@
     return dd.drive([
       {
         before: function() {
-          return that.params = {};
+          return this.params = {};
         },
         it: "returns false if set option is not specified",
         i: ['use'],
         e: false
       }, {
         before: function() {
-          return that.params = {
+          return this.params = {
             use: ['noname', 'allname']
           };
         },
@@ -22,7 +22,7 @@
         e: false
       }, {
         before: function() {
-          return that.params = {
+          return this.params = {
             use: ['name', 'noname', 'allname']
           };
         },

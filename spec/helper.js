@@ -38,13 +38,10 @@
     return true;
   };
 
-  SpecHelper.prototype.ddry = function(path) {
+  SpecHelper.prototype.ddry = function() {
     var DataDriven, ddry;
-    if (path == null) {
-      path = '';
-    }
     DataDriven = this.dataDriven;
-    ddry = new DataDriven(path);
+    ddry = new DataDriven();
     ddry.module({
       prefix: this.prefix
     });

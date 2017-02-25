@@ -26,9 +26,9 @@ SpecHelper = (harness, subject, relative) ->
   @.ddry()
   true
 
-SpecHelper.prototype.ddry = (path = '') ->
+SpecHelper.prototype.ddry = ->
   DataDriven = @.dataDriven
-  ddry = new DataDriven path
+  ddry = new DataDriven()
   ddry.module
     prefix: @.prefix
   ddry.muteOutput()

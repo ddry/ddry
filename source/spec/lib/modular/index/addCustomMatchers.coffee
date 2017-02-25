@@ -17,6 +17,7 @@ module.exports = (dd) ->
     e:
       default: ddry.matchers.default
       anyOrder: ddry.matchers.anyOrder
+      contains: ddry.matchers.contains
       plain: ddry.matchers.plain
       property: ddry.matchers.property
       ordinal: dd.helper.examples.numbering.ordinal

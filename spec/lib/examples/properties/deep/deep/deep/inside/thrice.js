@@ -3,7 +3,7 @@
   'use strict';
   module.exports = function(dd) {
     return [1, 2, 3].forEach(function(n) {
-      return dd.helper.context(dd, "With few set to " + n, [n], function() {
+      return dd.ry("With few set to " + n, [n], function() {
         return dd.drive([
           {
             before: function() {
@@ -15,7 +15,10 @@
           }, {
             it: "Says '" + ('blah'.repeat(3 * n)) + "' once",
             i: ['blah'],
-            e: 'blah'.repeat(3 * n)
+            e: 'blah'.repeat(3 * n),
+            after: function() {
+              return delete this.few;
+            }
           }
         ]);
       });

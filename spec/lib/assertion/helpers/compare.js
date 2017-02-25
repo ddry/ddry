@@ -10,7 +10,7 @@
     results = [];
     for (key in context) {
       value = context[key];
-      results.push(dd.helper.context(dd, key + " Tap context", value, function(tapContext, tapMessage) {
+      results.push(dd.ry(key + " Tap context", value, function(tapContext, tapMessage) {
         return dd.drive([
           {
             it: 'compares values',

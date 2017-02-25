@@ -2,7 +2,7 @@
 
 module.exports = (dd) ->
   [1..3].forEach (n) ->
-    dd.helper.context dd, "With few set to #{n}", [n], ->
+    dd.ry "With few set to #{n}", [n], ->
       dd.drive [
         before: ->
           @.few = n
@@ -13,4 +13,6 @@ module.exports = (dd) ->
         it: "Says '#{'blah'.repeat 3*n}' once"
         i: [ 'blah' ]
         e: 'blah'.repeat 3*n
+        after: ->
+          delete @.few
       ]

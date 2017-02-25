@@ -1,6 +1,6 @@
 'use strict'
 
-SpecData = require './data'
+extend = require('../common/object').extend
 
 module.exports =
   parse: (specSequence, specIndex, specParams) ->
@@ -39,5 +39,8 @@ module.exports =
     @.setSpecData specParams, input, expected, message
 
   setSpecData: (specParams, input, expected, message) ->
-    sp = specParams
-    new SpecData sp.mochaMethod, sp.matcher, input, expected, message, sp.before, sp.after
+    specParams = extend specParams,
+      expected: expected
+      input: input
+      message: message
+    extend {}, specParams, true

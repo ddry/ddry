@@ -6,7 +6,7 @@ module.exports = (dd) ->
     with: [ dd.helper.tapStub, 'tap message' ]
 
   for key, value of context
-    dd.helper.context dd, "#{key} Tap context", value, (tapContext, tapMessage) ->
+    dd.ry "#{key} Tap context", value, (tapContext, tapMessage) ->
       dd.drive [
         it: 'compares values'
         i: [

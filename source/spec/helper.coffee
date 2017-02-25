@@ -34,11 +34,6 @@ SpecHelper.prototype.ddry = (path = '') ->
   ddry.muteOutput()
   ddry
 
-SpecHelper.prototype.context = (dd, context, data, spec) ->
-  if context
-    return dd.context context, -> spec.apply dd.that, data
-  spec.apply dd.that, data
-
 SpecHelper.prototype.tapStub = require 'assert'
 
 SpecHelper.prototype.tapStub.skip = -> 1

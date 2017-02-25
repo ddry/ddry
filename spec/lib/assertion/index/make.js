@@ -19,7 +19,7 @@
       data = dd.helper.extend(specSet, {
         harness: harness
       }, true);
-      return dd.helper.context(dd, "With " + harness + " as harness", [data], function(specSet) {
+      return dd.ry("With " + harness + " as harness", [data], function(specSet) {
         return dd.drive([
           {
             it: 'x-skips assertion',

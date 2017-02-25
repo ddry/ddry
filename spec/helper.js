@@ -52,15 +52,6 @@
     return ddry;
   };
 
-  SpecHelper.prototype.context = function(dd, context, data, spec) {
-    if (context) {
-      return dd.context(context, function() {
-        return spec.apply(dd.that, data);
-      });
-    }
-    return spec.apply(dd.that, data);
-  };
-
   SpecHelper.prototype.tapStub = require('assert');
 
   SpecHelper.prototype.tapStub.skip = function() {

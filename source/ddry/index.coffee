@@ -49,6 +49,12 @@ DataDriven.prototype.method = (name, specs) ->
   specs = codeModule.setMethod @, name, specs
   modular.describeMethod @, name, specs
 
+DataDriven.prototype.ry = (context, data, spec) ->
+  if context
+    that = @
+    return that.context context, -> spec.apply that.that, data
+  spec.apply @.that, data
+
 DataDriven.prototype.context = (title, specs) ->
   modular.setContext @.harness, 'context', title, specs
 

@@ -1,7 +1,8 @@
 'use strict'
 
-helpers = require './helpers'
 dotted = require '../common/dotted'
+helpers = require './helpers'
+report = require('../common/object/report').create
 unordered = require '../common/unordered'
 
 module.exports =
@@ -15,6 +16,14 @@ module.exports =
     _ =
       actual: unordered.compare actual, spec.expected
       expected: unordered.clean
+
+  contains: (spec, specSet) ->
+    actual = helpers.getActual spec, specSet
+    actual = report actual
+    expected = report spec.expected
+    _ =
+      actual: unordered.compare(actual, expected).extra
+      expected: []
 
   plain: (spec, specSet) ->
     _ =

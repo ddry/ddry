@@ -19,3 +19,4 @@ module.exports =
     dd.constructors[dd.path] = code
     dd.generators[dd.path] = {}
     dd.that = dd.modules[dd.path]
+    dd

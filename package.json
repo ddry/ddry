@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/ddry/ddry#readme",
   "devDependencies": {
-    "ddry-mocha-tape": "0.1.0",
+    "ddry-mocha-tape": "^0.1.1",
     "ddry-selenium-phantomjs": "^1.1.0"
   }
 }

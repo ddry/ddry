@@ -16,7 +16,7 @@ module.exports = (dd) ->
     data = dd.helper.extend specSet,
       harness: harness
     , true
-    dd.helper.context dd, "With #{harness} as harness", data, (specSet) ->
+    dd.helper.context dd, "With #{harness} as harness", [ data ], (specSet) ->
       dd.drive [
         it: 'x-skips assertion'
         i: [

@@ -1,47 +1,32 @@
 'use strict'
 
 module.exports = (dd) ->
-  dd.context 'Without Tap context', ->
-    dd.drive [
-      it: 'compares values'
-      i: [
-        actual: 1
-        expected: 1
+  context =
+    without: [ null, null ]
+    with: [ dd.helper.tapStub, 'tap message' ]
+
+  for key, value of context
+    dd.helper.context dd, "#{key} Tap context", value, (tapContext, tapMessage) ->
+      dd.drive [
+        it: 'compares values'
+        i: [
+          actual: 1
+          expected: 1
+        , tapContext
+        tapMessage
+        ]
+        e: true
+      ,
+        it: 'compares objects'
+        i: [
+          actual:
+            one: 1
+            two: 2
+          expected:
+            one: 1
+            two: 2
+        , tapContext
+        tapMessage
+        ]
+        e: true
       ]
-      e: true
-    ,
-      it: 'compares objects'
-      i: [
-        actual:
-          one: 1
-          two: 2
-        expected:
-          one: 1
-          two: 2
-      ]
-      e: true
-    ]
-  dd.context 'With Tap context', ->
-    dd.drive [
-      it: 'compares values'
-      i: [
-        actual: 1
-        expected: 1
-      , dd.helper.tapStub
-      'tap message'
-      ]
-      e: true
-    ,
-      it: 'compares objects'
-      i: [
-        actual:
-          one: 1
-          two: 2
-        expected:
-          one: 1
-          two: 2
-      , dd.helper.tapStub
-      'tap message'
-      ]
-      e: true
-    ]

@@ -1,41 +1,16 @@
 'use strict'
 
 module.exports = (dd) ->
-  dd.context "With few set to 2", ->
-    dd.drive [
-      before: ->
-        @.few = 2
-      it: "Says 'hihi' twice"
-      i: []
-      e: 'hihihihi'
-    ,
-      it: "Says 'blahblah' twice"
-      i: [ 'blah' ]
-      e: 'blahblahblahblah'
-    ]
-  dd.context "With few set to 3", ->
-    dd.drive [
-      before: ->
-        @.few = 3
-      it: "Says 'hihihi' twice"
-      i: []
-      e: 'hihihihihihi'
-    ,
-      it: "Says 'blahblahblah' twice"
-      i: [ 'blah' ]
-      e: 'blahblahblahblahblahblah'
-    ]
-  dd.context "With few set again to 2", ->
-    dd.drive [
-      before: ->
-        @.few = 2
-      it: "Says 'hihi' twice"
-      i: []
-      e: 'hihihihi'
-    ,
-      it: "Says 'blahblah' twice"
-      i: [ 'blah' ]
-      e: 'blahblahblahblah'
-      after: ->
-        delete @.few
-    ]
+  [1..3].forEach (n) ->
+    dd.helper.context dd, "With few set to #{n}", [n], ->
+      dd.drive [
+        before: ->
+          @.few = n
+        it: "Says '#{'hi'.repeat 2*n}' once"
+        i: []
+        e: 'hi'.repeat 2*n
+      ,
+        it: "Says '#{'blah'.repeat 2*n}' once"
+        i: [ 'blah' ]
+        e: 'blah'.repeat 2*n
+      ]

@@ -2,56 +2,23 @@
 (function() {
   'use strict';
   module.exports = function(dd) {
-    dd.context("With few set to 2", function() {
-      return dd.drive([
-        {
-          before: function() {
-            return this.few = 2;
-          },
-          it: "Says 'hihi' once",
-          i: [],
-          e: 'hihi'
-        }, {
-          it: "Says 'blahblah' once",
-          i: ['blah'],
-          e: 'blahblah'
-        }
-      ]);
-    });
-    dd.context("With few set to 3", function() {
-      return dd.drive([
-        {
-          before: function() {
-            return this.few = 3;
-          },
-          it: "Says 'hihihi' once",
-          i: [],
-          e: 'hihihi'
-        }, {
-          it: "Says 'blahblahblah' once",
-          i: ['blah'],
-          e: 'blahblahblah'
-        }
-      ]);
-    });
-    return dd.context("With few set again to 2", function() {
-      return dd.drive([
-        {
-          before: function() {
-            return this.few = 2;
-          },
-          it: "Says 'hihi' once",
-          i: [],
-          e: 'hihi'
-        }, {
-          it: "Says 'blahblah' once",
-          i: ['blah'],
-          e: 'blahblah',
-          after: function() {
-            return delete this.few;
+    return [1, 2, 3].forEach(function(n) {
+      return dd.helper.context(dd, "With few set to " + n, [n], function() {
+        return dd.drive([
+          {
+            before: function() {
+              return this.few = n;
+            },
+            it: "Says '" + ('hi'.repeat(n)) + "' once",
+            i: [],
+            e: 'hi'.repeat(n)
+          }, {
+            it: "Says '" + ('blah'.repeat(n)) + "' once",
+            i: ['blah'],
+            e: 'blah'.repeat(n)
           }
-        }
-      ]);
+        ]);
+      });
     });
   };
 

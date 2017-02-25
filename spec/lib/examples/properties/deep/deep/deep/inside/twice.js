@@ -2,56 +2,23 @@
 (function() {
   'use strict';
   module.exports = function(dd) {
-    dd.context("With few set to 2", function() {
-      return dd.drive([
-        {
-          before: function() {
-            return this.few = 2;
-          },
-          it: "Says 'hihi' twice",
-          i: [],
-          e: 'hihihihi'
-        }, {
-          it: "Says 'blahblah' twice",
-          i: ['blah'],
-          e: 'blahblahblahblah'
-        }
-      ]);
-    });
-    dd.context("With few set to 3", function() {
-      return dd.drive([
-        {
-          before: function() {
-            return this.few = 3;
-          },
-          it: "Says 'hihihi' twice",
-          i: [],
-          e: 'hihihihihihi'
-        }, {
-          it: "Says 'blahblahblah' twice",
-          i: ['blah'],
-          e: 'blahblahblahblahblahblah'
-        }
-      ]);
-    });
-    return dd.context("With few set again to 2", function() {
-      return dd.drive([
-        {
-          before: function() {
-            return this.few = 2;
-          },
-          it: "Says 'hihi' twice",
-          i: [],
-          e: 'hihihihi'
-        }, {
-          it: "Says 'blahblah' twice",
-          i: ['blah'],
-          e: 'blahblahblahblah',
-          after: function() {
-            return delete this.few;
+    return [1, 2, 3].forEach(function(n) {
+      return dd.helper.context(dd, "With few set to " + n, [n], function() {
+        return dd.drive([
+          {
+            before: function() {
+              return this.few = n;
+            },
+            it: "Says '" + ('hi'.repeat(2 * n)) + "' once",
+            i: [],
+            e: 'hi'.repeat(2 * n)
+          }, {
+            it: "Says '" + ('blah'.repeat(2 * n)) + "' once",
+            i: ['blah'],
+            e: 'blah'.repeat(2 * n)
           }
-        }
-      ]);
+        ]);
+      });
     });
   };
 

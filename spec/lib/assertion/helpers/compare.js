@@ -2,64 +2,45 @@
 (function() {
   'use strict';
   module.exports = function(dd) {
-    dd.context('Without Tap context', function() {
-      return dd.drive([
-        {
-          it: 'compares values',
-          i: [
-            {
-              actual: 1,
-              expected: 1
-            }
-          ],
-          e: true
-        }, {
-          it: 'compares objects',
-          i: [
-            {
-              actual: {
-                one: 1,
-                two: 2
-              },
-              expected: {
-                one: 1,
-                two: 2
-              }
-            }
-          ],
-          e: true
-        }
-      ]);
-    });
-    return dd.context('With Tap context', function() {
-      return dd.drive([
-        {
-          it: 'compares values',
-          i: [
-            {
-              actual: 1,
-              expected: 1
-            }, dd.helper.tapStub, 'tap message'
-          ],
-          e: true
-        }, {
-          it: 'compares objects',
-          i: [
-            {
-              actual: {
-                one: 1,
-                two: 2
-              },
-              expected: {
-                one: 1,
-                two: 2
-              }
-            }, dd.helper.tapStub, 'tap message'
-          ],
-          e: true
-        }
-      ]);
-    });
+    var context, key, results, value;
+    context = {
+      without: [null, null],
+      "with": [dd.helper.tapStub, 'tap message']
+    };
+    results = [];
+    for (key in context) {
+      value = context[key];
+      results.push(dd.helper.context(dd, key + " Tap context", value, function(tapContext, tapMessage) {
+        return dd.drive([
+          {
+            it: 'compares values',
+            i: [
+              {
+                actual: 1,
+                expected: 1
+              }, tapContext, tapMessage
+            ],
+            e: true
+          }, {
+            it: 'compares objects',
+            i: [
+              {
+                actual: {
+                  one: 1,
+                  two: 2
+                },
+                expected: {
+                  one: 1,
+                  two: 2
+                }
+              }, tapContext, tapMessage
+            ],
+            e: true
+          }
+        ]);
+      }));
+    }
+    return results;
   };
 
 }).call(this);

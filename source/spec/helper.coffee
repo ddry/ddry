@@ -36,8 +36,8 @@ SpecHelper.prototype.ddry = (path = '') ->
 
 SpecHelper.prototype.context = (dd, context, data, spec) ->
   if context
-    return dd.context context, -> spec data
-  spec data
+    return dd.context context, -> spec.apply dd.that, data
+  spec.apply dd.that, data
 
 SpecHelper.prototype.tapStub = require 'assert'
 

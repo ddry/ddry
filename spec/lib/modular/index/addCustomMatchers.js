@@ -10,6 +10,14 @@
         i: [ddry, {}],
         e: false
       }, {
+        it: "returns false if matchers setting invalid",
+        i: [
+          ddry, {
+            matchers: false
+          }
+        ],
+        e: false
+      }, {
         it: "returns false if no valid matchers given",
         i: [
           ddry, {

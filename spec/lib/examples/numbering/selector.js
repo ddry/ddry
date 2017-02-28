@@ -8,6 +8,9 @@
       },
       data: [
         {
+          i: [],
+          e: 'li'
+        }, {
           i: [5, null],
           e: 'li+li+li+li+li'
         }, {

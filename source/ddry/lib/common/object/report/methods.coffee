@@ -4,6 +4,7 @@ Clone = require '../../clone'
 
 module.exports = 
   containsObjects: (value) ->
+    return false unless Array.isArray value
     for element in value
       return true if element and typeof element is 'object'
       return true if typeof element is 'function'

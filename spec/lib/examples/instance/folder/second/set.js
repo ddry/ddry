@@ -11,18 +11,14 @@
             folder: {
               second: {
                 one: 1,
-                two: function() {
-                  return 2;
-                }
+                two: dd.helper.f
               }
             }
           }
         ],
         e: {
           "prop01.folder.second.one": 1,
-          "prop01.folder.second.two": function() {
-            return 2;
-          }
+          "prop01.folder.second.two": dd.helper.f
         }
       }
     ]);

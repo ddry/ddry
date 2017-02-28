@@ -4,9 +4,7 @@
   module.exports = function(dd) {
     var object;
     object = {
-      one1: function() {
-        return 1;
-      },
+      one1: dd.helper.f,
       one2: {
         two21: [
           {
@@ -30,18 +28,12 @@
       {
         it: 'returns object report as array',
         i: [object],
-        e: [
-          "one1: " + (dd.helper.format(function() {
-            return 1;
-          })), "one2.two21.0.one: 1", "one2.two21.1.two.two: 2", "one2.two21.2.three.three.three: 3", "one3: "
-        ]
+        e: ["one1: " + (dd.helper.format(dd.helper.f)), "one2.two21.0.one: 1", "one2.two21.1.two.two: 2", "one2.two21.2.three.three.three: 3", "one3: "]
       }, {
         it: 'returns object report as hash',
         i: [object, true],
         e: {
-          "one1": function() {
-            return 1;
-          },
+          "one1": dd.helper.f,
           "one2.two21.0.one": 1,
           "one2.two21.1.two.two": 2,
           "one2.two21.2.three.three.three": 3,

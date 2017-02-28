@@ -10,17 +10,13 @@
           'prop01', {
             second: {
               one: 1,
-              two: function() {
-                return 2;
-              }
+              two: dd.helper.f
             }
           }
         ],
         e: {
           "prop01.second.one": 1,
-          "prop01.second.two": function() {
-            return 2;
-          }
+          "prop01.second.two": dd.helper.f
         }
       }
     ]);

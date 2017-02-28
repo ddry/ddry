@@ -8,8 +8,8 @@ module.exports = (dd, that) ->
       folder:
         second:
           one: 1
-          two: -> 2 ]
+          two: dd.helper.f ]
     e:
       "prop01.folder.second.one": 1
-      "prop01.folder.second.two": -> 2
+      "prop01.folder.second.two": dd.helper.f
     ]

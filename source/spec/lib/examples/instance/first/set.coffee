@@ -7,8 +7,8 @@ module.exports = (dd) ->
     i: [ 'prop01',
       first:
         one: 1
-        two: -> 2 ]
+        two: dd.helper.f ]
     e:
       "prop01.first.one": 1
-      "prop01.first.two": -> 2
+      "prop01.first.two": dd.helper.f
     ]

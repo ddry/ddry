@@ -16,15 +16,26 @@
           index: 'Assertion engine'
         },
         code: {
+          instance: {
+            index: 'Instance code module processing core',
+            initial: 'Instance code module initial data parsing'
+          },
           index: 'Code module processing core',
           errors: 'Code module processing error handling',
           types: 'Code module types processing'
         },
         common: {
+          clone: 'Object cloning facility',
           dotted: 'Dotted name parser',
           error_report: 'Error reporter',
           harness: 'Harness detector',
-          object: 'Commonly used object methods'
+          object: {
+            index: 'Commonly used object methods',
+            report: {
+              index: 'Object report core',
+              methods: 'Object report methods'
+            }
+          }
         },
         examples: {
           function_export: 'Function export example',
@@ -41,9 +52,11 @@
           helpers: 'Matchers helpers'
         },
         modular: {
+          attach: 'Modular spec attachments processing',
+          folders: 'Modular spec folders processing',
           helpers: 'Modular spec parsing helpers',
-          options: 'Modular spec options parsing',
-          index: 'Modular spec parsing'
+          index: 'Modular spec parsing',
+          options: 'Modular spec options parsing'
         },
         spec: {
           context: 'Method context constructor'
@@ -61,7 +74,7 @@
           except: 'examples.selenium'
         }
       },
-      except: ['common.clone', 'common.unordered', 'fs.require_safe_core', 'fs.folder', 'fs.folder_core', 'index', 'matchers.index', 'modular_wrapper', 'modular.parse_path', 'modular.spec_folder', 'spec.data', 'spec.runner', 'spec.syntax', 'test.outputs', 'test.tap', 'test.tap_spec']
+      except: ['common.unordered', 'fs.require_safe_core', 'fs.folder', 'fs.folder_core', 'index', 'matchers.index', 'modular_wrapper', 'modular.parse_path', 'modular.spec_folder', 'spec.data', 'spec.runner', 'spec.syntax', 'test.outputs', 'test.tap', 'test.tap_spec']
     });
   };
 

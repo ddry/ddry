@@ -5,6 +5,6 @@
 
   config = require('./config');
 
-  config('npmv', 'ddry');
+  config('edge', 'ddry');
 
 }).call(this);

@@ -4,7 +4,7 @@ module.exports = (dd) ->
   ddry = dd.helper.ddry()
   ddry.path = 'path'
 
-  dd.drive [
+  dd.drive
     matcher: 'contains'
     it: 'mounts instances keys to ddry'
     i: [ ddry,
@@ -16,4 +16,3 @@ module.exports = (dd) ->
         path: 'some modules'
       instanceNames:
         path: [ 'first', 'second' ]
-  ]

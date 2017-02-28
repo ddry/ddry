@@ -8,7 +8,7 @@ edge: s-ed s-en
 
 npmv: s-nd s-ne
 
-server- server-%:
+server-%:
 	rm -rf edge lib spec
 	@if [ "$*" = "w" ]; then \
 		sh selenium/sh/server; \
@@ -17,12 +17,12 @@ server- server-%:
 ps:
 	sh selenium/sh/ps_cleanup
 
-c- c-%:
+c-%:
 	make server-$*
 	coffee -c$*o . source/ddry & \
 	coffee -c$*o spec source/spec
 
-ce- ce-%:
+ce-%:
 	make server-$*
 	coffee -c$*o . source/ddry & \
 	coffee -c$*o edge source/ddry & \
@@ -31,7 +31,7 @@ ce- ce-%:
 coveralls:
 	istanbul cover ./node_modules/mocha/bin/_mocha spec/ddry.js --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
 
-m- m-%:
+m-%:
 	./node_modules/.bin/mocha \
 		--no-exit \
 		spec/modes/$*.js \
@@ -44,13 +44,13 @@ mocha:
 		--check-leaks
 	sh selenium/sh/pjs_cleanup
 
-s- s-%:
+s-%:
 	make m-$* te-$* t-$*
 
-t- t-%:
+t-%:
 	node_modules/.bin/tap spec/modes/$*.js
 
-te- te-%:
+te-%:
 	tape spec/modes/$*.js | grep -v 'muteTape' | node_modules/.bin/tap-spec 
 
 tap:

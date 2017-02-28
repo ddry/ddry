@@ -50,6 +50,15 @@ DataDriven.prototype.method = (name, specs) ->
   modular.describeMethod @, name, specs
 
 DataDriven.prototype.ry = (context, data, spec) ->
+  if context and typeof context is 'object'
+    that = @
+    for _, spec of context
+      that.ry spec.context, [ spec ], (spec) ->
+        that.drive
+          it: spec.it
+          i: spec.i
+          e: spec.e
+    return
   if context
     that = @
     return that.context context, -> spec.apply that.that, data

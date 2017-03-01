@@ -1,4 +1,4 @@
-.PHONY: all ddry edge npmv c- ce- coveralls m- mo mocha ps server- s- t- te- tap tape test travis
+.PHONY: all ddry edge npmv c- ce- co coveralls m- mo mocha ps server- s- t- te- tap tape test travis
 
 all: ddry edge npmv
 
@@ -27,6 +27,9 @@ ce-%:
 	coffee -c$*o . source/ddry & \
 	coffee -c$*o edge source/ddry & \
 	coffee -c$*o spec source/spec
+
+co:
+	istanbul cover ./node_modules/mocha/bin/_mocha spec/ddry.js
 
 coveralls:
 	istanbul cover ./node_modules/mocha/bin/_mocha spec/ddry.js --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage

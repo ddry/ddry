@@ -1,6 +1,7 @@
 'use strict'
 
+properties = require './code/properties'
+
 module.exports =
-  ordinal: (n) -> "#{n}th"
-  selector: (limit = 10, tag = 'div') ->
-    tag + Array(limit).join("+#{tag}")
+  ordinal: properties.repeatFewTimes
+  selector: properties.wrapIt

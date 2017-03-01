@@ -45,7 +45,7 @@ module.exports =
     lo
 
   toArray: (value, types) ->
-    return [] unless value
+    return [] if not value and not types
     return value if Array.isArray value
     return [ value ] unless types
     types = @.toArray types

@@ -1,9 +1,9 @@
 'use strict'
 
-module.exports = (dd, that) ->
-  that.moduleName = 'name'
+module.exports = (dd) ->
   dd.drive [
     before: ->
+      @.moduleName = 'name'
       @.params = {}
     it: "returns false if set option is not specified"
     i: [ 'use' ]

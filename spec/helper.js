@@ -4,7 +4,7 @@
   var SpecHelper;
 
   SpecHelper = function(harness, subject, relative) {
-    var i, len, name, object, ref, tape;
+    var j, len, name, object, ref, tape;
     this.prefix = relative;
     this.dataDriven = require(subject + "index");
     this.forMocha = require(subject + "lib/common/harness").forMocha;
@@ -30,8 +30,8 @@
     });
     this.examples = {};
     ref = ['function_export', 'instance', 'numbering', 'properties'];
-    for (i = 0, len = ref.length; i < len; i++) {
-      name = ref[i];
+    for (j = 0, len = ref.length; j < len; j++) {
+      name = ref[j];
       this.examples[name] = this.requireSafe("spec/examples/code/" + name);
     }
     this.ddry();
@@ -61,6 +61,10 @@
 
   SpecHelper.prototype.ff = function() {
     return 2;
+  };
+
+  SpecHelper.prototype.message = function(i, e) {
+    return "returns " + e + " for " + i;
   };
 
   module.exports = SpecHelper;

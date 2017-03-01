@@ -42,4 +42,7 @@ SpecHelper.prototype.f = -> 1
 
 SpecHelper.prototype.ff = -> 2
 
+SpecHelper.prototype.message = (i, e) ->
+  "returns #{e} for #{i}"
+
 module.exports = SpecHelper

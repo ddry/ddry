@@ -3,6 +3,10 @@
 extend = require('../common/object').extend
 
 module.exports =
+  composeSpecMessage: (specParams, input, expected, inputAlias, expectedAlias) ->
+    message = @.messageGenerator inputAlias, expectedAlias
+    @.setSpecData specParams, input, expected, message
+
   parse: (specSequence, specIndex, specParams) ->
     @.messageGenerator = specSequence[specParams.mochaMethod]
     spec = specSequence.data[specIndex - specSequence.from]
@@ -13,13 +17,6 @@ module.exports =
       message = @.messageGenerator specIndex, spec
       specParams = @.setSpecData specParams, [ specIndex ], spec, message
     specParams
-
-  validate: (spec) ->
-    return false unless spec and typeof spec is 'object'
-    keys = Object.keys spec
-    return false if keys.indexOf('i') is -1
-    return false if keys.indexOf('e') is -1
-    true
 
   parseFixture: (spec, specParams) ->
     if Array.isArray spec.i
@@ -34,13 +31,16 @@ module.exports =
       specParams = @.composeSpecMessage specParams, input, expected, inputAlias, expectedAlias
     specParams
 
-  composeSpecMessage: (specParams, input, expected, inputAlias, expectedAlias) ->
-    message = @.messageGenerator inputAlias, expectedAlias
-    @.setSpecData specParams, input, expected, message
-
   setSpecData: (specParams, input, expected, message) ->
     specParams = extend specParams,
       expected: expected
       input: input
       message: message
     extend {}, specParams, true
+
+  validate: (spec) ->
+    return false unless spec and typeof spec is 'object'
+    keys = Object.keys spec
+    return false if keys.indexOf('i') is -1
+    return false if keys.indexOf('e') is -1
+    true

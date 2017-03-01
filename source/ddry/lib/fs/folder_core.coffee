@@ -39,9 +39,8 @@ module.exports =
     _ = files.map (filename) ->
       filename.replace "#{dir}/", ''
 
-  walkSync: (dir, filelist) ->
+  walkSync: (dir, filelist = []) ->
     files = fs.readdirSync dir
-    filelist = filelist || []
     for file in files
       if fs.statSync(path.join(dir, file)).isDirectory()
         filelist = @.walkSync path.join(dir, file), filelist

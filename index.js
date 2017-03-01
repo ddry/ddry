@@ -40,7 +40,7 @@
     modular.attachHelper(this, params);
     modules = modular.parseModular(this, params);
     that = this;
-    modular.setContext(this.harness, 'modular', this.modularTitle, function() {});
+    modular.setContext(this.harness, 'modular', this.modularTitle);
     for (i = 0, len = modules.length; i < len; i++) {
       module = modules[i];
       params = [that].concat(codeModule.load.apply(codeModule, module));

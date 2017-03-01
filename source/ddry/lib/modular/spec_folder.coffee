@@ -3,8 +3,9 @@
 forMocha = require('../common/harness').forMocha
 
 module.exports =
-  run: (dd, title, methodList) ->
-    return @.processMethodList dd, methodList unless forMocha()
+  run: (dd, title, methodList, mocha) ->
+    mocha ?= forMocha()
+    return @.processMethodList dd, methodList unless mocha
     that = @
     describe title, ->
       that.processMethodList dd, methodList
@@ -12,3 +13,4 @@ module.exports =
   processMethodList: (dd, methodList) ->
     for methodName, methodFile of methodList
       dd.method methodName, methodFile
+    true

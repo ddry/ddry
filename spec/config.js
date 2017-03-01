@@ -29,6 +29,7 @@
           dotted: 'Dotted name parser',
           error_report: 'Error reporter',
           harness: 'Harness detector',
+          unordered: 'Unordered array elements set checker',
           object: {
             index: 'Commonly used object methods',
             report: {
@@ -45,6 +46,7 @@
           selenium: 'Selenium Webdriver example spec'
         },
         fs: {
+          folder_core: 'Folder reading core',
           require_safe: 'Safe require wrapper'
         },
         matchers: {
@@ -56,10 +58,12 @@
           folders: 'Modular spec folders processing',
           helpers: 'Modular spec parsing helpers',
           index: 'Modular spec parsing',
-          options: 'Modular spec options parsing'
+          options: 'Modular spec options parsing',
+          spec_folder: 'Modular spec module spec folder processing'
         },
         spec: {
-          context: 'Method context constructor'
+          context: 'Method context constructor',
+          syntax: 'Data-driven spec syntax parsing'
         },
         test: {
           engine: 'Test engine interface'
@@ -74,7 +78,7 @@
           except: 'examples.selenium'
         }
       },
-      except: ['fs.require_safe_core', 'fs.folder', 'fs.folder_core', 'index', 'matchers.index', 'modular_wrapper', 'modular.parse_path', 'modular.spec_folder', 'spec.data', 'spec.runner', 'spec.syntax', 'test.outputs', 'test.tap', 'test.tap_spec']
+      except: ['fs.require_safe_core', 'fs.folder', 'examples.selenium', 'index', 'matchers.index', 'modular_wrapper', 'spec.data', 'spec.runner', 'test.outputs', 'test.tap', 'test.tap_spec']
     });
   };
 

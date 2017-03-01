@@ -22,6 +22,7 @@ module.exports = (harness, subject) ->
         dotted: 'Dotted name parser'
         error_report: 'Error reporter'
         harness: 'Harness detector'
+        unordered: 'Unordered array elements set checker'
         object:
           index: 'Commonly used object methods'
           report:
@@ -34,6 +35,7 @@ module.exports = (harness, subject) ->
         properties: 'Module properties and hooks example spec'
         selenium: 'Selenium Webdriver example spec'
       fs:
+        folder_core: 'Folder reading core'
         require_safe: 'Safe require wrapper'
       matchers:
         index: 'Default matchers set'
@@ -44,8 +46,10 @@ module.exports = (harness, subject) ->
         helpers: 'Modular spec parsing helpers'
         index: 'Modular spec parsing'
         options: 'Modular spec options parsing'
+        spec_folder: 'Modular spec module spec folder processing'
       spec:
         context: 'Method context constructor'
+        syntax: 'Data-driven spec syntax parsing'
       test:
         engine: 'Test engine interface'
       spec_helper: 'Spec helper spec'
@@ -58,15 +62,12 @@ module.exports = (harness, subject) ->
     except: [
       'fs.require_safe_core'
       'fs.folder'
-      'fs.folder_core'
+      'examples.selenium'
       'index'
       'matchers.index'
       'modular_wrapper'
-      'modular.parse_path'
-      'modular.spec_folder'
       'spec.data'
       'spec.runner'
-      'spec.syntax'
       'test.outputs'
       'test.tap'
       'test.tap_spec'

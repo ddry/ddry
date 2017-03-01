@@ -30,7 +30,7 @@ DataDriven.prototype.modular = (params) ->
   modular.attachHelper @, params
   modules = modular.parseModular @, params
   that = @
-  modular.setContext @.harness, 'modular', @.modularTitle, ->
+  modular.setContext @.harness, 'modular', @.modularTitle
   for module in modules
     params = [ that ].concat codeModule.load.apply(codeModule, module)
     modular.describeModule.apply codeModule, params

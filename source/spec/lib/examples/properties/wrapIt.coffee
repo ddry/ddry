@@ -1,6 +1,7 @@
 'use strict'
 
 module.exports = (dd, that) ->
+  return true
   if dd.helper.forMocha()
     context 'With Mocha hooks', ->
       before ->

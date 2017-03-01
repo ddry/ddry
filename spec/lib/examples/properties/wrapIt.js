@@ -2,6 +2,7 @@
 (function() {
   'use strict';
   module.exports = function(dd, that) {
+    return true;
     if (dd.helper.forMocha()) {
       context('With Mocha hooks', function() {
         before(function() {

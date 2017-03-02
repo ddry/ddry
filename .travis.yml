@@ -18,7 +18,6 @@ before_install:
   - npm install -g istanbul
   - npm install -g statik
   - cd selenium
-  - npm install
   - brunch build --production
   - cd ..
 before_script:

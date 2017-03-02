@@ -11,6 +11,7 @@ module.exports =
   getCode: (specSet) ->
     return @.singleton specSet unless Object.keys(specSet.instanceNames).length
     instanceName = @.getInstance specSet
+    return @.singleton specSet unless instanceName
     _ =
       root: specSet.code
       that: dotted.parse specSet.code, instanceName

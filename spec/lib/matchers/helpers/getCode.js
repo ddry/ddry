@@ -2,20 +2,54 @@
 (function() {
   'use strict';
   module.exports = function(dd) {
-    var singleton;
+    var instances, singleton;
     singleton = dd.helper.examples.numbering;
+    dd.drive({
+      it: 'returns singleton code nodes if no instances found',
+      i: [
+        {
+          code: singleton,
+          instanceNames: {}
+        }
+      ],
+      e: {
+        root: singleton,
+        that: singleton
+      }
+    });
+    instances = {
+      folder: {
+        first: {
+          method: dd.helper.f
+        }
+      }
+    };
     return dd.drive([
       {
-        it: 'returns singleton code nodes if no instances found',
+        it: 'returns instance containing method if present',
         i: [
           {
-            code: singleton,
-            instanceNames: {}
+            code: instances,
+            instanceNames: ['folder.first'],
+            methodName: 'folder.first.method'
           }
         ],
         e: {
-          root: singleton,
-          that: singleton
+          root: instances,
+          that: instances.folder.first
+        }
+      }, {
+        it: 'returns singleton code if containing instance not found',
+        i: [
+          {
+            code: instances,
+            instanceNames: ['folder.second'],
+            methodName: 'folder.first.method'
+          }
+        ],
+        e: {
+          root: instances,
+          that: instances
         }
       }
     ]);

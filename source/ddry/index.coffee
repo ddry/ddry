@@ -72,4 +72,10 @@ DataDriven.prototype.drive = (spec) ->
   generator = generator[@.methodName] unless typeof @.methodName is 'boolean'
   generator.init spec
 
+DataDriven.prototype.pending = ->
+  matcher: 'plain'
+  xit: "pending: #{@.titles[@.path]}: #{@.methodName}()"
+  i: 1
+  e: 1
+
 module.exports = DataDriven

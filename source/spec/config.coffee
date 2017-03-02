@@ -63,7 +63,6 @@ module.exports = (harness, subject) ->
       'fs.require_safe_core'
       'fs.folder'
       'index'
-      'matchers.index'
       'modular_wrapper'
       'spec.data'
       'spec.runner'
@@ -71,3 +70,5 @@ module.exports = (harness, subject) ->
       'test.tap'
       'test.tap_spec'
     ]
+    # only: 'matchers.index'
+  

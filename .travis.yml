@@ -6,6 +6,7 @@ cache:
     - travis_phantomjs
     - node_modules
     - selenium/node_modules
+    - selenium/public
  
 before_install:
   - "export PHANTOMJS_VERSION=2.1.1"

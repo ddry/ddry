@@ -4,6 +4,8 @@ node_js:
 cache:
   directories:
     - travis_phantomjs
+    - node_modules
+    - selenium/node_modules
  
 before_install:
   - "export PHANTOMJS_VERSION=2.1.1"

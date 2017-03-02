@@ -13,6 +13,7 @@
           query: dd.helper.examples.numbering.query,
           selector: numberingRewrite.selector,
           repeatFewTimes: dd.helper.examples.properties.repeatFewTimes,
+          setFew: dd.helper.examples.properties.setFew,
           wrapIt: dd.helper.examples.properties.wrapIt,
           deep: {
             deep: {

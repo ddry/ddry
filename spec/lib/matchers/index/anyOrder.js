@@ -5,7 +5,6 @@
     var clear, clearSpec, extraSpec, messySpec, missySpec, spec, specSet;
     spec = function(expected) {
       return {
-        message: 'anyOrder',
         input: [
           {
             detectors: {

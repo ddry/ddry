@@ -4,6 +4,9 @@ module.exports =
   repeatFewTimes: (n, string = 'hi') ->
     Array(n * @.few + 1).join string
 
+  setFew: (few) ->
+    @.few = few
+
   wrapIt: (string) ->
     @.container += "|#{string}|"
 

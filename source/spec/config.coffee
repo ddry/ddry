@@ -49,6 +49,8 @@ module.exports = (harness, subject) ->
         spec_folder: 'Modular spec module spec folder processing'
       spec:
         context: 'Method context constructor'
+        runner:
+          detect: 'Spec runner syntax type detector'
         syntax: 'Data-driven spec syntax parsing'
       test:
         engine: 'Test engine interface'
@@ -64,8 +66,9 @@ module.exports = (harness, subject) ->
       'fs.folder'
       'index'
       'modular_wrapper'
-      'spec.data'
-      'spec.runner'
+      'spec.runner.data'
+      'spec.runner.index'
+      'spec.runner.params'
       'test.outputs'
       'test.tap'
       'test.tap_spec'

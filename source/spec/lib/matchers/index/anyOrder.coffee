@@ -2,7 +2,6 @@
 
 module.exports = (dd) ->
   spec = (expected) ->
-    message: 'anyOrder'
     input: [
       detectors:
         one: 1

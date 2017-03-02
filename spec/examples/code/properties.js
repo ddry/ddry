@@ -8,6 +8,9 @@
       }
       return Array(n * this.few + 1).join(string);
     },
+    setFew: function(few) {
+      return this.few = few;
+    },
     wrapIt: function(string) {
       return this.container += "|" + string + "|";
     },

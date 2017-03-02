@@ -62,7 +62,6 @@ module.exports = (harness, subject) ->
     except: [
       'fs.require_safe_core'
       'fs.folder'
-      'examples.selenium'
       'index'
       'matchers.index'
       'modular_wrapper'

@@ -41,6 +41,7 @@ module.exports =
     dd.that = dd.modules[dd.path]
 
   setMethodName: (dd, name) ->
+    dd.specName = name
     return false if typeof dd.methodName is 'boolean'
     dd.methodName = name
     dd.that = @.getThat dd, name

@@ -28,6 +28,16 @@
         ],
         e: false
       }, {
+        it: 'returns true if input for plain matcher provided',
+        i: [
+          {
+            matcher: 'plain',
+            i: void 0,
+            e: void 0
+          }
+        ],
+        e: true
+      }, {
         it: 'returns true if assertion data intact',
         i: [
           {

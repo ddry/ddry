@@ -9,6 +9,7 @@ TapSpec.prototype.formatSpec = (dd, module, method, title) ->
     format =
       generator: dd.generators[module]
       methodName: false
+      specName: method
       title: "#{title} in '#{method}'"
     return format
   format =
@@ -24,6 +25,7 @@ TapSpec.prototype.run = (dd, t) ->
   t.test params.title, (t) ->
     dd.path = module
     dd.methodName = params.methodName
+    dd.specName = params.specName
     dd.that = dd.modules[module]
     params.generator.tapeContext = t
     dd.specs[module][method] dd, dd.that

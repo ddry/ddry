@@ -13,6 +13,7 @@
       }
     },
     index: {
+      common: [],
       withoutInstances: []
     },
     spec: {

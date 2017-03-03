@@ -21,6 +21,7 @@ module.exports =
         'second message'
       ]
   index:
+    common: []
     withoutInstances: []
   spec:
     context: [

@@ -3,14 +3,17 @@
 module.exports =
   context:
     mocha: (title, specs) ->
-      describe title, specs
+      return describe title, specs if typeof specs is 'function'
+      describe title, -> specs
 
     tap: (title, specs) ->
-      specs()
+      return specs() if typeof specs is 'function'
+      specs
 
     tape: (title, specs) ->
       console.log "\x1b[0m#{title}"
-      specs()
+      return specs() if typeof specs is 'function'
+      specs
 
   modular:
     mocha: (title) ->

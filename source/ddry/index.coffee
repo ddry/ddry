@@ -17,6 +17,7 @@ DataDriven = (path) ->
   @.matchers = extend {}, matchers
   @.modules = {}
   @.specs = {}
+  @.specNames = {}
   @.titles = {}
   @.use = false
   @.path = path
@@ -58,11 +59,13 @@ DataDriven.prototype.ry = (context, data, spec) ->
           it: spec.it
           i: spec.i
           e: spec.e
-    return
+    return true
   if context
     that = @
-    return that.context context, -> spec.apply that.that, data
+    that.context context, spec.apply that.that, data
+    return true
   spec.apply @.that, data
+  true
 
 DataDriven.prototype.context = (title, specs) ->
   modular.setContext @.harness, 'context', title, specs
@@ -71,10 +74,12 @@ DataDriven.prototype.drive = (spec) ->
   generator = @.generators[@.path]
   generator = generator[@.methodName] unless typeof @.methodName is 'boolean'
   generator.init spec
+  true
 
 DataDriven.prototype.pending = ->
+  name = @.methodName or @.specName
   matcher: 'plain'
-  xit: "pending: #{@.titles[@.path]}: #{@.methodName}()"
+  xit: "pending: #{@.titles[@.path]}: #{name}()"
   i: 1
   e: 1
 

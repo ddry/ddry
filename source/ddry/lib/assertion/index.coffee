@@ -4,10 +4,10 @@ helpers = require './helpers'
 
 module.exports =
   make: (spec, specSet) ->
-    spec.before.call specSet.code if spec.before
+    spec.before.call specSet.that if spec.before
     @.data = specSet.matchers[spec.matcher] spec, specSet
     @[specSet.harness] spec, specSet
-    spec.after.call specSet.code if spec.after
+    spec.after.call specSet.that if spec.after
     true
 
   mocha: (spec, specSet) ->

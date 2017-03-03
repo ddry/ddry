@@ -20,6 +20,8 @@ module.exports =
         'second title'
         'second message'
       ]
+  index:
+    withoutInstances: []
   spec:
     context: [
       require './examples/code/numbering'

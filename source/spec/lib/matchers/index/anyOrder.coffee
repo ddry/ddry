@@ -1,6 +1,7 @@
 'use strict'
 
 module.exports = (dd) ->
+  code = dd.helper.requireSafe 'lib/common/error_report'
   spec = (expected) ->
     input: [
       detectors:
@@ -10,7 +11,9 @@ module.exports = (dd) ->
     , false ]
     expected: expected
   specSet =
-    code: dd.helper.requireSafe 'lib/common/error_report'
+    code: code
+    root: code
+    that: code
     instanceNames: {}
     methodName: 'getNames'
   clear =

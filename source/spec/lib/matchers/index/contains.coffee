@@ -1,6 +1,7 @@
 'use strict'
 
 module.exports = (dd) ->
+  code = dd.helper.requireSafe 'lib/common/object'
   spec = (expected) ->
     input: [ {},
       one: 1
@@ -9,7 +10,9 @@ module.exports = (dd) ->
       ten: 10 ]
     expected: expected
   specSet =
-    code: dd.helper.requireSafe 'lib/common/object'
+    code: code
+    root: code
+    that: code
     instanceNames: {}
     methodName: 'extend'
 

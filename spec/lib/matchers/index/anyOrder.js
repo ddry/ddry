@@ -2,7 +2,8 @@
 (function() {
   'use strict';
   module.exports = function(dd) {
-    var clear, clearSpec, extraSpec, messySpec, missySpec, spec, specSet;
+    var clear, clearSpec, code, extraSpec, messySpec, missySpec, spec, specSet;
+    code = dd.helper.requireSafe('lib/common/error_report');
     spec = function(expected) {
       return {
         input: [
@@ -18,7 +19,9 @@
       };
     };
     specSet = {
-      code: dd.helper.requireSafe('lib/common/error_report'),
+      code: code,
+      root: code,
+      that: code,
       instanceNames: {},
       methodName: 'getNames'
     };

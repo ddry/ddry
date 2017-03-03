@@ -1,8 +1,11 @@
 'use strict'
 
 module.exports = (dd) ->
+  code = dd.helper.examples.numbering
   specSet = 
-    code: dd.helper.examples.numbering
+    code: code
+    root: code
+    that: code
     instanceNames: {}
     instancesList: {}
     matchers: dd.helper.requireSafe 'lib/matchers'

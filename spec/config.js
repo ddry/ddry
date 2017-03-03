@@ -49,9 +49,10 @@
           folder_core: 'Folder reading core',
           require_safe: 'Safe require wrapper'
         },
+        index: 'ddry core',
         matchers: {
           index: 'Default matchers set',
-          helpers: 'Matchers helpers'
+          get_actual: 'Actual target code runner'
         },
         modular: {
           attach: 'Modular spec attachments processing',
@@ -81,7 +82,7 @@
           except: 'examples.selenium'
         }
       },
-      except: ['fs.require_safe_core', 'fs.folder', 'index', 'modular_wrapper', 'spec.runner.data', 'spec.runner.index', 'spec.runner.params', 'test.outputs', 'test.tap', 'test.tap_spec']
+      except: ['fs.require_safe_core', 'fs.folder', 'matchers.get_actual', 'modular_wrapper', 'spec.runner.data', 'spec.runner.index', 'spec.runner.params', 'test.outputs', 'test.tap', 'test.tap_spec']
     });
   };
 

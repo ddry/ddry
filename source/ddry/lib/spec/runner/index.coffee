@@ -1,11 +1,13 @@
 'use strict'
 
+codeNodes = require './code_nodes'
+extend = require('../../common/object').extend
 params = require './params'
 testEngine = require '../../test/engine'
 
 module.exports =
   parseSpecSetParams: (code, name, dd, tapContext) ->
-    _ =
+    specSet =
       code: code
       harness: dd.harness
       instanceNames: dd.instanceNames
@@ -16,6 +18,7 @@ module.exports =
       specs: []
       tapContext: tapContext
       use: dd.use
+    extend specSet, codeNodes.get(specSet)
 
   process: (specSet, code, name, dd, tapContext) ->
     specSetParams = @.parseSpecSetParams code, name, dd, tapContext

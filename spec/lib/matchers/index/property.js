@@ -2,8 +2,9 @@
 (function() {
   'use strict';
   module.exports = function(dd) {
-    var example, spec, specSet;
+    var code, example, spec, specSet;
     example = dd.helper.requireSafe('spec/examples/code/properties');
+    code = dd.helper.extend({}, example);
     spec = {
       input: [1],
       expected: {
@@ -12,7 +13,9 @@
       }
     };
     specSet = {
-      code: dd.helper.extend({}, example),
+      code: code,
+      root: code,
+      that: code,
       instanceNames: {},
       methodName: 'setFew'
     };

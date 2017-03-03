@@ -37,9 +37,10 @@ module.exports = (harness, subject) ->
       fs:
         folder_core: 'Folder reading core'
         require_safe: 'Safe require wrapper'
+      index: 'ddry core'
       matchers:
         index: 'Default matchers set'
-        helpers: 'Matchers helpers'
+        get_actual: 'Actual target code runner'
       modular:
         attach: 'Modular spec attachments processing'
         folders: 'Modular spec folders processing'
@@ -64,7 +65,7 @@ module.exports = (harness, subject) ->
     except: [
       'fs.require_safe_core'
       'fs.folder'
-      'index'
+      'matchers.get_actual'
       'modular_wrapper'
       'spec.runner.data'
       'spec.runner.index'
@@ -73,5 +74,3 @@ module.exports = (harness, subject) ->
       'test.tap'
       'test.tap_spec'
     ]
-    # only: 'matchers.index'
-  

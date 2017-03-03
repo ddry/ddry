@@ -2,13 +2,16 @@
 (function() {
   'use strict';
   module.exports = function(dd) {
-    var ddry;
+    var code, ddry;
     ddry = dd.helper.ddry();
+    code = dd.helper.examples.numbering;
     return dd.drive({
       it: 'creates method context',
       i: [dd.helper.f],
       e: {
-        code: dd.helper.examples.numbering,
+        code: code,
+        root: code,
+        that: code,
         harness: 'tape',
         instanceNames: {},
         instancesList: {},

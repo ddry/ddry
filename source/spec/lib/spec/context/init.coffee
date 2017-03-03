@@ -2,12 +2,15 @@
 
 module.exports = (dd) ->
   ddry = dd.helper.ddry()
+  code = dd.helper.examples.numbering
 
   dd.drive
     it: 'creates method context'
     i: [ dd.helper.f ]
     e:
-      code: dd.helper.examples.numbering
+      code: code
+      root: code
+      that: code
       harness: 'tape'
       instanceNames: {}
       instancesList: {}

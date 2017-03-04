@@ -35,10 +35,11 @@ coveralls:
 	rm -rf ./coverage
 
 m-%:
-	./node_modules/.bin/mocha \
+	./node_modules/.bin/istanbul cover ./node_modules/.bin/mocha \
 		--no-exit \
 		spec/modes/$*.js \
 		--check-leaks
+	sh selenium/sh/pjs_cleanup
 
 mocha:
 	./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha \

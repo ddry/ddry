@@ -51,7 +51,9 @@ module.exports = (harness, subject) ->
       spec:
         context: 'Method context constructor'
         runner:
+          data: 'Spec runner assertion data constructor'
           detect: 'Spec runner syntax type detector'
+          params: 'Data-driven spec params parsing'
         syntax: 'Data-driven spec syntax parsing'
       test:
         engine: 'Test engine interface'
@@ -67,9 +69,7 @@ module.exports = (harness, subject) ->
       'fs.folder'
       'matchers.get_actual'
       'modular_wrapper'
-      'spec.runner.data'
       'spec.runner.index'
-      'spec.runner.params'
       'test.outputs'
       'test.tap'
       'test.tap_spec'

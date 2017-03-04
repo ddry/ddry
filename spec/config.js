@@ -65,7 +65,9 @@
         spec: {
           context: 'Method context constructor',
           runner: {
-            detect: 'Spec runner syntax type detector'
+            data: 'Spec runner assertion data constructor',
+            detect: 'Spec runner syntax type detector',
+            params: 'Data-driven spec params parsing'
           },
           syntax: 'Data-driven spec syntax parsing'
         },
@@ -82,7 +84,7 @@
           except: 'examples.selenium'
         }
       },
-      except: ['fs.require_safe_core', 'fs.folder', 'matchers.get_actual', 'modular_wrapper', 'spec.runner.data', 'spec.runner.index', 'spec.runner.params', 'test.outputs', 'test.tap', 'test.tap_spec']
+      except: ['fs.require_safe_core', 'fs.folder', 'matchers.get_actual', 'modular_wrapper', 'spec.runner.index', 'test.outputs', 'test.tap', 'test.tap_spec']
     });
   };
 

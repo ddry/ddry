@@ -15,7 +15,7 @@ module.exports =
     hashKeys = Object.keys hash
     filtered = {}
     for hashKey in hashKeys
-      filtered[hashKey] = hash[hashKey] if hash[hashKey]? and @.match hashKey, keys
+      filtered[hashKey] = hash[hashKey] if hash[hashKey]? and object.match hashKey, keys
     filtered
 
   getFilteredList: (filesHash, params) ->
@@ -25,19 +25,8 @@ module.exports =
     list = Object.keys @.filterHash(filesHash, params.only)
     params.except = object.toArray params.except, 'string'
     return list unless Array.isArray params.except
-    that = @
     list.filter (name) ->
-      not that.match name, params.except
-
-  match: (hashKey, keys) ->
-    return true if keys.indexOf(hashKey) isnt -1
-    hashKey = hashKey.split '.'
-    return false if hashKey.length is 1
-    xPath = []
-    for node in hashKey
-      xPath.push node
-      return true if keys.indexOf(xPath.join '.') isnt -1
-    false
+      not object.match name, params.except
 
   parseSharedSpecs: (filesHash, params) ->
     moduleNames = Object.keys(filesHash)

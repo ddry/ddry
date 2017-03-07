@@ -1,3 +1,7 @@
+###
+# ddry core
+###
+
 'use strict'
 
 codeModule = require './lib/code'

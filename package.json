@@ -12,6 +12,7 @@
   "keywords": [
     "data-driven",
     "mocha",
+    "tap",
     "tape",
     "selenium",
     "webdriver"
@@ -21,8 +22,12 @@
     "README.md",
     "index.js",
     "modular.js",
+    "bin/",
     "lib/"
   ],
+  "bin": {
+    "ddry": "bin/ddry"
+  },
   "author": "Vassiliy Pimkin <vassiliy.pimkin@gmail.com>",
   "license": "MIT",
   "bugs": {
@@ -30,7 +35,7 @@
   },
   "homepage": "https://github.com/ddry/ddry#readme",
   "devDependencies": {
-    "ddry-mocha-tape": "^0.1.6",
+    "ddry-mocha-tape": "^0.1.7",
     "ddry-selenium-phantomjs": "^1.1.0",
     "statik": "^1.4.6"
   }

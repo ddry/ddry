@@ -20,6 +20,7 @@
   "files": [
     "LICENSE",
     "README.md",
+    "cli.js",
     "ddry.js",
     "index.js",
     "modular.js",

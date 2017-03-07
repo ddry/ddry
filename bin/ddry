@@ -1,2 +1,2 @@
 #!/usr/bin/env node
-require('../ddry.js')
+require('../ddry/ddry.js')

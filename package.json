@@ -20,6 +20,7 @@
   "files": [
     "LICENSE",
     "README.md",
+    "ddry.js",
     "index.js",
     "modular.js",
     "bin/",

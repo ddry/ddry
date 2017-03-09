@@ -1,3 +1,7 @@
+###
+# Data-driven spec params parsing
+###
+
 'use strict'
 
 data = require './data'

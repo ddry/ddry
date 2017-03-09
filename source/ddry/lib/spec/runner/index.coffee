@@ -1,3 +1,7 @@
+###
+# Spec runner core
+###
+
 'use strict'
 
 codeNodes = require './code_nodes'

@@ -1,3 +1,7 @@
+###
+# Spec runner syntax type detector
+###
+
 'use strict'
 
 module.exports =

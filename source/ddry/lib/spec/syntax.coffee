@@ -1,3 +1,7 @@
+###
+# Data-driven spec syntax parsing
+###
+
 'use strict'
 
 extend = require('../common/object').extend

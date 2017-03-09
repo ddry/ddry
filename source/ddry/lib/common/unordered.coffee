@@ -1,3 +1,7 @@
+###
+# Unordered array elements set checker
+###
+
 'use strict'
 
 module.exports =

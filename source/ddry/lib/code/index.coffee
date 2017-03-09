@@ -1,3 +1,7 @@
+###
+# Code module processing core
+###
+
 'use strict'
 
 errors = require './errors'

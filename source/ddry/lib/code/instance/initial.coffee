@@ -1,3 +1,7 @@
+###
+# Instance code module initial data parsing
+###
+
 'use strict'
 
 object = require '../../common/object'

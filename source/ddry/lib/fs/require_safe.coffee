@@ -1,3 +1,7 @@
+###
+# Safe require wrapper
+###
+
 'use strict'
 
 core = require './require_safe_core'

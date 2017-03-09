@@ -1,3 +1,7 @@
+###
+# Object cloning facility
+###
+
 'use strict'
 
 Clone = (original) ->

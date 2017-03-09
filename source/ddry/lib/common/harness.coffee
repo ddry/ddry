@@ -1,3 +1,7 @@
+###
+# Harness detector
+###
+
 'use strict'
 
 module.exports =

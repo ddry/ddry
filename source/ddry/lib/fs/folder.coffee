@@ -1,3 +1,7 @@
+###
+# Folder reading wrapper
+###
+
 'use strict'
 
 core = require './folder_core'

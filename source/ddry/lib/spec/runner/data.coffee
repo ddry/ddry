@@ -1,3 +1,7 @@
+###
+# Spec runner assertion data constructor
+###
+
 'use strict'
 
 detect = require './detect'

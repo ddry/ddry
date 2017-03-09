@@ -1,3 +1,7 @@
+###
+# Method context constructor
+###
+
 'use strict'
 
 specRunner = require './runner'

@@ -1,3 +1,7 @@
+###
+# Modular spec module spec folder processing
+###
+
 'use strict'
 
 forMocha = require('../common/harness').forMocha

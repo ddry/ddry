@@ -1,3 +1,7 @@
+###
+# Error reporter
+###
+
 'use strict'
 
 harness = require './harness'

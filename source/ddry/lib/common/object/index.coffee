@@ -1,3 +1,7 @@
+###
+# Commonly used object methods
+###
+
 'use strict'
 
 report = require './report'

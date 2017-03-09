@@ -1,3 +1,7 @@
+###
+# Actual target code runner
+###
+
 'use strict'
 
 dotted = require '../common/dotted'

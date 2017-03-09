@@ -20,8 +20,8 @@
             index: 'Instance code module processing core',
             initial: 'Instance code module initial data parsing'
           },
-          index: 'Code module processing core',
           errors: 'Code module processing error handling',
+          index: 'Code module processing core',
           types: 'Code module types processing'
         },
         common: {
@@ -84,7 +84,7 @@
           except: 'examples.selenium'
         }
       },
-      except: ['fs.require_safe_core', 'fs.folder', 'matchers.get_actual', 'modular_wrapper', 'spec.runner.index', 'test.outputs', 'test.tap', 'test.tap_spec']
+      except: ['cli', 'common.colors', 'fs.require_safe_core', 'fs.folder', 'matchers.get_actual', 'modular_wrapper', 'spec.runner.index', 'test.outputs', 'test.tap', 'test.tap_spec']
     });
   };
 

@@ -1,3 +1,7 @@
+###
+# Dotted name parser
+###
+
 'use strict'
 
 module.exports = 

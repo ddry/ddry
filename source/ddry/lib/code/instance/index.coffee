@@ -1,3 +1,7 @@
+###
+# Instance code module processing core
+###
+
 'use strict'
 
 report = require('../../common/object/report').create

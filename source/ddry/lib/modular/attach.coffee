@@ -1,3 +1,7 @@
+###
+# Modular spec attachments processing
+###
+
 'use strict'
 
 object = require '../common/object'

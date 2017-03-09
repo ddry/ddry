@@ -1,3 +1,7 @@
+###
+# Folder reading core
+###
+
 'use strict'
 
 fs = require 'fs'

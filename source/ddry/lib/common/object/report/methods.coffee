@@ -1,3 +1,7 @@
+###
+# Object report methods
+###
+
 'use strict'
 
 Clone = require '../../clone'

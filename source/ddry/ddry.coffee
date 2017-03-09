@@ -1,14 +1,6 @@
 'use strict'
 
-fs = require 'fs'
-path = require 'path'
+cli = require './lib/cli'
 
-console.log process.argv
-
-obj =
-  one: 1
-  two: 2
-  six: 6
-json = JSON.stringify obj
-filename = path.join 'node_modules/ddry', 'cmd.json'
-fs.writeFileSync filename, json, 'utf-8'
+[ shell, node, params... ] = process.argv
+cli params

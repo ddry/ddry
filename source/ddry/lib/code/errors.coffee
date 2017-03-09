@@ -1,3 +1,7 @@
+###
+# Code module processing error handling
+###
+
 'use strict'
 
 dotted = require '../common/dotted'

@@ -1,3 +1,7 @@
+###
+# Tap-compatible specs runner
+###
+
 'use strict'
 
 TapSpec = require './tap_spec'

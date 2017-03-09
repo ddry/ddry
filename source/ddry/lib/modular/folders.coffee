@@ -1,3 +1,7 @@
+###
+# Modular spec folders processing
+###
+
 'use strict'
 
 folder = require '../fs/folder'

@@ -1,3 +1,7 @@
+###
+# Code module types processing
+###
+
 'use strict'
 
 Context = require '../spec/context'

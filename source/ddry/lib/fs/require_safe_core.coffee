@@ -1,3 +1,7 @@
+###
+# Safe require core
+###
+
 'use strict'
 
 errorReport = require '../common/error_report'

@@ -1,3 +1,7 @@
+###
+# Assertion helpers
+###
+
 'use strict'
 
 assert = require 'assert'

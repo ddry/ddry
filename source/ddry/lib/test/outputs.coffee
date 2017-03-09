@@ -1,3 +1,7 @@
+###
+# Test outputs generator
+###
+
 'use strict'
 
 module.exports =

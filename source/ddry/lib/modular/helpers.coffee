@@ -1,3 +1,7 @@
+###
+# Modular spec parsing helpers
+###
+
 'use strict'
 
 object = require '../common/object'

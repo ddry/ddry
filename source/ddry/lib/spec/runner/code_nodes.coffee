@@ -1,3 +1,7 @@
+###
+# Code nodes parser
+###
+
 'use strict'
 
 dotted = require '../../common/dotted'

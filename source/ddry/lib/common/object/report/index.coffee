@@ -1,3 +1,7 @@
+###
+# Object report core
+###
+
 'use strict'
 
 methods = require './methods'

@@ -1,3 +1,7 @@
+###
+# Assertion engine
+###
+
 'use strict'
 
 helpers = require './helpers'

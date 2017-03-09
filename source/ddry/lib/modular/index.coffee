@@ -1,3 +1,7 @@
+###
+# Modular spec parsing core
+###
+
 'use strict'
 
 attach = require './attach'

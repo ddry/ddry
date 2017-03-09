@@ -1,3 +1,7 @@
+###
+# Tap-compatible spec constructor
+###
+
 'use strict'
 
 TapSpec = (module, method) ->

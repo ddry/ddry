@@ -14,8 +14,8 @@ module.exports = (harness, subject) ->
         instance:
           index: 'Instance code module processing core'
           initial: 'Instance code module initial data parsing'
-        index: 'Code module processing core'
         errors: 'Code module processing error handling'
+        index: 'Code module processing core'
         types: 'Code module types processing'
       common:
         clone: 'Object cloning facility'
@@ -65,6 +65,8 @@ module.exports = (harness, subject) ->
       tap:
         except: 'examples.selenium'
     except: [
+      'cli'
+      'common.colors'
       'fs.require_safe_core'
       'fs.folder'
       'matchers.get_actual'

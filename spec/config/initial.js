@@ -18,13 +18,13 @@
     },
     spec: {
       context: [
-        require('./examples/code/numbering'), 'ordinal', {
+        require('../examples/code/numbering'), 'ordinal', {
           harness: 'tape',
           instanceNames: {},
           instances: function() {
             return {};
           },
-          matchers: require('../lib/matchers'),
+          matchers: require('../../lib/matchers'),
           use: false
         }
       ]

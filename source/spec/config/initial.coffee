@@ -25,11 +25,11 @@ module.exports =
     withoutInstances: []
   spec:
     context: [
-      require './examples/code/numbering'
+      require '../examples/code/numbering'
       'ordinal'
         harness: 'tape'
         instanceNames: {}
         instances: -> {}
-        matchers: require '../lib/matchers'
+        matchers: require '../../lib/matchers'
         use: false
     ]

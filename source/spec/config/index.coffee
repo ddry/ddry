@@ -1,6 +1,6 @@
 'use strict'
 
-run_cli = require './run_cli'
+cli = require './cli'
 initial = require './initial'
 
 expand =
@@ -12,7 +12,7 @@ module.exports = (short) ->
   [ shortHarness, shortSubject ] = short
   harness = expand[shortHarness]
   subject = expand[shortSubject]
-  run_cli harness, subject,
+  cli harness, subject,
     title: "#{subject} by #{harness}"
     matchers: 'ddry-selenium-matchers'
     initial: initial
@@ -21,6 +21,8 @@ module.exports = (short) ->
       tap:
         except: 'examples.selenium'
     except: [
+      'cli'
+      'common.colors'
       'fs.require_safe_core'
       'fs.folder'
       'matchers.get_actual'

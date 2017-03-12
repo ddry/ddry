@@ -53,6 +53,8 @@
     }
   },
   "except": [
+    "cli",
+    "common.colors",
     "fs.require_safe_core",
     "fs.folder",
     "matchers.get_actual",
@@ -82,7 +84,7 @@
     "ddry": "ddry/modular",
     "prefix": "../../../../",
     "config": {
-      "path": "../../spec/cli_config.js",
+      "path": "../../../../spec/config/",
       "params": [
         "nd"
       ]
@@ -97,7 +99,8 @@
       "commands": "Command line interface commands",
       "error": "Command line interface error reporter",
       "helpers": "Command line interface helpers",
-      "index": "Command line interface core"
+      "index": "Command line interface core",
+      "scope": "lib/cli/scope"
     },
     "code": {
       "errors": "Code module processing error handling",

@@ -3,10 +3,15 @@
   'use strict';
   var object, prefix, prefixes, specContext;
 
-  object = require('../lib/common/object');
+  object = require('../../lib/common/object');
 
   prefixes = {
     cli: {
+      ddry: '../../../..',
+      edge: '../../../../edge',
+      npmv: 'ddry'
+    },
+    devCli: {
       ddry: '.',
       edge: './edge',
       npmv: 'ddry'
@@ -24,7 +29,7 @@
     root: {
       ddry: '',
       edge: 'edge/',
-      npmv: process.env.NPM_ROOT + "/ddry/"
+      npmv: "ddry/"
     }
   };
 
@@ -58,11 +63,12 @@
   };
 
   module.exports = function(harness, subject, params) {
-    var context;
+    var cliKey, context;
     context = specContext(harness, subject);
     params = object.merge(params, context);
+    cliKey = typeof process.env.DDRY_DEV === 'undefined' ? 'cli' : 'devCli';
     params.cli = {
-      ddry: prefixes.cli[harness] + "/modular",
+      ddry: prefixes[cliKey][harness] + "/modular",
       prefix: prefixes.relative[harness]
     };
     return params;

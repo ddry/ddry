@@ -1,0 +1,172 @@
+{
+  "title": "ddry by npmv",
+  "matchers": "ddry-selenium-matchers",
+  "initial": {
+    "examples": {
+      "instance": {
+        "folder": {
+          "first": [
+            "first folder title",
+            "first folder message"
+          ],
+          "second": [
+            "second folder title",
+            "second folder message"
+          ]
+        },
+        "first": [
+          "first title",
+          "first message"
+        ],
+        "second": [
+          "second title",
+          "second message"
+        ]
+      }
+    },
+    "index": {
+      "common": [],
+      "withoutInstances": []
+    },
+    "spec": {
+      "context": [
+        {},
+        "ordinal",
+        {
+          "harness": "tape",
+          "instanceNames": {},
+          "matchers": {},
+          "use": false
+        }
+      ]
+    },
+    "spec_helper": [
+      "ddry/",
+      "../",
+      "../../"
+    ]
+  },
+  "use": "examples.selenium",
+  "harness": {
+    "tap": {
+      "except": "examples.selenium"
+    }
+  },
+  "except": [
+    "fs.require_safe_core",
+    "fs.folder",
+    "matchers.get_actual",
+    "modular_wrapper",
+    "spec.runner.index",
+    "test.outputs",
+    "test.tap",
+    "test.tap_spec"
+  ],
+  "code": "lib",
+  "spec": "spec/lib",
+  "helper": {
+    "path": "spec/helper",
+    "initial": [
+      "ddry/",
+      "../",
+      "../../"
+    ]
+  },
+  "outside": {
+    "examples": "spec/examples/code",
+    "index": "index",
+    "modular_wrapper": "modular",
+    "spec_helper": "spec/helper"
+  },
+  "cli": {
+    "ddry": "ddry/modular",
+    "prefix": "../../../../",
+    "config": {
+      "path": "../../spec/cli_config.js",
+      "params": [
+        "nd"
+      ]
+    }
+  },
+  "moduleTitles": {
+    "assertion": {
+      "helpers": "Assertion helpers",
+      "index": "Assertion engine"
+    },
+    "cli": {
+      "commands": "Command line interface commands",
+      "error": "Command line interface error reporter",
+      "helpers": "Command line interface helpers",
+      "index": "Command line interface core"
+    },
+    "code": {
+      "errors": "Code module processing error handling",
+      "index": "Code module processing core",
+      "instance": {
+        "index": "Instance code module processing core",
+        "initial": "Instance code module initial data parsing"
+      },
+      "types": "Code module types processing"
+    },
+    "common": {
+      "clone": "Object cloning facility",
+      "colors": "Console colors",
+      "dotted": "Dotted name parser",
+      "error_report": "Error reporter",
+      "harness": "Harness detector",
+      "object": {
+        "index": "Commonly used object methods",
+        "report": {
+          "index": "Object report core",
+          "methods": "Object report methods"
+        }
+      },
+      "unordered": "Unordered array elements set checker"
+    },
+    "fs": {
+      "folder": "Folder reading wrapper",
+      "folder_core": "Folder reading core",
+      "require_safe": "Safe require wrapper",
+      "require_safe_core": "Safe require core"
+    },
+    "matchers": {
+      "get_actual": "Actual target code runner",
+      "index": "Default matchers set"
+    },
+    "modular": {
+      "attach": "Modular spec attachments processing",
+      "folders": "Modular spec folders processing",
+      "helpers": "Modular spec parsing helpers",
+      "index": "Modular spec parsing core",
+      "options": "Modular spec options parsing",
+      "spec_folder": "Modular spec module spec folder processing"
+    },
+    "spec": {
+      "context": "Method context constructor",
+      "runner": {
+        "code_nodes": "Code nodes parser",
+        "data": "Spec runner assertion data constructor",
+        "detect": "Spec runner syntax type detector",
+        "index": "Spec runner core",
+        "params": "Data-driven spec params parsing"
+      },
+      "syntax": "Data-driven spec syntax parsing"
+    },
+    "test": {
+      "engine": "Test engine interface",
+      "outputs": "Test outputs generator",
+      "tap": "Tap-compatible specs runner",
+      "tap_spec": "Tap-compatible spec constructor"
+    },
+    "examples": {
+      "function_export": "spec/examples/code/function_export",
+      "instance": "spec/examples/code/instance",
+      "numbering": "spec/examples/code/numbering",
+      "properties": "spec/examples/code/properties",
+      "selenium": "spec/examples/code/selenium"
+    },
+    "index": "ddry core",
+    "modular_wrapper": "modular",
+    "spec_helper": "spec/helper"
+  }
+}

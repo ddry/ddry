@@ -11,15 +11,24 @@ folder = require '../fs/folder'
 object = require '../common/object'
 
 module.exports =
+  cliScope: helpers.cliScope
   exit: helpers.exit
+  load: helpers.load
+  save: helpers.save
   setPrefix: helpers.setPrefix
 
   config: ->
-    [ configPath, params... ] = arguments
-    configFunction = require "#{process.env.DDRY_PREFIX}#{configPath}"
+    [ config, configPath, params ]  = helpers.fetchConfig arguments
+    configFunction = require configPath
+    moduleTitles = config.moduleTitles
     config = configFunction.apply configFunction, params
-    config.moduleTitles = helpers.moduleTitles config.code, config
-    helpers.outputConfig 'ddry.json', config
+    config.moduleTitles = moduleTitles or helpers.moduleTitles config
+    config = object.merge config,
+      cli:
+        config:
+          path: configPath
+          params: params
+    helpers.save config
 
   init: (code, spec, title) ->
     code = helpers.stripSlash code
@@ -30,13 +39,12 @@ module.exports =
       title: title or code
       code: code
       spec: spec
-    config.moduleTitles = helpers.moduleTitles code
-    helpers.outputConfig 'ddry.json', config
+    config.moduleTitles = helpers.moduleTitles config
+    helpers.save config
 
-  titles: (code, outside = {}) ->
-    codeModules = folder.read '', code, true
-    titles = helpers.getModuleTitles codeModules
-    moduleTitles = {}
-    for name, title of titles
-      moduleTitles = object.insertKey moduleTitles, name, title
-    moduleTitles
+  titles: ->
+    config = helpers.load()
+    unless typeof config.code is 'string'
+      return error "Code folder definition missing" 
+    config.moduleTitles = helpers.moduleTitles config
+    helpers.save config

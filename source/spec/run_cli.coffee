@@ -3,6 +3,10 @@
 object = require '../lib/common/object'
 
 prefixes =
+  cli:
+    ddry: '.'
+    edge: './edge'
+    npmv: 'ddry'
   harness:
     ddry: '..'
     edge: '../edge'
@@ -14,7 +18,7 @@ prefixes =
   root:
     ddry: ''
     edge: 'edge/'
-    npmv: 'ddry/'
+    npmv: "#{process.env.NPM_ROOT}/ddry/"
 
 prefix = (mode) ->
   "#{prefixes.harness[mode]}/"
@@ -41,6 +45,6 @@ module.exports = (harness, subject, params) ->
   context = specContext harness, subject
   params = object.merge params, context
   params.cli =
-    ddry: "#{prefixes.harness[harness]}/modular"
+    ddry: "#{prefixes.cli[harness]}/modular"
     prefix: prefixes.relative[harness]
   params

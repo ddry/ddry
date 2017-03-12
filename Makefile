@@ -1,21 +1,4 @@
-.PHONY: all ddry edge npmv c- ce- coveralls m- mocha ps server- s- t- te- tap tape test travis
-
-all: ddry edge npmv
-
-ddry: s-de s-dn
-
-edge: s-ed s-en
-
-npmv: s-nd s-ne
-
-server-%:
-	rm -rf edge lib spec
-	@if [ "$*" = "w" ]; then \
-		sh selenium/sh/server; \
-	fi
-
-ps:
-	sh selenium/sh/ps_cleanup
+.PHONY: c- ce- coveralls m- mocha ps server- t- te- tap tape test travis
 
 c-%:
 	make server-$*
@@ -39,17 +22,23 @@ m-%:
 		--no-exit \
 		spec/modes/$*.js \
 		--check-leaks
-	sh selenium/sh/pjs_cleanup
+	selenium/sh/pjs_cleanup
 
 mocha:
 	./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha \
 		--no-exit \
 		spec/ddry.js \
 		--check-leaks
-	sh selenium/sh/pjs_cleanup
+	selenium/sh/pjs_cleanup
 
-s-%:
-	make m-$* te-$* t-$*
+ps:
+	selenium/sh/ps_cleanup
+
+server-%:
+	rm -rf edge lib spec
+	@if [ "$*" = "w" ]; then \
+		selenium/sh/server; \
+	fi
 
 t-%:
 	node_modules/.bin/tap spec/modes/$*.js

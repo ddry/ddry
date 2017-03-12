@@ -42,7 +42,7 @@ module.exports =
     cursor[target] = value
     lo
 
-  match: (hashKey, keys, full = false) ->
+  match: (hashKey, keys, full = false, trigger = false) ->
     hashKeys = @.toArray hashKey
     for hashKey in hashKeys
       match = if full then hashKey else true
@@ -51,6 +51,7 @@ module.exports =
       xPath = []
       for node in hashSplit
         xPath.push node
+        match = xPath.join '.' if trigger
         return match if keys.indexOf(xPath.join '.') isnt -1
     false
 

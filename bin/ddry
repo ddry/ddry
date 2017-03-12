@@ -1,4 +1,5 @@
 #!/bin/bash
+export DDRY_SHELL=1
 if [ "$NPM_ROOT" = "" ]; then \
   export NPM_ROOT=node_modules; \
 fi
@@ -6,6 +7,6 @@ if [ "$DDRY_DEV" = "" ]; then \
   export DDRY_CLI=$NPM_ROOT/ddry/cli.js
   node $NPM_ROOT/ddry/ddry.js "$@"
 else
-  export DDRY_CLI=./cli.js
+  export DDRY_CLI=cli.js
   node ./ddry.js "$@"
 fi

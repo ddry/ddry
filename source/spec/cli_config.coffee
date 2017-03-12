@@ -3,7 +3,15 @@
 run_cli = require './run_cli'
 initial = require './initial'
 
-module.exports = (harness, subject) ->
+expand =
+  d: 'ddry'
+  e: 'edge'
+  n: 'npmv'
+
+module.exports = (short) ->
+  [ shortHarness, shortSubject ] = short
+  harness = expand[shortHarness]
+  subject = expand[shortSubject]
   run_cli harness, subject,
     title: "#{subject} by #{harness}"
     matchers: 'ddry-selenium-matchers'

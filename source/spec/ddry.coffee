@@ -1,4 +1,4 @@
 'use strict'
 
 config = require './config'
-config 'npmv', 'ddry'
+config 'ddry', 'npmv'

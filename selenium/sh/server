@@ -1,3 +1,4 @@
+#!/bin/bash
 cd selenium
-sh sh/ps_cleanup
+sh/ps_cleanup
 brunch w -s &

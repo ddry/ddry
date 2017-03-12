@@ -93,7 +93,9 @@
     }
     if (context) {
       that = this;
-      that.context(context, spec.apply(that.that, data));
+      that.context(context, function() {
+        return spec.apply(that.that, data);
+      });
       return true;
     }
     spec.apply(this.that, data);

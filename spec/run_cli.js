@@ -6,6 +6,11 @@
   object = require('../lib/common/object');
 
   prefixes = {
+    cli: {
+      ddry: '.',
+      edge: './edge',
+      npmv: 'ddry'
+    },
     harness: {
       ddry: '..',
       edge: '../edge',
@@ -19,7 +24,7 @@
     root: {
       ddry: '',
       edge: 'edge/',
-      npmv: 'ddry/'
+      npmv: process.env.NPM_ROOT + "/ddry/"
     }
   };
 
@@ -57,7 +62,7 @@
     context = specContext(harness, subject);
     params = object.merge(params, context);
     params.cli = {
-      ddry: prefixes.harness[harness] + "/modular",
+      ddry: prefixes.cli[harness] + "/modular",
       prefix: prefixes.relative[harness]
     };
     return params;

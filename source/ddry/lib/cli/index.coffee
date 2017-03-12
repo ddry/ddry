@@ -6,7 +6,11 @@
 
 commands = require './commands'
 object = require '../common/object'
-commandNames = [ 'p', 'init', 'titles', 'config', 'add', 'rm' ] 
+commandNames = [ 'c', 'config', 'i', 'init', 't', 'titles', 'add', 'rm' ] 
+
+commands.c = commands.config
+commands.i = commands.init
+commands.t = commands.titles
 
 module.exports = (params) ->
   commands.setPrefix()
@@ -17,3 +21,4 @@ module.exports = (params) ->
     [ commandName, commandParams... ] = params
     commands[commandName].apply commands, commandParams
     return true
+  commands.cliScope params

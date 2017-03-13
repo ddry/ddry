@@ -4,8 +4,13 @@ if [ "$NPM_ROOT" = "" ]; then \
   export NPM_ROOT=node_modules; \
 fi
 if [ "$DDRY_DEV" = "" ]; then \
-  export DDRY_CLI=$NPM_ROOT/ddry/cli.js
-  node $NPM_ROOT/ddry/ddry.js "$@"
+  if [ ! -f "$NPM_ROOT/ddry/ddry.js" ]; then \
+    echo "File $NPM_ROOT/ddry/ddry.js required by this script does not exist. Probably NPM_ROOT misset."; \
+    exit 1;
+  else
+    export DDRY_CLI=$NPM_ROOT/ddry/cli.js
+    node $NPM_ROOT/ddry/ddry.js "$@"
+  fi
 else
   export DDRY_CLI=cli.js
   node ./ddry.js "$@"

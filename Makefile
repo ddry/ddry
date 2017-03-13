@@ -13,14 +13,14 @@ ce-%:
 
 coveralls:
 	./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha \
-	node_modules/ddry/ddry.js --report lcovonly -- -R spec && \
+	ddry.js --report lcovonly -- -R spec && \
 	cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && \
 	rm -rf ./coverage
 
 mocha:
 	./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha \
 		--no-exit \
-		node_modules/ddry/ddry.js \
+		ddry.js \
 		--check-leaks
 	selenium/sh/pjs_cleanup
 
@@ -37,10 +37,10 @@ server-%:
 	fi
 
 tap:
-	node_modules/.bin/tap node_modules/ddry/ddry.js
+	node_modules/.bin/tap ddry.js
 
 tape:
-	tape node_modules/ddry/ddry.js | grep -v 'muteTape' | node_modules/.bin/tap-spec
+	tape ddry.js | grep -v 'muteTape' | node_modules/.bin/tap-spec
 
 test: mocha tape tap
 

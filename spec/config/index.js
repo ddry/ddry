@@ -15,6 +15,9 @@
 
   module.exports = function(short) {
     var harness, shortHarness, shortSubject, subject;
+    if (short == null) {
+      short = 'nd';
+    }
     shortHarness = short[0], shortSubject = short[1];
     harness = expand[shortHarness];
     subject = expand[shortSubject];
@@ -22,7 +25,7 @@
       title: subject + " by " + harness,
       matchers: 'ddry-selenium-matchers',
       initial: initial,
-      use: 'examples.selenium',
+      use: ['examples.selenium'],
       harness: {
         tap: {
           except: 'examples.selenium'

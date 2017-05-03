@@ -7,9 +7,10 @@
 report = require './report'
 
 module.exports = 
-  report: report.create
-  format: report.format
   extend: report.extend
+  format: report.format
+  isObject: report.isObject
+  report: report.create
 
   construct: (constructor, args) ->
     F = ->
@@ -36,7 +37,7 @@ module.exports =
       value = @.toArray value
       cursor[target] = node.concat value
       return lo
-    if node and typeof node is 'object'
+    if @.isObject(node) and @.isObject value
       node = @.extend node, value
       return lo
     cursor[target] = value

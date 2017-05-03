@@ -4,21 +4,21 @@
 
 'use strict'
 
-commands = require './commands'
-object = require '../common/object'
-commandNames = [ 'c', 'config', 'i', 'init', 't', 'titles', 'add', 'rm' ] 
-
-commands.c = commands.config
-commands.i = commands.init
-commands.t = commands.titles
+commandList = require './command_list'
+kernel = require './kernel'
 
 module.exports = (params) ->
-  commands.setPrefix()
-  unless params.length
-    commands.exit()
-    return true
-  if object.match params[0], commandNames
-    [ commandName, commandParams... ] = params
-    commands[commandName].apply commands, commandParams
-    return true
-  commands.cliScope params
+  try
+    kernel.setPrefix()
+    unless params.length
+      kernel.exit()
+      return true
+    [ command, commandParams... ] = params
+    command = commandList.aliases[command] or command
+    if commandList.names.indexOf(command) isnt -1
+      kernel.process command, commandParams
+      return true
+    kernel.cliScope params
+  catch e
+    console.log e.message
+    throw new Error

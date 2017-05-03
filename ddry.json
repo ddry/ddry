@@ -46,7 +46,9 @@
       "../../"
     ]
   },
-  "use": "examples.selenium",
+  "use": [
+    "examples.selenium"
+  ],
   "harness": {
     "tap": {
       "except": "examples.selenium"
@@ -96,11 +98,16 @@
       "index": "Assertion engine"
     },
     "cli": {
+      "command_list": "lib/cli/command_list",
       "commands": "Command line interface commands",
-      "error": "Command line interface error reporter",
+      "constraints": "lib/cli/constraints",
       "helpers": "Command line interface helpers",
       "index": "Command line interface core",
-      "scope": "lib/cli/scope"
+      "io": "lib/cli/io",
+      "kernel": "lib/cli/kernel",
+      "log": "Command line interface logger",
+      "scope": "lib/cli/scope",
+      "usage": "lib/cli/usage"
     },
     "code": {
       "errors": "Code module processing error handling",

@@ -7,8 +7,10 @@
 methods = require './methods'
 
 module.exports =
-  format: methods.format
+  clarify: methods.clarify
   extend: methods.extend
+  format: methods.format
+  isObject: methods.isObject
 
   create: (value, hash = false) ->
     return methods.format value unless methods.validObject value

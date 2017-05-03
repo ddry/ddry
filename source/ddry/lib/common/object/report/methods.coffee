@@ -6,7 +6,13 @@
 
 Clone = require '../../clone'
 
-module.exports = 
+module.exports =
+  clarify: (node, property) ->
+    return property unless Array.isArray node
+    indices = Object.keys node
+    return property unless indices.indexOf(property) isnt -1
+    node.indexOf property
+
   containsObjects: (value) ->
     return false unless Array.isArray value
     for element in value
@@ -22,6 +28,12 @@ module.exports =
         report.push @.reportValue(value, baseKey.concat([key]).join('.'), raw)
     report
 
+  extend: (lo, hi, clone = false) ->
+    for key, value of hi
+      lo[key] = value
+    return lo unless clone
+    new Clone lo
+
   format: (value) ->
     if typeof value is 'function'
       definition = "#{value}".replace(/ /g, '')
@@ -29,11 +41,8 @@ module.exports =
     return value if Array.isArray value
     "#{value}"
 
-  extend: (lo, hi, clone = false) ->
-    for key, value of hi
-      lo[key] = value
-    return lo unless clone
-    new Clone lo
+  isObject: (value) ->
+    value and typeof value is 'object'
 
   reportValue: (value, key, raw) ->
     return "#{key}: #{@.format value}" unless raw
@@ -41,7 +50,7 @@ module.exports =
       "#{key}": value
 
   validObject: (value) ->
-    return false unless value and typeof value is 'object'
+    return false unless @.isObject value
     if Array.isArray value
       return false unless @.containsObjects value
     return false unless Object.keys(value).length

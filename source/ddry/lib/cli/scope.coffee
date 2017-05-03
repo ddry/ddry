@@ -46,17 +46,6 @@ module.exports =
       key: mode
       value: [ detect ]
 
-  oe: (params) ->
-    onlyIndex = params.indexOf '-o'
-    exceptIndex = params.indexOf '-e'
-    oneMode = params.slice 1
-    return only: oneMode if exceptIndex is -1
-    return except: oneMode if onlyIndex is -1
-    oe = onlyIndex < exceptIndex
-    _ =
-      only: if oe then params.slice onlyIndex + 1, exceptIndex else params.slice onlyIndex + 1
-      except: if oe then params.slice exceptIndex + 1 else params.slice exceptIndex + 1, onlyIndex
-
   method: ->
     return false unless @.specPath.test @.item
     method = @.item.replace @.specPath, ''

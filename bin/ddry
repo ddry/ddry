@@ -9,9 +9,9 @@ if [ "$DDRY_DEV" = "" ]; then \
     exit 1;
   else
     export DDRY_CLI=$NPM_ROOT/ddry/cli.js
-    node $NPM_ROOT/ddry/ddry.js "$@"
+    node $NPM_ROOT/ddry/ddry.js "$@" 2> /dev/null
   fi
 else
   export DDRY_CLI=cli.js
-  node ./ddry.js "$@"
+  node ./ddry.js "$@" 2> /dev/null
 fi

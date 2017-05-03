@@ -8,7 +8,7 @@ expand =
   e: 'edge'
   n: 'npmv'
 
-module.exports = (short) ->
+module.exports = (short = 'nd') ->
   [ shortHarness, shortSubject ] = short
   harness = expand[shortHarness]
   subject = expand[shortSubject]
@@ -16,7 +16,7 @@ module.exports = (short) ->
     title: "#{subject} by #{harness}"
     matchers: 'ddry-selenium-matchers'
     initial: initial
-    use: 'examples.selenium'
+    use: [ 'examples.selenium' ]
     harness:
       tap:
         except: 'examples.selenium'

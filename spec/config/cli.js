@@ -9,12 +9,12 @@
     cli: {
       ddry: '../../../..',
       edge: '../../../../edge',
-      npmv: 'ddry'
+      npmv: "ddry"
     },
     devCli: {
-      ddry: '.',
-      edge: './edge',
-      npmv: 'ddry'
+      ddry: '../..',
+      edge: '../../edge',
+      npmv: "ddry"
     },
     harness: {
       ddry: '..',
@@ -30,6 +30,11 @@
       ddry: '',
       edge: 'edge/',
       npmv: "ddry/"
+    },
+    outsideRoot: {
+      ddry: '',
+      edge: 'edge/',
+      npmv: process.env.NPM_ROOT + "/ddry/"
     }
   };
 
@@ -52,8 +57,8 @@
       },
       outside: {
         examples: "spec/examples/code",
-        index: prefixes.root[subject] + "index",
-        modular_wrapper: prefixes.root[subject] + "modular",
+        index: prefixes.outsideRoot[subject] + "index",
+        modular_wrapper: prefixes.outsideRoot[subject] + "modular",
         spec_helper: 'spec/helper'
       },
       initial: {

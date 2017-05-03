@@ -29,6 +29,15 @@ module.exports =
       actual: unordered.compare(actual, expected).extra
       expected: []
 
+  error: (spec, specSet) ->
+    try
+      actual = getActual spec, specSet
+    catch e
+      actual = e.message
+    _ =
+      actual: actual
+      expected: spec.expected
+
   plain: (spec, specSet) ->
     _ =
       actual: spec.input

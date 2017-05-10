@@ -3,6 +3,9 @@
 ###
 
 module.exports =
+  ddry: ->
+    "#{@.green 'dd'}#{@.blue 'ry'}"
+
   blue: (string) ->
     "\x1b[34m#{string}\x1b[0m"
 

@@ -1,10 +1,10 @@
 'use strict'
 
 cli = require './lib/cli'
-helpers = require './lib/cli/helpers'
+configurer = require './lib/cli/configurer'
 
 [ shell, node, params... ] = process.argv
 if typeof process.env.DDRY_CLI is 'undefined'
-  helpers.serveSpec()
+  configurer.serveSpec()
 else
   cli params

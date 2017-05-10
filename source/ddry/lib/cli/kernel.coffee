@@ -6,9 +6,12 @@ constraints = require './constraints'
 log = require './log'
 io = require './io'
 object = require '../common/object'
+titles = require './titles'
 
-noGetCommands = [ 'init', 'config' ]
-noSetCommands = [ 'usage' ]
+groups =
+  noGet: [ 'init', 'config' ]
+  noSet: [ 'usage' ]
+  titles: [ 'init', 'config', 'titles' ]
 
 module.exports =
   cliScope: (params) ->
@@ -18,8 +21,14 @@ module.exports =
     io.save cli, true
 
   getConfig: (command) ->
-    return {} if noGetCommands.indexOf(command) isnt -1
+    return {} if groups.noGet.indexOf(command) isnt -1
     io.load()
+
+  getTitles: (config, command) ->
+    return config unless groups.titles.indexOf(command) isnt -1
+    log.error 'codeFolderUndefined' unless typeof config.code is 'string'
+    config.moduleTitles = titles.get config
+    config
 
   exit: ->
     if io.configPresent()
@@ -37,7 +46,8 @@ module.exports =
 
   setConfig: (command, params) ->
     config = commands[command].apply(commands, params)
-    return true if noSetCommands.indexOf(command) isnt -1
+    config = @.getTitles config, command
+    return true if groups.noSet.indexOf(command) isnt -1
     io.save config
 
   setPrefix: ->

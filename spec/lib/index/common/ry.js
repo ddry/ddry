@@ -2,7 +2,7 @@
 (function() {
   'use strict';
   module.exports = function(dd) {
-    var MethodContext, code, data, objectContext, spec;
+    var MethodContext, code, objectContext;
     MethodContext = dd.helper.methodContext;
     objectContext = {
       context: 'Some context',
@@ -25,20 +25,10 @@
         e: true
       });
     });
-    data = [1];
-    spec = function(data) {
-      return dd.drive([
-        {
-          it: 'does smth',
-          i: data,
-          e: '1st'
-        }
-      ]);
-    };
     return dd.context('If context is given as string', function() {
       return dd.drive({
         it: 'runs given spec with given data inside ddry context',
-        i: ['Some context', data, spec],
+        i: ['Some context', [1], dd.helper.f],
         e: true
       });
     });

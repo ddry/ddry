@@ -56,7 +56,6 @@
   },
   "except": [
     "cli",
-    "common.colors",
     "fs.require_safe_core",
     "fs.folder",
     "matchers.get_actual",
@@ -87,9 +86,7 @@
     "prefix": "../../../../",
     "config": {
       "path": "../../spec/config/",
-      "params": [
-        "nd"
-      ]
+      "params": []
     }
   },
   "moduleTitles": {
@@ -100,13 +97,14 @@
     "cli": {
       "command_list": "lib/cli/command_list",
       "commands": "Command line interface commands",
+      "configurer": "Command line interface helpers",
       "constraints": "lib/cli/constraints",
-      "helpers": "Command line interface helpers",
       "index": "Command line interface core",
       "io": "lib/cli/io",
       "kernel": "lib/cli/kernel",
       "log": "Command line interface logger",
       "scope": "lib/cli/scope",
+      "titles": "Command line interface titles parser",
       "usage": "lib/cli/usage"
     },
     "code": {

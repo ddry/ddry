@@ -29,3 +29,20 @@ module.exports = (dd) ->
     i: [ code, 'deep.deep.deep.inside.once' ]
     e: code.deep.deep.deep.inside.once
   ]
+  object =
+    some:
+      deep:
+        name: 'name'
+  dd.drive [
+    it: 'returns the object and top level key if requested'
+    i: [ object, 'some', true, true ]
+    e: [ object, 'some', [] ]
+  ,
+    it: 'returns the object node and the following key if requested'
+    i: [ object, 'some.deep', true, true ]
+    e: [ object.some, 'deep', [ 'some' ] ]
+  ,
+    it: 'and goes this way even deeper'
+    i: [ object, 'some.deep.name', true, true ]
+    e: [ object.some.deep, 'name', [ 'some', 'deep' ] ]
+  ]

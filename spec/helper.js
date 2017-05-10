@@ -63,6 +63,14 @@
     return 2;
   };
 
+  SpecHelper.prototype.same = function(input) {
+    return input;
+  };
+
+  SpecHelper.prototype.oops = function() {
+    throw new Error('oops!');
+  };
+
   SpecHelper.prototype.message = function(i, e) {
     return "returns " + e + " for " + i;
   };

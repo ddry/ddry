@@ -42,6 +42,10 @@ SpecHelper.prototype.f = -> 1
 
 SpecHelper.prototype.ff = -> 2
 
+SpecHelper.prototype.same = (input) -> input
+
+SpecHelper.prototype.oops = -> throw new Error 'oops!'
+
 SpecHelper.prototype.message = (i, e) ->
   "returns #{e} for #{i}"
 

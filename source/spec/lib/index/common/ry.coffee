@@ -21,15 +21,8 @@ module.exports = (dd) ->
       i: [ objectContext ]
       e: true
 
-  data = [ 1 ]
-  spec = (data) ->
-    dd.drive [
-      it: 'does smth'
-      i: data
-      e: '1st'
-    ]
   dd.context 'If context is given as string', ->
     dd.drive
       it: 'runs given spec with given data inside ddry context'
-      i: [ 'Some context', data, spec ]
+      i: [ 'Some context', [ 1 ], dd.helper.f ]
       e: true

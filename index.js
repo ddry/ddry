@@ -93,9 +93,7 @@
     }
     if (context) {
       that = this;
-      that.context(context, function() {
-        return spec.apply(that.that, data);
-      });
+      that.context(context, modular.applyContext(that, spec, data));
       return true;
     }
     spec.apply(this.that, data);

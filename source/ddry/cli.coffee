@@ -1,7 +1,7 @@
 'use strict'
 
-helpers = require './lib/cli/helpers'
+configurer = require './lib/cli/configurer'
 
 console.log "ddry command line interface"
-cli = helpers.load true
-helpers.serveSpec cli.constraints
+cli = configurer.load true
+configurer.serveSpec cli.constraints

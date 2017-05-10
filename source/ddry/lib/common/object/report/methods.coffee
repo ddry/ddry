@@ -7,12 +7,6 @@
 Clone = require '../../clone'
 
 module.exports =
-  clarify: (node, property) ->
-    return property unless Array.isArray node
-    indices = Object.keys node
-    return property unless indices.indexOf(property) isnt -1
-    node.indexOf property
-
   containsObjects: (value) ->
     return false unless Array.isArray value
     for element in value

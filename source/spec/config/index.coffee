@@ -22,7 +22,6 @@ module.exports = (short = 'nd') ->
         except: 'examples.selenium'
     except: [
       'cli'
-      'common.colors'
       'fs.require_safe_core'
       'fs.folder'
       'matchers.get_actual'

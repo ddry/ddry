@@ -11,7 +11,7 @@ blank =
 commandList = require './command_list'
 constraints = require './constraints'
 dotted = require '../common/dotted'
-helpers = require './helpers'
+configurer = require './configurer'
 folder = require '../fs/folder'
 log = require './log'
 object = require '../common/object'
@@ -29,13 +29,12 @@ module.exports =
 
   config: ->
     [ _, configParams... ] = arguments
-    [ config, configurerPath, params ] = helpers.fetchConfigurer configParams
-    configurer = require configurerPath
-    config = configurer.apply configurer, params
+    [ config, configurerPath, params ] = configurer.fetch configParams
+    configurerModule = require configurerPath
+    config = configurerModule.apply configurerModule, params
     log.info 'configured',
       path: configurerPath
       params: params
-    config.moduleTitles = helpers.moduleTitles config
     object.merge config,
       cli:
         config:
@@ -43,15 +42,14 @@ module.exports =
           params: params
 
   init: (config, code, spec, title) ->
-    code = helpers.stripSlash code
+    code = configurer.stripSlash code
     unless folder.isFolder code
       return log.error 'noCodeFolder', code 
-    spec = helpers.stripSlash spec
+    spec = configurer.stripSlash spec
     config =
       title: title or code
       code: code
       spec: spec
-    config.moduleTitles = helpers.moduleTitles config
     config
 
   remove: (config, key, value) ->
@@ -89,7 +87,4 @@ module.exports =
     log.error 'usage', command, true
 
   titles: (config) ->
-    unless typeof config.code is 'string'
-      return log.error 'codeFolderUndefined'
-    config.moduleTitles = helpers.moduleTitles config
     config

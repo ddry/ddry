@@ -66,7 +66,7 @@ DataDriven.prototype.ry = (context, data, spec) ->
     return true
   if context
     that = @
-    that.context context, -> spec.apply that.that, data
+    that.context context, modular.applyContext that, spec, data
     return true
   spec.apply @.that, data
   true

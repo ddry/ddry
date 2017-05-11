@@ -10,6 +10,7 @@
         i: [['spec/examples/code/numbering', 'spec/examples/code/properties', 'spec/examples/numbering_rewrite']],
         e: {
           ordinal: numberingRewrite.ordinal,
+          range: dd.helper.examples.numbering.range,
           query: dd.helper.examples.numbering.query,
           selector: numberingRewrite.selector,
           repeatFewTimes: dd.helper.examples.properties.repeatFewTimes,

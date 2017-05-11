@@ -22,6 +22,7 @@ module.exports = (dd) ->
       plain: ddry.matchers.plain
       property: ddry.matchers.property
       ordinal: dd.helper.examples.numbering.ordinal
+      range: dd.helper.examples.numbering.range
       query: dd.helper.examples.numbering.query
       selector: dd.helper.examples.numbering.selector
   ]

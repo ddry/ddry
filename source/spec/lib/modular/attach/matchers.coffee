@@ -11,6 +11,7 @@ module.exports = (dd) ->
     ] ]
     e:
       ordinal: numberingRewrite.ordinal
+      range: dd.helper.examples.numbering.range
       query: dd.helper.examples.numbering.query
       selector: numberingRewrite.selector
       repeatFewTimes: dd.helper.examples.properties.repeatFewTimes

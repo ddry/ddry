@@ -7,13 +7,20 @@
       index = ~~(n / 10 % 10) - 1 ? n % 10 : 0;
       return n + ([false, 'st', 'nd', 'rd'][index] || 'th');
     },
+    range: function(from, to) {
+      var cursor, i, j, len, range, ref;
+      range = [];
+      cursor = from;
+      ref = Array(to - from + 1);
+      for (j = 0, len = ref.length; j < len; j++) {
+        i = ref[j];
+        range.push(cursor);
+        cursor += 1;
+      }
+      return range;
+    },
     query: function(limit) {
-      var i, results;
-      return (function() {
-        results = [];
-        for (var i = 1; 1 <= limit ? i <= limit : i >= limit; 1 <= limit ? i++ : i--){ results.push(i); }
-        return results;
-      }).apply(this).map(function(number) {
+      return this.range(1, limit).map(function(number) {
         return "key" + number + "=value" + number;
       }).join('&');
     },

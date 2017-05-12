@@ -5,10 +5,13 @@
 'use strict'
 
 commandList = require './command_list'
+configurer = require './configurer'
 kernel = require './kernel'
 
 module.exports = (params) ->
   try
+    if typeof process.env.DDRY_CLI is 'undefined'
+      return configurer.serveSpec()
     kernel.setPrefix()
     unless params.length
       kernel.exit()

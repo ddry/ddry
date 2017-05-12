@@ -4,6 +4,9 @@
   module.exports = function(dd) {
     return dd.drive([
       {
+        before: function() {
+          return process.env.DDRY_CLI = 'cli.js';
+        },
         it: 'runs unscoped suite if no params given',
         i: [[]],
         e: true
@@ -25,7 +28,10 @@
         matcher: 'error',
         it: 'block stderr output and delegates it to own logger',
         i: ['e'],
-        e: ''
+        e: '',
+        after: function() {
+          return delete process.env.DDRY_CLI;
+        }
       }
     ]);
   };

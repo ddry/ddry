@@ -4,6 +4,9 @@
   module.exports = function(dd) {
     return dd.drive([
       {
+        before: function() {
+          return process.env.DDRY_CLI = 'cli.js';
+        },
         it: 'adds scope to config file',
         i: [{}, '-o', 'spec/examples/code/', '-e', 'spec/lib/examples/selenium', 'spec/lib/examples/properties/wrapIt.js'],
         e: {
@@ -16,6 +19,9 @@
               }
             }
           }
+        },
+        after: function() {
+          return delete process.env.DDRY_CLI;
         }
       }
     ]);

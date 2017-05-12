@@ -5,6 +5,7 @@
 'use strict'
 
 detect = require './detect'
+range = require '../../common/range'
 sequenceSyntax = require '../syntax'
 
 module.exports =
@@ -21,6 +22,6 @@ module.exports =
     from = specSequence.from ? 1
     specSequence.from = from
     till = from + specSequence.data.length - 1
-    for specIndex in [from..till]
+    for specIndex in range from, till
       sequence.push sequenceSyntax.parse specSequence, specIndex, specParams
     sequence

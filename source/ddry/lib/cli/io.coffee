@@ -11,6 +11,7 @@ module.exports =
 
   load: (commandLine = false) ->
     filename = if commandLine then "#{process.env.DDRY_CLI}on" else 'ddry.json'
+    console.log filename
     try
       config = fs.readFileSync path.join(filename), 'utf-8'
       config = JSON.parse config

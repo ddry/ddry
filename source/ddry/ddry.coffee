@@ -2,5 +2,8 @@
 
 cli = require './lib/cli'
 
-[ shell, node, params... ] = process.argv
+params = process.argv.slice 0
+shell = params.shift()
+node = params.shift()
+
 cli params

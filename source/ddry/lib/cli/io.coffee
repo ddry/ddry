@@ -21,9 +21,6 @@ module.exports =
   readFile: (filePath) ->
     fs.readFileSync path.join("#{filePath}.js"), 'utf-8'
 
-  remove: (filePath) ->
-    fs.unlinkSync path.join(filePath)
-
   save: (configObject, commandLine = false) ->
     filename = if commandLine then "#{process.env.DDRY_CLI}on" else 'ddry.json'
     json = JSON.stringify configObject, null, 2

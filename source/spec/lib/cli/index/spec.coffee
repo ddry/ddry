@@ -22,6 +22,4 @@ module.exports = (dd) ->
     it: 'block stderr output and delegates it to own logger'
     i: [ 'e' ]
     e: ''
-    after: ->
-      dd.helper.io.remove 'undefinedon'
   ]

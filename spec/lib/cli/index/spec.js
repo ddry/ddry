@@ -25,10 +25,7 @@
         matcher: 'error',
         it: 'block stderr output and delegates it to own logger',
         i: ['e'],
-        e: '',
-        after: function() {
-          return dd.helper.io.remove('undefinedon');
-        }
+        e: ''
       }
     ]);
   };

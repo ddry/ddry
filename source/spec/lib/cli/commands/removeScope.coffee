@@ -10,8 +10,6 @@ module.exports = (dd) ->
           except: [ 'wrapIt' ]
 
   dd.drive [
-    before: ->
-      process.env.DDRY_CLI = 'cli.js'
     it: 'removes scope from config file'
     i: [ config, '-o', 'spec/examples/code/', '-e', 'spec/lib/examples/selenium', 'spec/lib/examples/properties/wrapIt.js' ]
     e:
@@ -21,6 +19,4 @@ module.exports = (dd) ->
         examples:
           properties:
             except: []
-    after: ->
-      delete process.env.DDRY_CLI
   ]

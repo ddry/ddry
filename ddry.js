@@ -11,6 +11,7 @@
   ref = process.argv, shell = ref[0], node = ref[1], params = 3 <= ref.length ? slice.call(ref, 2) : [];
 
   if (typeof process.env.DDRY_CLI === 'undefined') {
+    process.env.DDRY_CLI = 'cli.js';
     configurer.serveSpec();
   } else {
     cli(params);

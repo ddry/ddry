@@ -12,7 +12,7 @@ module.exports =
   load: io.load
 
   explainOmitting: (config, givenConfigurerPath) ->
-    return if @.stored(config) and typeof config.cli.config.path is 'string'
+    return true if @.stored(config) and typeof config.cli.config.path is 'string'
     if typeof givenConfigurerPath is 'string'
       log.error 'configurerMissing', givenConfigurerPath
     log.error 'configurerUndefined'
@@ -38,7 +38,7 @@ module.exports =
       configurer = false
     configurer
 
-  serveSpec: (constraints) ->
+  serveSpec: (constraints, preventLoop = false) ->
     config = io.load()
 
     modular = config.cli.ddry or 'ddry/modular'
@@ -52,7 +52,8 @@ module.exports =
       config = object.merge savedConfig, loadedConfig
     if constraints and typeof constraints is 'object'
       config = object.merge config, constraints
-    spec.apply config
+    spec.apply config unless preventLoop
+    true
 
   stored: (config) ->
     return false unless config.cli and typeof config.cli is 'object'

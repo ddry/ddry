@@ -19,6 +19,7 @@ module.exports = (params) ->
       kernel.process command, commandParams
       return true
     kernel.cliScope params
+    true
   catch e
     console.log e.message
     throw new Error

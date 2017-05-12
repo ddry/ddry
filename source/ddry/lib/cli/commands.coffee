@@ -24,8 +24,8 @@ module.exports =
   addScope: ->
     [ config, params... ] = arguments
     scope = constraints.oe params
-    constraints = constraints.render scope
-    object.merge config, constraints
+    scope = constraints.render scope
+    object.merge config, scope
 
   config: ->
     [ _, configParams... ] = arguments
@@ -40,6 +40,9 @@ module.exports =
         config:
           path: configurerPath
           params: params
+
+  e: ->
+    log.error 'empty', null, true
 
   init: (config, code, spec, title) ->
     code = configurer.stripSlash code
@@ -73,9 +76,9 @@ module.exports =
   removeScope: ->
     [ config, params... ] = arguments
     scope = constraints.oe params
-    constraints = constraints.render scope
-    constraints = object.report constraints, true
-    for constraint, subjects of constraints
+    scope = constraints.render scope
+    scope = object.report scope, true
+    for constraint, subjects of scope
       subjects = object.toArray subjects
       for subject in subjects
         config = @.remove config, constraint, subject

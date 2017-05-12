@@ -12,6 +12,8 @@
     this.requireSafe = require(subject + "lib/fs/require_safe");
     object = require(subject + "lib/common/object");
     object.extend(this, object);
+    this.c = require(subject + "lib/common/colors");
+    this.io = require(subject + "lib/cli/io");
     if (this.forMocha()) {
       this.tapeRunner = require(subject + "lib/test/tap");
       tape = require('tape');
@@ -63,16 +65,16 @@
     return 2;
   };
 
-  SpecHelper.prototype.same = function(input) {
-    return input;
+  SpecHelper.prototype.message = function(i, e) {
+    return "returns " + e + " for " + i;
   };
 
   SpecHelper.prototype.oops = function() {
     throw new Error('oops!');
   };
 
-  SpecHelper.prototype.message = function(i, e) {
-    return "returns " + e + " for " + i;
+  SpecHelper.prototype.same = function(input) {
+    return input;
   };
 
   module.exports = SpecHelper;

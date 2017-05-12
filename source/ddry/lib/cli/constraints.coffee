@@ -21,14 +21,11 @@ module.exports =
     modulePaths = cli.modulePaths
     methodPaths = object.toArray modulePaths
     config = io.load()
-    config =
-      code: config.code
-      spec: config.spec
     specPath = new RegExp "^#{config.spec}/"
     constraints = {}
     for mode, items of oe
       for item in items
-        detect = scope.detect item, config, modulePaths, methodPaths, specPath
+        detect = scope.detect item, modulePaths, methodPaths, specPath
         if detect
           constraint = scope.key mode, detect
           object.insertKey constraints, constraint.key, constraint.value

@@ -9,9 +9,8 @@ module.exports =
       return name if codeModule is path
     false
 
-  detect: (item, config, modulePaths, methodPaths, specPath) ->
+  detect: (item, modulePaths, methodPaths, specPath) ->
     @.item = item
-    @.config = config
     @.modulePaths = modulePaths
     @.methodPaths = methodPaths
     @.specPath = specPath
@@ -26,7 +25,8 @@ module.exports =
   folder: ->
     if @.specPath.test @.item
       folder = @.item.replace @.specPath, ''
-      return folder.replace /\/$/, ''
+      folder = folder.replace /\/$/, ''
+      return folder.split('/').join '.'
     outside = new RegExp "^#{@.item}"
     for name, path of @.modulePaths
       if outside.test path

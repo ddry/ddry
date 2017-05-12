@@ -8,6 +8,8 @@ SpecHelper = (harness, subject, relative) ->
   @.requireSafe = require "#{subject}lib/fs/require_safe"
   object = require "#{subject}lib/common/object"
   object.extend @, object
+  @.c = require "#{subject}lib/common/colors"
+  @.io = require "#{subject}lib/cli/io"
 
   if @.forMocha()
     @.tapeRunner = require "#{subject}lib/test/tap"
@@ -42,11 +44,11 @@ SpecHelper.prototype.f = -> 1
 
 SpecHelper.prototype.ff = -> 2
 
-SpecHelper.prototype.same = (input) -> input
+SpecHelper.prototype.message = (i, e) ->
+  "returns #{e} for #{i}"
 
 SpecHelper.prototype.oops = -> throw new Error 'oops!'
 
-SpecHelper.prototype.message = (i, e) ->
-  "returns #{e} for #{i}"
+SpecHelper.prototype.same = (input) -> input
 
 module.exports = SpecHelper

@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports =
-  names: [ 'add', 'addScope', 'config', 'init', 'usage', 'remove', 'removeScope', 'titles' ]
+  names: [ 'add', 'addScope', 'config', 'e', 'init', 'usage', 'remove', 'removeScope', 'titles' ]
   aliases:
     a: 'add'
     c: 'config'

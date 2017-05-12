@@ -19,6 +19,7 @@ module.exports =
     cli = io.load true
     cli.constraints = constraints.render scope
     io.save cli, true
+    true
 
   getConfig: (command) ->
     return {} if groups.noGet.indexOf(command) isnt -1
@@ -30,8 +31,9 @@ module.exports =
     config.moduleTitles = titles.get config
     config
 
-  exit: ->
-    if io.configPresent()
+  exit: (mockNoConfig = false) ->
+    configPresent = if mockNoConfig then false else io.configPresent()
+    if configPresent
       log.info 'unscoped'
       cli = io.load true
       delete cli.constraints
@@ -47,11 +49,13 @@ module.exports =
   setConfig: (command, params) ->
     config = commands[command].apply(commands, params)
     config = @.getTitles config, command
-    return true if groups.noSet.indexOf(command) isnt -1
-    io.save config
+    unless groups.noSet.indexOf(command) isnt -1
+      io.save config
+      true
 
-  setPrefix: ->
-    if typeof process.env.DDRY_DEV is 'string'
+  setPrefix: (mockNotDev = false) ->
+    dev = if mockNotDev then false else typeof process.env.DDRY_DEV is 'string'
+    if dev
       process.env.DDRY_PREFIX = '../../'
       return true
     npmRoot = process.env.NPM_ROOT.replace process.env.PWD, ''

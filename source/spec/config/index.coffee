@@ -21,7 +21,8 @@ module.exports = (short = 'nd') ->
       tap:
         except: 'examples.selenium'
     except: [
-      'cli'
+      'cli.command_list'
+      'cli.usage'
       'fs.require_safe_core'
       'fs.folder'
       'matchers.get_actual'

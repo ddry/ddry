@@ -31,7 +31,7 @@
           except: 'examples.selenium'
         }
       },
-      except: ['cli', 'fs.require_safe_core', 'fs.folder', 'matchers.get_actual', 'modular_wrapper', 'spec.runner.index', 'test.outputs', 'test.tap', 'test.tap_spec']
+      except: ['cli.command_list', 'cli.usage', 'fs.require_safe_core', 'fs.folder', 'matchers.get_actual', 'modular_wrapper', 'spec.runner.index', 'test.outputs', 'test.tap', 'test.tap_spec']
     });
   };
 

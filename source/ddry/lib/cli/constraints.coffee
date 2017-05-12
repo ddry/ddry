@@ -18,6 +18,7 @@ module.exports =
 
   render: (oe) ->
     cli = io.load true
+    console.log cli
     modulePaths = cli.modulePaths
     methodPaths = object.toArray modulePaths
     config = io.load()

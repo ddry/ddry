@@ -15,8 +15,10 @@ module.exports =
     try
       config = fs.readFileSync path.join(filename), 'utf-8'
       config = JSON.parse config
+      console.log config
     catch e
       config = {}
+      console.log 'Why?'
     config
 
   readFile: (filePath) ->

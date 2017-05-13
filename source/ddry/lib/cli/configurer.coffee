@@ -43,12 +43,19 @@ module.exports =
       configurer = false
     configurer
 
+  fetchPrefix: (config) ->
+    return false unless object.isObject config
+    return false unless object.isObject config.cli
+    return false unless typeof config.cli.prefix is 'string'
+    config.cli.prefix
+
   serveSpec: (constraints, preventLoop = false) ->
     config = io.load()
 
     modular = @.fetchModular config
     spec = require(modular)()
-    spec.setPrefix config.cli.prefix if config.cli.prefix
+    prefix = @.fetchPrefix config
+    spec.setPrefix prefix if prefix
 
     if @.stored config
       savedConfig = config
@@ -61,8 +68,8 @@ module.exports =
     true
 
   stored: (config) ->
-    return false unless config.cli and typeof config.cli is 'object'
-    return false unless config.cli.config and typeof config.cli.config is 'object'
+    return false unless object.isObject config.cli
+    return false unless object.isObject config.cli.config
     true
 
   stripSlash: (dirName) ->

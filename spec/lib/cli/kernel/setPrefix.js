@@ -8,11 +8,11 @@
           dd.ddryPrefix = process.env.DDRY_PREFIX;
           return process.env.NPM_ROOT = 'node_modules';
         },
-        it: 'sets relative prefix for development environment',
+        it: 'sets relative prefix for actual environment',
         i: [],
         e: true
       }, {
-        it: 'sets relative prefix for not development environments',
+        it: 'sets relative prefix for mocked another environments',
         i: [true],
         e: true,
         after: function() {

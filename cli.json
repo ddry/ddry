@@ -26,6 +26,7 @@
     "common.object.index": "lib/common/object/index",
     "common.object.report.index": "lib/common/object/report/index",
     "common.object.report.methods": "lib/common/object/report/methods",
+    "common.range": "lib/common/range",
     "common.unordered": "lib/common/unordered",
     "fs.folder": "lib/fs/folder",
     "fs.folder_core": "lib/fs/folder_core",

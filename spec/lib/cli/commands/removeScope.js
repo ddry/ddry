@@ -16,9 +16,6 @@
     };
     return dd.drive([
       {
-        before: function() {
-          return process.env.DDRY_CLI = 'cli.js';
-        },
         it: 'removes scope from config file',
         i: [config, '-o', 'spec/examples/code/', '-e', 'spec/lib/examples/selenium', 'spec/lib/examples/properties/wrapIt.js'],
         e: {
@@ -31,9 +28,6 @@
               }
             }
           }
-        },
-        after: function() {
-          return delete process.env.DDRY_CLI;
         }
       }
     ]);

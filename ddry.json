@@ -130,6 +130,7 @@
           "methods": "Object report methods"
         }
       },
+      "range": "lib/common/range",
       "unordered": "Unordered array elements set checker"
     },
     "fs": {

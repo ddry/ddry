@@ -4,6 +4,10 @@
   module.exports = function(dd) {
     return dd.drive([
       {
+        before: function() {
+          process.env.MUTE_CONSOLE = 'true';
+          return process.env.DDRY_CLI = dd.helper.setCli(process.env.DDRY_DEV, process.env.NPM_ROOT);
+        },
         it: 'returns assertion unchanged if both sides are values',
         i: [
           {

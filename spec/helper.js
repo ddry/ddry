@@ -77,6 +77,14 @@
     return input;
   };
 
+  SpecHelper.prototype.setCli = function(dev, npmRoot) {
+    if (typeof dev === 'string') {
+      return 'cli.js';
+    }
+    npmRoot = npmRoot || 'node_modules';
+    return npmRoot + "/ddry/cli.js";
+  };
+
   module.exports = SpecHelper;
 
 }).call(this);

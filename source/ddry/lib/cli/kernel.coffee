@@ -27,7 +27,6 @@ module.exports =
 
   getTitles: (config, command) ->
     return config unless groups.titles.indexOf(command) isnt -1
-    log.error 'codeFolderUndefined' unless typeof config.code is 'string'
     config.moduleTitles = titles.get config
     config
 
@@ -53,12 +52,14 @@ module.exports =
       io.save config
       true
 
-  setPrefix: (mockNotDev = false) ->
-    dev = if mockNotDev then false else typeof process.env.DDRY_DEV is 'string'
+  setPrefix: (mock = false) ->
+    dev = typeof process.env.DDRY_DEV is 'string'
+    dev = if mock then not dev else dev
     if dev
       process.env.DDRY_PREFIX = '../../'
       return true
-    npmRoot = process.env.NPM_ROOT.replace process.env.PWD, ''
+    npmRoot = process.env.NPM_ROOT or 'node_modules'
+    npmRoot = npmRoot.replace process.env.PWD, ''
     level = npmRoot.split('/').length + 4
     process.env.DDRY_PREFIX = Array(level).join '../'
     true

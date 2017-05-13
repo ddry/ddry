@@ -9,8 +9,6 @@ usage = require './usage'
 
 module.exports =
   errors:
-    codeFolderUndefined: ->
-      'Code folder definition missing'
     configurerMissing: (path) ->
       "Failed to load configurer file from #{c.bright path}"
     configurerUndefined: ->
@@ -41,7 +39,7 @@ module.exports =
     throw new Error "#{badge} #{@.errors[alias] param}"
 
   info: (alias, param, mockUnmute = false) ->
-    mute = if mockUnmute then false else typeof process.env.DDRY_DEV is 'string'
+    mute = if mockUnmute then false else typeof process.env.MUTE_CONSOLE is 'string'
     return "#{@.messages[alias] param}" if mute
     console.log "#{@.messages[alias] param}"
     "#{@.messages[alias] param}"

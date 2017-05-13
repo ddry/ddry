@@ -3,23 +3,15 @@
   'use strict';
   module.exports = function(dd) {
     var config;
-    dd.drive([
-      {
-        it: 'returns unchanged config if command does not get titles',
-        i: ['config', 'add'],
-        e: 'config'
-      }, {
-        matcher: 'error',
-        it: 'throws `codeFolderUndefined` error if code folder path not found in config',
-        i: [{}, 'titles'],
-        e: (dd.helper.c.red('ERROR:')) + " Code folder definition missing"
-      }
-    ]);
     config = {
       code: 'spec/examples/spec/muteTape'
     };
     return dd.drive([
       {
+        it: 'returns unchanged config if command does not get titles',
+        i: ['config', 'add'],
+        e: 'config'
+      }, {
         before: function() {
           return dd.cli = dd.helper.io.load(true);
         },

@@ -51,4 +51,10 @@ SpecHelper.prototype.oops = -> throw new Error 'oops!'
 
 SpecHelper.prototype.same = (input) -> input
 
+SpecHelper.prototype.setCli = (dev, npmRoot) ->
+  if typeof dev is 'string'
+    return 'cli.js'
+  npmRoot = npmRoot or 'node_modules'
+  "#{npmRoot}/ddry/cli.js"
+
 module.exports = SpecHelper

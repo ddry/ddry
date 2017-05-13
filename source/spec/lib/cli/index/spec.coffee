@@ -2,8 +2,6 @@
 
 module.exports = (dd) ->
   dd.drive [
-    before: ->
-      process.env.DDRY_CLI = 'cli.js'
     it: 'runs unscoped suite if no params given'
     i: [ [] ]
     e: true
@@ -24,6 +22,4 @@ module.exports = (dd) ->
     it: 'block stderr output and delegates it to own logger'
     i: [ 'e' ]
     e: ''
-    after: ->
-      delete process.env.DDRY_CLI
   ]

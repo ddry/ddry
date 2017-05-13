@@ -5,7 +5,7 @@
 'use strict'
 
 attach = require '../modular/attach'
-folder = require '../fs/folder'
+folders = require '../modular/folders'
 io = require './io'
 object = require '../common/object'
 log = require './log'
@@ -30,7 +30,7 @@ module.exports =
     filePath
 
   get: (config) ->
-    filesHash = folder.read '', config.code, true
+    filesHash = folders.initCodeModules config
     filesHash = attach.outside filesHash, config
     io.save
       modulePaths: filesHash

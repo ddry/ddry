@@ -31,6 +31,11 @@ module.exports =
     [ params... ] = args
     [ config, configurerPath, params ]
 
+  fetchModular: (config) ->
+    return 'ddry/modular' unless object.isObject config
+    return 'ddry/modular' unless object.isObject config.cli
+    config.cli.ddry or 'ddry/modular'
+
   fetchModule: (path) ->
     try
       configurer = require.resolve path
@@ -41,7 +46,7 @@ module.exports =
   serveSpec: (constraints, preventLoop = false) ->
     config = io.load()
 
-    modular = config.cli.ddry or 'ddry/modular'
+    modular = @.fetchModular config
     spec = require(modular)()
     spec.setPrefix config.cli.prefix if config.cli.prefix
 

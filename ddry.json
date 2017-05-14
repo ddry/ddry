@@ -1,5 +1,5 @@
 {
-  "title": "ddry by edge",
+  "title": "ddry by npmv",
   "matchers": "ddry-selenium-matchers",
   "initial": {
     "examples": {
@@ -41,7 +41,7 @@
       ]
     },
     "spec_helper": [
-      "../edge/",
+      "ddry/",
       "../",
       "../../"
     ]
@@ -71,7 +71,7 @@
   "helper": {
     "path": "spec/helper",
     "initial": [
-      "../edge/",
+      "ddry/",
       "../",
       "../../"
     ]
@@ -83,13 +83,11 @@
     "spec_helper": "spec/helper"
   },
   "cli": {
-    "ddry": "../../edge/modular",
-    "prefix": "../../../",
+    "ddry": "ddry/modular",
+    "prefix": "../../../../",
     "config": {
       "path": "../../spec/config",
-      "params": [
-        "ed"
-      ]
+      "params": []
     }
   },
   "moduleTitles": {

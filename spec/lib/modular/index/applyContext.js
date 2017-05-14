@@ -2,16 +2,19 @@
 (function() {
   'use strict';
   module.exports = function(dd) {
-    var ddry;
+    var applied, ddry, spec;
     ddry = {
       that: true
     };
+    spec = function(n) {
+      return n;
+    };
+    applied = dd.that.applyContext(ddry, spec, [1]);
     return dd.drive({
+      matcher: 'plain',
       it: 'applies data to spec then to function passed to the context',
-      i: [],
-      e: function() {
-        return spec.apply(dd.that, data);
-      }
+      i: applied(),
+      e: 1
     });
   };
 

@@ -49,8 +49,6 @@ SpecHelper.prototype.message = (i, e) ->
 
 SpecHelper.prototype.oops = -> throw new Error 'oops!'
 
-SpecHelper.prototype.same = (input) -> input
-
 SpecHelper.prototype.setCli = (dev, npmRoot) ->
   if typeof dev is 'string'
     return 'cli.js'

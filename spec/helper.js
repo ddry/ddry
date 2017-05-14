@@ -73,10 +73,6 @@
     throw new Error('oops!');
   };
 
-  SpecHelper.prototype.same = function(input) {
-    return input;
-  };
-
   SpecHelper.prototype.setCli = function(dev, npmRoot) {
     if (typeof dev === 'string') {
       return 'cli.js';

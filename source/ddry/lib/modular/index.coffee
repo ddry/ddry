@@ -21,7 +21,7 @@ module.exports =
     dd.matchers = object.extend dd.matchers, customMatchers
 
   applyContext: (dd, spec, data) ->
-    spec.apply dd.that, data
+    -> spec.apply dd.that, data
 
   attachHelper: (dd, params) ->
     dd.helper = attach.helper params.helper

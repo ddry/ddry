@@ -94,21 +94,27 @@ module.exports =
 
   #{c.bright 'init'} or #{c.bright 'i'} — Initialize config file
     Creates minimum viable data-driven testing configuration file #{c.bright 'ddry.json'} with
-    — target code folder #{c.bright '(mandatory)'}
     — #{c.ddry()} convention-over-configuration spec folder #{c.bright '(mandatory)'}
+    — target code folder #{c.bright '(optional)'}
     — whole spec suite title #{c.bright '(optional)'}
 
-    Of course, right from this point and as long as possible further intensive use of shell file
-    and folder paths `tab` completion is strongly encouraged.
+    Of course, right from this point and as long as possible further intensive use of shell file and folder
+    paths `tab` completion is strongly encouraged.
 
-    #{c.bright '$ ddry i <code> <spec> [<title>]'}
+    Default #{c.bright 'title'} equals #{c.bright 'spec'}.
 
-    Default #{c.bright 'title'} equals #{c.bright 'code'}.
+    Code folder is optional, you may have all your modules added as #{c.bright 'outside'}. Please check #{c.ddry()} documentation
+    for this advanced config option. The point of this optionality is to make config init more welcoming.
+
+    If you wish to set a suite title without specifying the code folder, use `.` (dot) as second parameter,
+    it will be ignored.
 
     Syntax:
-      $ ddry i <code> <spec> [<title>]
-    Example:
-      $ ddry i lib/ spec/lib "Human friendly test suite title"
+      $ ddry i <spec> [<code>] [<title>]
+    Examples:
+      $ ddry i spec/ lib/ "Human friendly test suite title"
+      $ ddry i spec/
+      $ ddry i spec/ . "I don't have code folder, but I want to set title"
 
   """
 

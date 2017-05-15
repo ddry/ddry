@@ -44,15 +44,18 @@ module.exports =
   e: ->
     log.error 'empty', null, true
 
-  init: (config, code, spec, title) ->
-    code = configurer.stripSlash code
-    unless folder.isFolder code
-      return log.error 'noCodeFolder', code 
+  init: (_, spec, code, title) ->
     spec = configurer.stripSlash spec
     config =
-      title: title or code
-      code: code
       spec: spec
+      title: spec
+    return config unless code
+    code = if code is '.' then false else configurer.stripSlash code
+    title = if title then title else spec
+    config =
+      spec: spec
+      title: title
+    config.code = code if code
     config
 
   remove: (config, key, value) ->

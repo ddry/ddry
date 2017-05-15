@@ -18,11 +18,8 @@ coveralls:
 	rm -rf ./coverage
 
 mocha:
-	./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha \
-		--no-exit \
-		ddry.js \
-		--check-leaks
-	selenium/sh/pjs_cleanup
+	selenium/sh/mocha
+	make pjs
 
 pjs:
 	selenium/sh/pjs_cleanup
@@ -37,10 +34,10 @@ server-%:
 	fi
 
 tap:
-	node_modules/.bin/tap ddry.js
+	selenium/sh/tap
 
 tape:
-	tape ddry.js | grep -v 'muteTape' | node_modules/.bin/tap-spec
+	selenium/sh/tape
 
 test: mocha tape tap
 

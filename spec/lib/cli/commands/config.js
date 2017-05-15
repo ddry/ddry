@@ -10,13 +10,11 @@
       params: ''
     };
     delete config.moduleTitles;
-    return dd.drive([
-      {
-        it: 'generates the config object with given configurer with given params',
-        i: [],
-        e: config
-      }
-    ]);
+    return dd.drive({
+      it: 'generates the config object with given configurer with given params',
+      i: [],
+      e: config
+    });
   };
 
 }).call(this);

@@ -1,0 +1,3 @@
+#!/bin/bash
+. selenium/sh/set_ddry_js
+node_modules/.bin/tap $DDRY_JS

@@ -1,0 +1,6 @@
+#!/bin/bash
+. selenium/sh/set_ddry_js
+./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha \
+  --no-exit \
+  $DDRY_JS \
+  --check-leaks

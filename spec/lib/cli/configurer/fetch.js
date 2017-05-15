@@ -21,7 +21,7 @@
       matcher: 'error',
       it: 'throws `configurerMissing` error if stored config path fails',
       i: [[]],
-      e: (dd.helper.c.red('ERROR:')) + " Failed to load configurer file from " + (dd.helper.c.bright('failing/configurer')),
+      e: (dd.helper.c.red('ERROR:')) + " Failed to load configurer file from " + (dd.helper.c.bright('false')),
       after: function() {
         config.cli.config.path = dd.validPath;
         return dd.helper.io.save(config);

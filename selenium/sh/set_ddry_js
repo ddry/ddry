@@ -1,0 +1,6 @@
+#!/bin/bash
+if [ "$DDRY_DEV" = "" ]; then \
+  export DDRY_JS=./node_modules/ddry/ddry.js
+else
+  export DDRY_JS=ddry.js
+fi

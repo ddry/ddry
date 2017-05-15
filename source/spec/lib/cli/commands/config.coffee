@@ -7,8 +7,8 @@ module.exports = (dd) ->
     path: '../../spec/config'
     params: ''
   delete config.moduleTitles
-  dd.drive [
+
+  dd.drive
     it: 'generates the config object with given configurer with given params'
     i: []
     e: config
-  ]

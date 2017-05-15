@@ -1,0 +1,3 @@
+#!/bin/bash
+. selenium/sh/set_ddry_js
+tape $DDRY_JS | grep -v 'muteTape' | node_modules/.bin/tap-spec

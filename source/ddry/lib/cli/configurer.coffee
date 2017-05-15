@@ -24,9 +24,8 @@ module.exports =
     configurer = @.fetchModule configurerPath
     return [ config, configurerPath, params ] if configurer
     @.explainOmitting config, givenConfigurerPath
-    configurerPath = config.cli.config.path
-    configurer = @.fetchModule configurerPath
-    unless configurer
+    configurerPath = @.fetchModule config.cli.config.path
+    unless configurerPath
       log.error 'configurerMissing', configurerPath
     [ params... ] = args
     [ config, configurerPath, params ]
@@ -38,10 +37,16 @@ module.exports =
 
   fetchModule: (path) ->
     try
-      configurer = require.resolve path
+      require.resolve path
+      return path
     catch e
-      configurer = false
-    configurer
+      unprefixed = path.replace /\.\.\//g, ''
+      try
+        fallbackPath = "../../#{unprefixed}"
+        require.resolve fallbackPath
+        return fallbackPath
+      catch e
+        return false
 
   fetchPrefix: (config) ->
     return false unless object.isObject config
@@ -59,7 +64,8 @@ module.exports =
 
     if @.stored config
       savedConfig = config
-      configurer = require config.cli.config.path
+      configurer = @.fetchModule config.cli.config.path
+      configurer = require configurer
       loadedConfig = configurer.apply configurer, config.cli.config.params
       config = object.merge savedConfig, loadedConfig
     if constraints and typeof constraints is 'object'

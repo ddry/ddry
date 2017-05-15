@@ -86,7 +86,7 @@
     "ddry": "ddry/modular",
     "prefix": "../../../../",
     "config": {
-      "path": "../../spec/config",
+      "path": "../../../../spec/config",
       "params": []
     }
   },

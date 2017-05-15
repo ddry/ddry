@@ -7,6 +7,7 @@
     var j, len, name, object, ref, tape;
     this.prefix = relative;
     this.dataDriven = require(subject + "index");
+    this.clone = require(subject + "lib/common/clone");
     this.forMocha = require(subject + "lib/common/harness").forMocha;
     this.methodContext = require(subject + "lib/spec/context");
     this.requireSafe = require(subject + "lib/fs/require_safe");

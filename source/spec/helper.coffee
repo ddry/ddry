@@ -3,6 +3,7 @@
 SpecHelper = (harness, subject, relative) ->
   @.prefix = relative
   @.dataDriven = require "#{subject}index"
+  @.clone = require "#{subject}lib/common/clone"
   @.forMocha = require("#{subject}lib/common/harness").forMocha
   @.methodContext = require "#{subject}lib/spec/context"
   @.requireSafe = require "#{subject}lib/fs/require_safe"

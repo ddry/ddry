@@ -1,3 +1,7 @@
+###
+# Command line interface commands list
+###
+
 'use strict'
 
 module.exports =

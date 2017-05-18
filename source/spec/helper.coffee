@@ -1,3 +1,7 @@
+###
+# Spec helper and test data snippets provider
+###
+
 'use strict'
 
 SpecHelper = (harness, subject, relative) ->
@@ -7,6 +11,8 @@ SpecHelper = (harness, subject, relative) ->
   @.forMocha = require("#{subject}lib/common/harness").forMocha
   @.methodContext = require "#{subject}lib/spec/context"
   @.requireSafe = require "#{subject}lib/fs/require_safe"
+  @.setPrefix = require("#{subject}lib/cli/kernel").setPrefix
+  @.switch = require("#{subject}lib/cli/configurer").switch
   object = require "#{subject}lib/common/object"
   object.extend @, object
   @.c = require "#{subject}lib/common/colors"

@@ -1,3 +1,7 @@
+###
+# Command line interface kernel
+###
+
 'use strict'
 
 c = require '../common/colors'
@@ -52,14 +56,9 @@ module.exports =
       io.save config
       true
 
-  setPrefix: (mock = false) ->
-    dev = typeof process.env.DDRY_DEV is 'string'
-    dev = if mock then not dev else dev
-    if dev
-      process.env.DDRY_PREFIX = '../../'
-      return true
-    npmRoot = process.env.NPM_ROOT or 'node_modules'
+  setPrefix: (dev, npmRoot = 'node_modules') ->
+    if typeof dev is 'string'
+      return '../../'
     npmRoot = npmRoot.replace process.env.PWD, ''
     level = npmRoot.split('/').length + 4
-    process.env.DDRY_PREFIX = Array(level).join '../'
-    true
+    Array(level).join '../'

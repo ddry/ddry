@@ -2,16 +2,15 @@
 
 module.exports = (dd) ->
   dd.drive [
-    before: ->
-      dd.ddryPrefix = process.env.DDRY_PREFIX
-      process.env.NPM_ROOT = 'node_modules'
-    it: 'sets relative prefix for actual environment'
+    it: 'sets relative prefix for default environment'
     i: []
-    e: true
+    e: '../../../../'
   ,
-    it: 'sets relative prefix for mocked another environments'
-    i: [ true ]
-    e: true
-    after: ->
-      process.env.DDRY_PREFIX = dd.ddryPrefix
+    it: 'sets relative prefix for CLI development environment'
+    i: [ '' ]
+    e: '../../'
+  ,
+    it: 'sets relative prefix for complex NPM root'
+    i: [ null, 'some/other/node/modules/location' ]
+    e: '../../../../../../../../'
   ]

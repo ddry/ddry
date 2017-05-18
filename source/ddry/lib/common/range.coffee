@@ -1,3 +1,7 @@
+###
+# CoffeeScript range replacement fixing coverage leak
+###
+
 'use strict'
 
 module.exports = (from, till) ->

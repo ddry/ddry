@@ -6,7 +6,7 @@
     configurer = dd.helper.requireSafe('spec/config');
     config = configurer();
     config.cli.config = {
-      path: '../../spec/config',
+      path: dd.helper.prefix + "spec/config",
       params: ''
     };
     delete config.moduleTitles;

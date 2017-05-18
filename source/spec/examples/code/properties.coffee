@@ -1,3 +1,7 @@
+###
+# Module with deep properties structure example
+###
+
 'use strict'
 
 module.exports =

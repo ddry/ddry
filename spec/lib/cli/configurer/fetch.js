@@ -2,15 +2,14 @@
 (function() {
   'use strict';
   module.exports = function(dd) {
-    var config;
+    var config, prefix;
     config = dd.helper.io.load();
+    prefix = dd.helper.setPrefix(process.env.DDRY_DEV);
+    process.env.DDRY_PREFIX = prefix;
     dd.drive({
-      before: function() {
-        return process.env.DDRY_PREFIX = '../../';
-      },
       it: 'returns configurer data if valid configurer path given',
-      i: [['spec/config/']],
-      e: [config, '../../spec/config/', []]
+      i: [['spec/config']],
+      e: [config, prefix + "spec/config", []]
     });
     return dd.drive({
       before: function() {

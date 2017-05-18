@@ -8,7 +8,7 @@ c-%:
 ce-%:
 	make server-$*
 	coffee -c$*o . source/ddry & \
-	coffee -c$*o edge source/ddry & \
+	coffee -c$*o edge_package/ddry source/ddry & \
 	coffee -c$*o spec source/spec
 
 coveralls:
@@ -28,7 +28,7 @@ ps:
 	selenium/sh/ps_cleanup
 
 server-%:
-	rm -rf edge lib spec
+	rm -rf edge_package lib spec
 	@if [ "$*" = "w" ]; then \
 		selenium/sh/server; \
 	fi

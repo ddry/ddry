@@ -1,3 +1,7 @@
+###
+# ddry core modular wrapper
+###
+
 'use strict'
 
 object = require './lib/common/object'

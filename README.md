@@ -163,13 +163,13 @@ For **ddry** core we have three options:
 - project NPM-published version of code (named `npmv`);
 - switchable project edge code (named `edge`).
 
-Edge code is just a copy of project code compiled to `edge/` folder. Using edge verion for testing is rather discouraged, it is only for implementing major core features that make usual `ddry` by `npmv` testing utterly impossible. This copy is invoked by `make ce-w` command and removed by `make c-w` command.
+Edge code is just a copy of project code compiled to `edge_package/ddry/` folder (to mimic `node_modules/ddry/` depth level). Using edge version for testing is rather discouraged, it is only for implementing major core features that make usual `ddry` by `npmv` testing utterly impossible. This copy is invoked by `make ce-w` command and removed by `make c-w` command.
 
 Specs suite configuration (unobtrusively stored in `ddry.json`) for these three cases should obviously be different. This circumstance inspired `ddry config` command feature enabling creation of configuration object by JS module. Configurer module for **ddry** is `spec/config` and it creates configurations for testing any project code instance against any other instance.
 
 Another cool feature of `ddry config` (or `ddry c`) command is that once you set the configurer module path, you may omit it since that. It's pretty obvious that we can generate any number of different configs inside one configurer and we definitely do not need more than one configurer.
 
-`spec/config` knows `ddry`, `edge` and `npmv` as `d`, `e` and `n` respectively and sets `nd` by default that means testing of project root code `ddry` by published and installed version `npmv`. Combine these three letters in all possible harness-subject combinations (`ddry c ne`, `ddry c dn`) and get some accompanying issues (at the moment only basic `nd` goes smoothly, so `ddry c` please).
+`spec/config` knows `ddry`, `edge` and `npmv` as `d`, `e` and `n` respectively and sets `nd` by default that means testing of project root code `ddry` by published and installed version `npmv`. Combine these three letters in all possible harness-subject combinations (`ddry c ne`, `ddry c dn` etc.) and get some accompanying issues. With solid relative prefix fallback strategy all combinations run smoothly, i.e. yield reasonable failures (most common: specs of new features normally fail on published version).
 
 For **ddry** CLI we have two options:
 - published and installed to `node_modules` (default);
@@ -201,7 +201,7 @@ And then initialize `cli.json` for newly chosen CLI instance:
 $ ddry t
 ```
 
-Practice make intermediate, so after some time these switches can become funny toys for you. But the first time their description surely looks like incomprehesible `TL;DR` babbling.
+Practice makes intermediate, so after some time these switches can become funny toys for you. But the first time their description surely looks like incomprehesible `TL;DR` babbling.
 
 #### ddry core internal mechanics
 
@@ -213,4 +213,4 @@ There are four JS files in project root, let's briefly describe them all:
 
 `ddry.js` - `modular.js` wrapper allowing suite execution only-except style scoping without editing spec config in and out. It is also a service point file for all the test harnesses to make testing configured in `ddry.json` file. It determines whether it is launched from `ddry` shell command of from within a test harness and delivers the suite entirely or within scope defined by CLI.
 
-`cli.js` - CLI commands and scopes parser. Throws error when needs to prevent test harness launch. Exits normally to allow it.
+`cli.js` - CLI commands and scopes parser. Updates `ddry.json` when executing commands, updates `cli.json` for only-this-run scope constraints. Outputs usage info. Throws error when needs to prevent test harness launch. Exits normally to allow it.

@@ -1,3 +1,9 @@
+###
+# Numbering module example
+###
+
+# Unbelievable that ddry started here, from refactoring `ordinal` spec
+
 'use strict'
 
 module.exports =

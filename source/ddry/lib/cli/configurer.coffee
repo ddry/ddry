@@ -1,5 +1,5 @@
 ###
-# Command line interface helpers
+# Command line interface configurer parser
 ###
 
 'use strict'
@@ -17,6 +17,12 @@ module.exports =
       log.error 'configurerMissing', givenConfigurerPath
     log.error 'configurerUndefined'
 
+  fallback: (path) ->
+    unprefixed = path.replace /\.\.\//g, ''
+    prefix = path.replace unprefixed, ''
+    fallbackPrefix = @.switch prefix
+    "#{fallbackPrefix}#{unprefixed}"
+
   fetch: (args) ->
     config = io.load()
     [ givenConfigurerPath, params... ] = args
@@ -33,16 +39,15 @@ module.exports =
   fetchModular: (config) ->
     return 'ddry/modular' unless object.isObject config
     return 'ddry/modular' unless object.isObject config.cli
-    config.cli.ddry or 'ddry/modular'
+    @.fetchModule(config.cli.ddry) or 'ddry/modular'
 
   fetchModule: (path) ->
     try
       require.resolve path
       return path
     catch e
-      unprefixed = path.replace /\.\.\//g, ''
+      fallbackPath = @.fallback path
       try
-        fallbackPath = "../../#{unprefixed}"
         require.resolve fallbackPath
         return fallbackPath
       catch e
@@ -80,3 +85,9 @@ module.exports =
 
   stripSlash: (dirName) ->
     dirName.replace /\/$/, ''
+
+  switch: (prefix) ->
+    another =
+      '../../': '../../../../'
+      '../../../../': '../../'
+    another[prefix] or prefix

@@ -96,17 +96,17 @@
       "index": "Assertion engine"
     },
     "cli": {
-      "command_list": "lib/cli/command_list",
+      "command_list": "Command line interface commands list",
       "commands": "Command line interface commands",
-      "configurer": "Command line interface helpers",
-      "constraints": "lib/cli/constraints",
+      "configurer": "Command line interface configurer parser",
+      "constraints": "Command line interface constraints renderer",
       "index": "Command line interface core",
-      "io": "lib/cli/io",
-      "kernel": "lib/cli/kernel",
+      "io": "Command line interface I/O module",
+      "kernel": "Command line interface kernel",
       "log": "Command line interface logger",
-      "scope": "lib/cli/scope",
+      "scope": "Command line interface spec suite execution scope parser",
       "titles": "Command line interface titles parser",
-      "usage": "lib/cli/usage"
+      "usage": "Command line interface usage informer"
     },
     "code": {
       "errors": "Code module processing error handling",
@@ -130,7 +130,7 @@
           "methods": "Object report methods"
         }
       },
-      "range": "lib/common/range",
+      "range": "CoffeeScript range replacement fixing coverage leak",
       "unordered": "Unordered array elements set checker"
     },
     "fs": {
@@ -169,14 +169,14 @@
       "tap_spec": "Tap-compatible spec constructor"
     },
     "examples": {
-      "function_export": "spec/examples/code/function_export",
-      "instance": "spec/examples/code/instance",
-      "numbering": "spec/examples/code/numbering",
-      "properties": "spec/examples/code/properties",
-      "selenium": "spec/examples/code/selenium"
+      "function_export": "Function export module example",
+      "instance": "Instance module example",
+      "numbering": "Numbering module example",
+      "properties": "Module with deep properties structure example",
+      "selenium": "Selenium PhantomJS driver requirer"
     },
     "index": "ddry core",
-    "modular_wrapper": "modular",
-    "spec_helper": "spec/helper"
+    "modular_wrapper": "ddry core modular wrapper",
+    "spec_helper": "Spec helper and test data snippets provider"
   }
 }

@@ -4,20 +4,17 @@
   module.exports = function(dd) {
     return dd.drive([
       {
-        before: function() {
-          dd.ddryPrefix = process.env.DDRY_PREFIX;
-          return process.env.NPM_ROOT = 'node_modules';
-        },
-        it: 'sets relative prefix for actual environment',
+        it: 'sets relative prefix for default environment',
         i: [],
-        e: true
+        e: '../../../../'
       }, {
-        it: 'sets relative prefix for mocked another environments',
-        i: [true],
-        e: true,
-        after: function() {
-          return process.env.DDRY_PREFIX = dd.ddryPrefix;
-        }
+        it: 'sets relative prefix for CLI development environment',
+        i: [''],
+        e: '../../'
+      }, {
+        it: 'sets relative prefix for complex NPM root',
+        i: [null, 'some/other/node/modules/location'],
+        e: '../../../../../../../../'
       }
     ]);
   };

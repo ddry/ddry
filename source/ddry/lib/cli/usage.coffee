@@ -1,3 +1,7 @@
+###
+# Command line interface usage informer
+###
+
 'use strict'
 
 c = require '../common/colors'

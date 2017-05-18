@@ -8,32 +8,32 @@
   prefixes = {
     cli: {
       ddry: '../../../..',
-      edge: '../../../../edge',
+      edge: '../../../../edge_package/ddry',
       npmv: "ddry"
     },
     devCli: {
       ddry: '../..',
-      edge: '../../edge',
+      edge: '../../edge_package/ddry',
       npmv: "ddry"
     },
     harness: {
       ddry: '..',
-      edge: '../edge',
+      edge: '../edge_package/ddry',
       npmv: 'ddry'
     },
     relative: {
       ddry: '../../',
-      edge: '../../../',
+      edge: '../../../../',
       npmv: '../../../../'
     },
     root: {
       ddry: '',
-      edge: 'edge/',
+      edge: 'edge_package/ddry/',
       npmv: "ddry/"
     },
     outsideRoot: {
       ddry: '',
-      edge: 'edge/',
+      edge: 'edge_package/ddry/',
       npmv: process.env.NPM_ROOT + "/ddry/"
     }
   };

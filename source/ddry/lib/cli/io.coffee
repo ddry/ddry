@@ -1,3 +1,7 @@
+###
+# Command line interface I/O module
+###
+
 'use strict'
 
 c = require '../common/colors'

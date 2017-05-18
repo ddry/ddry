@@ -19,7 +19,7 @@ module.exports = (dd) ->
     it: 'finally fetches configured modular path'
     i: [
       cli:
-        ddry: 'configured/modular'
+        ddry: './kernel'
     ]
-    e: 'configured/modular'
+    e: './kernel'
   ]

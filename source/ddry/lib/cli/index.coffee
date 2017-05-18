@@ -12,7 +12,7 @@ module.exports = (params) ->
   try
     if typeof process.env.DDRY_CLI is 'undefined'
       return configurer.serveSpec()
-    kernel.setPrefix()
+    process.env.DDRY_PREFIX = kernel.setPrefix process.env.DDRY_DEV, process.env.NPM_ROOT
     unless params.length
       kernel.exit()
       return true

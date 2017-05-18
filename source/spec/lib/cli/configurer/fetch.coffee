@@ -2,13 +2,12 @@
 
 module.exports = (dd) ->
   config =  dd.helper.io.load()
+  prefix = dd.helper.setPrefix process.env.DDRY_DEV
+  process.env.DDRY_PREFIX = prefix
   dd.drive
-    before: ->
-      process.env.DDRY_PREFIX = '../../'
     it: 'returns configurer data if valid configurer path given'
-    i: [ [ 'spec/config/' ] ]
-    e: [ config, '../../spec/config/', [] ]
-
+    i: [ [ 'spec/config' ] ]
+    e: [ config, "#{prefix}spec/config", [] ]
 
   dd.drive
     before: ->

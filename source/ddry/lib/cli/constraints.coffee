@@ -1,3 +1,7 @@
+###
+# Command line interface constraints renderer
+###
+
 'use strict'
 
 io = require './io'

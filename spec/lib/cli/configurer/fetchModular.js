@@ -24,11 +24,11 @@
         i: [
           {
             cli: {
-              ddry: 'configured/modular'
+              ddry: './kernel'
             }
           }
         ],
-        e: 'configured/modular'
+        e: './kernel'
       }
     ]);
   };

@@ -1,3 +1,7 @@
+###
+# Instance module example
+###
+
 'use strict'
 
 Instance = (title, message) ->

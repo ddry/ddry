@@ -1,3 +1,7 @@
+###
+# Command line interface spec suite execution scope parser
+###
+
 'use strict'
 
 object = require '../common/object'

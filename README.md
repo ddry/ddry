@@ -114,11 +114,30 @@ Further ddry CLI shell commands usage details are subject of these four packages
 
 ### Getting started with ddry
 
-and
+Please check [ddry-guide](https://github.com/ddry/ddry-guide) project containing checkoutable step-by-step way from blank Node JS project to all the features demo, including support of major Javascript module concepts, CI setup and testing with Selenium Webdriver. With setup process described there, here we'll focus on data-driven testing core features details.
 
 ### Data-driven DRY testing wrapper features documentation
 
-are coming here very soon.
+Here's the brief list of data-driven testing core features in order of their appearance in [ddry-guide](https://github.com/ddry/ddry-guide):
+
+- injected `ddry` instance - `dd`;
+- `plain` matcher;
+- `default` matcher;
+- sequence spec;
+- injected target module context — `that`;
+- `property` matcher;
+- cross-harness `context`;
+- cross-harness `before` and `after` hooks;
+- spec helper;
+- `dd.ry` deep parameterizer method;
+- function export module support;
+- module instances support;
+- Selenium Webdriver specs;
+- only-except scopes of all levels;
+- test harness scope;
+- outside modules.
+
+We'll develop all these subjects documentation gradually.
 
 ### ddry development (CONTRIBUTING.md draft)
 

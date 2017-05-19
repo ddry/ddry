@@ -124,6 +124,7 @@ Here's the brief list of data-driven testing core features in order of their app
 - `plain` matcher;
 - `default` matcher;
 - sequence spec;
+- cross-harness x-style skipping and mass skipping;
 - injected target module context — `that`;
 - `property` matcher;
 - cross-harness `context`;
@@ -228,8 +229,8 @@ There are four JS files in project root, let's briefly describe them all:
 
 `index.js` — the deepest core of the project, it requires all the `lib/` folder except `lib/cli` to do all the convention over configuration magic to create required target code module method context in certain file in specs folder and parse the data-driven syntax of `dd.drive` command to pass actual test data to real test harnesses. It is aware of module, method and data-driven spec syntax, but doesn't care about the whole test suite.
 
-`modular.js` - first `index.js` wrapper made to organize testing at the entire suite level. It is aware of spec suite config and all the tested modules, inside code folder and even `outside` (it's the name of advanced but intuitively graspable config option). It is also aware of all the rest advanced config options, including custom matchers, Selenium drivers to use, suite execution `only`/`except` scopes of all levels (module folder, module and module method), test harnesses scopes etc.
+`modular.js` — first `index.js` wrapper made to organize testing at the entire suite level. It is aware of spec suite config and all the tested modules, inside code folder and even `outside` (it's the name of advanced but intuitively graspable config option). It is also aware of all the rest advanced config options, including custom matchers, Selenium drivers to use, suite execution `only`/`except` scopes of all levels (module folder, module and module method), test harnesses scopes etc.
 
-`ddry.js` - `modular.js` wrapper allowing suite execution only-except style scoping without editing spec config in and out. It is also a service point file for all the test harnesses to make testing configured in `ddry.json` file. It determines whether it is launched from `ddry` shell command of from within a test harness and delivers the suite entirely or within scope defined by CLI.
+`ddry.js` — `modular.js` wrapper allowing suite execution only-except style scoping without editing spec config in and out. It is also a service point file for all the test harnesses to make testing configured in `ddry.json` file. It determines whether it is launched from `ddry` shell command of from within a test harness and delivers the suite entirely or within scope defined by CLI.
 
-`cli.js` - CLI commands and scopes parser. Updates `ddry.json` when executing commands, updates `cli.json` for only-this-run scope constraints. Outputs usage info. Throws error when needs to prevent test harness launch. Exits normally to allow it.
+`cli.js` — CLI commands and scopes parser. Updates `ddry.json` when executing commands, updates `cli.json` for only-this-run scope constraints. Outputs usage info. Throws error when needs to prevent test harness launch. Exits normally to allow it.

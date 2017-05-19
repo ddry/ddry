@@ -41,11 +41,11 @@ module.exports =
     return 'pending' unless message.length
     message
 
-  messageFunction: (i, e, pending, spec) ->
-    "#{pending}: #{spec i, e}"
+  messageFunction: (pending, spec) ->
+    (i, e) -> "#{pending}: #{spec i, e}"
 
   setSpecMessage: (pending, spec) ->
     return "#{pending}: #{spec}" if typeof spec is 'string'
-    @.messageFunction
+    @.messageFunction pending, spec
 
 

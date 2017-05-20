@@ -120,12 +120,17 @@ Please check [ddry-guide](https://github.com/ddry/ddry-guide) project containing
 
 Here's the brief list of data-driven testing core features in order of their appearance in [ddry-guide](https://github.com/ddry/ddry-guide):
 
-- injected `ddry` instance - `dd`;
-- `plain` matcher;
-- `default` matcher;
-- sequence spec;
-- cross-harness x-style skipping and mass skipping;
-- injected target module context — `that`;
+- [Prerequisites](https://github.com/ddry/ddry-guide#prerequisites)
+- [Getting started](https://github.com/ddry/ddry-guide#getting-started)
+- [Convention over configuration spec folder structure](https://github.com/ddry/ddry-guide#convention-over-configuration-spec-folder-structure)
+- [Injected `ddry` instance — `dd`](https://github.com/ddry/ddry-guide#injected-ddry-instance)
+- [`plain` matcher](https://github.com/ddry/ddry-guide#plain-matcher)
+- [`default` matcher](https://github.com/ddry/ddry-guide#default-matcher)
+- [Sequences](https://github.com/ddry/ddry-guide#sequences)
+- [Sequence specs](https://github.com/ddry/ddry-guide#sequence-specs)
+- [Spec sequences. Cross-harness x-style skipping and mass skipping](https://github.com/ddry/ddry-guide#specs-sequences-cross-harness-x-style-skipping-and-mass-skipping)
+- [CoffeeScript Sublime Text snippets](https://github.com/ddry/ddry-guide#coffeescript-sublime-text-snippets)
+- [Injected target module context — `that`](https://github.com/ddry/ddry-guide#injected-target-module-context)
 - `property` matcher;
 - cross-harness `context`;
 - cross-harness `before` and `after` hooks;

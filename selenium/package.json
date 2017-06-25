@@ -6,12 +6,12 @@
     "jquery": "~2.2.1"
   },
   "devDependencies": {
-    "body-parser": "^1.12.0",
-    "brunch": "^2.4.2",
-    "express": "^4.12.2",
+    "body-parser": "^1.17.2",
+    "brunch": "^2.10.9",
+    "express": "^4.15.3",
     "jade-brunch": "^2.0.0",
     "javascript-brunch": "^2.0.0",
-    "morgan": "^1.5.1",
-    "sass-brunch": "^2.0.0"
+    "morgan": "^1.8.2",
+    "sass-brunch": "^2.10.4"
   }
 }

@@ -33,7 +33,7 @@ module.exports =
       definition = "#{value}".replace(/ /g, '')
       return definition.replace(/__cov_[^\+]*\+\+;/g, '')
     return value if Array.isArray value
-    "#{value}"
+    String value
 
   isObject: (value) ->
     value and typeof value is 'object'

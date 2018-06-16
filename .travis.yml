@@ -20,5 +20,5 @@ before_script:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - sleep 3
-  - ./node_modules/.bin/statik selenium/public --port 3333 &
+  - ./node_modules/.bin/static-server selenium/public --port 3333 &
   - sleep 3

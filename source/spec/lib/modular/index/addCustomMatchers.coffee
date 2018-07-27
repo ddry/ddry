@@ -17,6 +17,7 @@ module.exports = (dd) ->
     e:
       default: ddry.matchers.default
       anyOrder: ddry.matchers.anyOrder
+      async: ddry.matchers.async
       contains: ddry.matchers.contains
       error: ddry.matchers.error
       plain: ddry.matchers.plain

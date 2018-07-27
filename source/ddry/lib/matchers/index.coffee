@@ -6,6 +6,7 @@
 
 dotted = require '../common/dotted'
 getActual = require './get_actual'
+getAsyncActual = require './get_actual'
 report = require('../common/object/report').create
 unordered = require '../common/unordered'
 
@@ -20,6 +21,11 @@ module.exports =
     _ =
       actual: unordered.compare actual, spec.expected
       expected: unordered.clean
+
+  async: (spec, specSet) ->
+    _ =
+      actual: getAsyncActual spec, specSet
+      expected: spec.expected
 
   contains: (spec, specSet) ->
     actual = getActual spec, specSet

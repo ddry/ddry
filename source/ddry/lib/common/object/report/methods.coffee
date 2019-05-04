@@ -31,7 +31,7 @@ module.exports =
   format: (value) ->
     if typeof value is 'function'
       definition = "#{value}".replace(/ /g, '')
-      return definition.replace(/__cov_[^\+]*\+\+;/g, '')
+      return definition.replace(/[_]*cov_[^\+]*\+\+;/g, '')
     return value if Array.isArray value
     String value
 
